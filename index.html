@@ -258,7 +258,7 @@
             position: fixed;
             top: 62px;
             right: 12px;
-            width: 295px;
+            width: 310px;
             background: linear-gradient(180deg, #130b18 0%, #0a060e 100%);
             border: 1.5px solid #e11d48;
             border-radius: 16px;
@@ -518,6 +518,66 @@
             font-weight: 900;
             cursor: pointer;
         }
+
+        /* পপআপের ভেতরে মিনি এভিয়েটর গেম বা বাজার ইন্টারফেস স্টাইল */
+        .popup-game-container {
+            background: #030206;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 8px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .mini-aviator-screen {
+            width: 100%;
+            height: 90px;
+            background: radial-gradient(circle, #1a0818 0%, #050208 100%);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 42, 109, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flyer-plane {
+            position: absolute;
+            font-size: 22px;
+            transition: all 0.1s linear;
+        }
+
+        .scanner-beam {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
+            animation: scanMove 1.5s infinite linear;
+            display: none;
+        }
+
+        @keyframes scanMove {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .bet-action-box {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .mini-bet-btn {
+            flex: 1;
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #000;
+            font-size: 10px;
+            font-weight: 900;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -561,7 +621,7 @@
                         <span class="brand-heading">SIDDIK ORIGINAL AI HEACK</span>
                         <span class="tag-radar" id="headerTagText">HEACK PRO</span>
                     </div>
-                    <div class="drag-sub-hint" id="headerSubHint">::: EXACT WINGO PERIOD SYNC</div>
+                    <div class="drag-sub-hint" id="headerSubHint">::: IN-POPUP AVIATOR RADAR</div>
                 </div>
             </div>
             <div class="header-ctrl-btns">
@@ -573,6 +633,22 @@
         <div class="sub-info-bar">
             <span><span class="live-dot"></span><span id="serverTitleText">SPRIBE AVIATOR AI #2</span></span>
             <span class="secure-badge">🛡️ 100% SYNC</span>
+        </div>
+
+        <!-- পপআপের ভেতরের সম্পূর্ণ এভিয়েটর ও মার্কেট স্ক্যানার স্ক্রিন -->
+        <div class="popup-game-container" id="popupGameView">
+            <div class="mini-aviator-screen">
+                <div class="scanner-beam" id="scannerBeam"></div>
+                <div class="flyer-plane" id="flyerPlane">✈️</div>
+                <div style="position: relative; z-index: 2; text-align: center;">
+                    <div style="font-size: 8px; color: #94a3b8; font-weight: 800;">LIVE MARKET SCANNER</div>
+                    <div id="popupFlightStatus" style="font-family: 'Orbitron'; font-size: 20px; font-weight: 900; color: #38bdf8; text-shadow: 0 0 10px rgba(56,189,248,0.5);">READY</div>
+                </div>
+            </div>
+            <div class="bet-action-box">
+                <button class="mini-bet-btn">BET 200৳</button>
+                <button class="mini-bet-btn" style="background: linear-gradient(135deg, #22c55e, #15803d); color: #fff;">CASH OUT</button>
+            </div>
         </div>
 
         <div class="wingo-sub-markets" id="wingoSubMarkets">
@@ -611,7 +687,7 @@
             <div class="sub-desc-output">HEACK MATRIX AI</div>
         </div>
 
-        <button class="btn-signal-action" id="fetchSignalBtn" onclick="fetchAviatorSignal()">⚡ GET SIGNAL</button>
+        <button class="btn-signal-action" id="fetchSignalBtn" onclick="fetchAviatorSignal()">⚡ GET SIGNAL & SCAN</button>
 
         <div class="auto-sync-status-box" id="wingoAutoBox">
             <span>⚡ WINGO EXACT PERIOD SYNC ACTIVE</span>
@@ -745,6 +821,7 @@
             const subMktBar = document.getElementById('wingoSubMarkets');
             const signalBtn = document.getElementById('fetchSignalBtn');
             const wingoAutoBox = document.getElementById('wingoAutoBox');
+            const popupGameView = document.getElementById('popupGameView');
 
             if (gameName === 'aviator') {
                 document.getElementById('dockAviator').classList.add('active');
@@ -754,9 +831,10 @@
                 subMktBar.style.display = 'none';
                 signalBtn.style.display = 'block';
                 wingoAutoBox.style.display = 'none';
+                popupGameView.style.display = 'block'; // পপআপের ভেতর এভিয়েটর গেম স্ক্রিন শো করবে
                 document.getElementById('headerGameIcon').innerText = '✈️';
                 document.getElementById('headerTagText').innerText = 'HEACK PRO';
-                document.getElementById('headerSubHint').innerText = '::: CLICK GET SIGNAL FOR AVIATOR';
+                document.getElementById('headerSubHint').innerText = '::: IN-POPUP AVIATOR RADAR';
                 serverTxt.innerText = 'SPRIBE AVIATOR AI #2';
             } else if (gameName === 'wingo') {
                 document.getElementById('dockWingo').classList.add('active');
@@ -766,6 +844,7 @@
                 subMktBar.style.display = 'grid';
                 signalBtn.style.display = 'none';
                 wingoAutoBox.style.display = 'flex';
+                popupGameView.style.display = 'none';
                 document.getElementById('headerGameIcon').innerText = '🔥';
                 document.getElementById('headerTagText').innerText = 'HEACK ALGO';
                 document.getElementById('headerSubHint').innerText = '::: EXACT WINGO PERIOD SYNC';
@@ -779,6 +858,7 @@
                 subMktBar.style.display = 'none';
                 signalBtn.style.display = 'block';
                 wingoAutoBox.style.display = 'none';
+                popupGameView.style.display = 'none';
                 document.getElementById('headerGameIcon').innerText = '💣';
                 document.getElementById('headerTagText').innerText = 'HEACK RADAR';
                 document.getElementById('headerSubHint').innerText = '::: SAFE BOX MATRIX AI';
@@ -805,20 +885,29 @@
 
         function fetchAviatorSignal() {
             const btn = document.getElementById('fetchSignalBtn');
-            btn.disabled = true;
+            const scannerBeam = document.getElementById('scannerBeam');
+            const flightStatus = document.getElementById('popupFlightStatus');
             
-            // গেট সিগন্যালে ক্লিক করার সাথে সাথে ২ সেকেন্ডের জন্য এনালাইসিং শো করবে
+            btn.disabled = true;
+            btn.innerText = '⏳ SCANNING MARKET...';
+            scannerBeam.style.display = 'block'; // স্ক্যানার বিম অন হবে
+            flightStatus.innerText = 'ANALYZING...';
+            flightStatus.style.color = '#facc15';
+
             if (selectedGame === 'aviator') {
                 document.getElementById('aviatorMultiplier').innerText = 'ANALYZING...';
                 document.getElementById('aviatorMultiplier').style.fontSize = '20px';
-                document.getElementById('aviatorSubText').innerText = 'SCANNING AVIATOR RADAR...';
+                document.getElementById('aviatorSubText').innerText = 'SCANNING IN-POPUP RADAR...';
             } else if (selectedGame === 'mines') {
                 document.getElementById('minesSpots').innerText = 'ANALYZING...';
                 document.getElementById('minesSpots').style.fontSize = '20px';
             }
-            btn.innerText = '⏳ SCANNING MARKET...';
 
             setTimeout(() => {
+                scannerBeam.style.display = 'none'; // স্ক্যানার অফ হবে
+                flightStatus.innerText = 'AI LOCKED';
+                flightStatus.style.color = '#22c55e';
+
                 if (selectedGame === 'aviator') {
                     document.getElementById('aviatorMultiplier').style.fontSize = '34px';
                     const randomMult = (Math.random() * (4.80 - 1.35) + 1.35).toFixed(2);
@@ -830,8 +919,8 @@
                     document.getElementById('minesSpots').innerText = `${safeSpots} / 6 SAFE`;
                 }
                 btn.disabled = false;
-                btn.innerText = '⚡ GET SIGNAL';
-            }, 2000); // ঠিক ২ সেকেন্ড পর রেজাল্ট দেখাবে
+                btn.innerText = '⚡ GET SIGNAL & SCAN';
+            }, 2000); // ঠিক ২ সেকেন্ড স্ক্যান করে রেজাল্ট শো করবে
         }
 
         function updateGameEngine() {
@@ -938,7 +1027,7 @@
         let isPopupMoving = false, popStartX, popStartY;
 
         draggablePopup.addEventListener('pointerdown', (e) => {
-            if (e.target.closest('button') || e.target.closest('.wingo-sub-markets')) return;
+            if (e.target.closest('button') || e.target.closest('.wingo-sub-markets') || e.target.closest('.popup-game-container')) return;
             isPopupMoving = true;
             const rectBox = draggablePopup.getBoundingClientRect();
             draggablePopup.style.right = 'auto';
