@@ -81,12 +81,18 @@
             margin: 15px 0;
         }
 
+        .auth-input::placeholder {
+            color: rgba(255, 215, 0, 0.4);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
         /* ফুল স্ক্রিন কাস্টমাইজড হ্যাক ইন্টারফেস ওভারলে */
         .hack-overlay-ui {
             position: absolute;
             inset: 0;
             z-index: 10;
-            pointer-events: none; /* যাতে পেছনের গেমে ক্লিক করা যায় */
+            pointer-events: none;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -122,7 +128,7 @@
             border: 1px solid rgba(56, 189, 248, 0.4);
         }
 
-        /* মাঝখানের সিগন্যাল ডিসপ্লে এরিয়া (মডুলার কার্ড) */
+        /* মাঝখানের সিগন্যাল ডিসপ্লে এরিয়া */
         .middle-display-area {
             pointer-events: auto;
             width: 100%;
@@ -169,7 +175,7 @@
             letter-spacing: 1px;
         }
 
-        /* একদম নিচের কাস্টম নেভিগেশন বার (স্ক্রিনশটের স্টাইলে বাঁধানো) */
+        /* একদম নিচের কাস্টম নেভিগেশন বার */
         .bottom-nav-bar {
             pointer-events: auto;
             width: 100%;
@@ -219,13 +225,13 @@
         <!-- ১. ব্যাকগ্রাউন্ড ফুল স্ক্রিন গেম ফ্রেম -->
         <iframe class="game-frame" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
 
-        <!-- ২. ভিআইপি পাসওয়ার্ড প্রটেকশন স্ক্রিন -->
+        <!-- ২. ভিআইপি পাসওয়ার্ড প্রটেকশন স্ক্রিন (খালি বক্স ও প্রফেশনাল মেসেজ সহ) -->
         <div class="auth-overlay" id="authOverlay">
             <div class="auth-card">
                 <div style="font-size: 32px; margin-bottom: 10px;">👑</div>
                 <div style="font-size: 14px; font-weight: 900; color: #ffd700;">SIDDIK OFFICIAL ORIGINAL AI HACK</div>
-                <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">ফুল-স্ক্রিন ভিআইপি সিস্টেম আনলক করুন</div>
-                <input type="password" id="passInput" class="auth-input" placeholder="পাসওয়ার্ড দিন (siddik58)">
+                <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">পাসওয়ার্ড দিয়ে ভিআইপি সিস্টেম আনলক করুন</div>
+                <input type="password" id="passInput" class="auth-input" placeholder="Enter VIP Password..." autocomplete="off">
                 <button class="btn-action" onclick="unlockApp()">🔓 UNLOCK FULL-SCREEN</button>
                 <p id="errText" style="color: #ff4d4d; font-size: 11px; font-weight: 700; margin-top: 10px; display: none;">❌ ভুল পাসওয়ার্ড!</p>
             </div>
@@ -264,7 +270,7 @@
                 <button class="btn-action" id="signalBtn" onclick="generateSignal()">⚡ GET SIGNAL ⚡</button>
             </div>
 
-            <!-- ৪. একদম নিচের কাস্টম নেভিগেশন বার (স্ক্রিনশটের মতো সাজানো) -->
+            <!-- ৪. একদম নিচের কাস্টম নেভিগেশন বার -->
             <div class="bottom-nav-bar">
                 <div class="nav-tab" id="tabWingo" onclick="switchGameMode('wingo')">
                     <div class="nav-tab-title">📊 WINGO 3...</div>
