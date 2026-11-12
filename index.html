@@ -23,7 +23,7 @@
             background: #07080c;
         }
 
-        /* ১. টপ বার (স্ক্রিনশটের মতো HGNICE, DKWIN, BDWIN সুইচার) */
+        /* ১. টপ বার (HGNICE, DKWIN, BDWIN সুইচার) */
         .top-site-bar {
             position: fixed;
             top: 0;
@@ -101,7 +101,7 @@
             cursor: pointer;
         }
 
-        /* ২. ব্যাকগ্রাউন্ড গেম ফ্রেম (টপ ও বটম বারের মাঝখানে) */
+        /* ২. ব্যাকগ্রাউন্ড গেম ফ্রেম */
         .game-frame {
             width: 100%;
             height: calc(100% - 106px);
@@ -112,7 +112,7 @@
             z-index: 1;
         }
 
-        /* ৩. বটম নেভিগেশন ডক (স্ক্রিনশটের নিচের ৩টি ট্যাব) */
+        /* ৩. বটম নেভিগেশন ডক */
         .bottom-game-dock {
             position: fixed;
             bottom: 0;
@@ -258,7 +258,7 @@
             font-size: 13px;
         }
 
-        /* ৬. মূল ড্র্যাগেবল পপআপ উইন্ডো (স্ক্রিনশটের হুবহু Quantum প্যানেল) */
+        /* ৬. মূল ড্র্যাগেবল পপআপ উইন্ডো */
         .draggable-popup-modal {
             display: none;
             position: fixed;
@@ -275,7 +275,6 @@
             touch-action: none;
         }
 
-        /* পপআপ হেডার */
         .popup-drag-header {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -356,7 +355,6 @@
             cursor: pointer;
         }
 
-        /* সার্ভার ও সেফটি স্ট্যাটাস বার */
         .sub-info-bar {
             display: flex;
             align-items: center;
@@ -386,7 +384,6 @@
             gap: 3px;
         }
 
-        /* WinGo সাব-মার্কেট বার (শুধুমাত্র WinGo সিলেক্ট করলে দেখাবে) */
         .wingo-sub-markets {
             display: none;
             grid-template-columns: repeat(4, 1fr);
@@ -414,7 +411,6 @@
             color: #fff;
         }
 
-        /* প্রেডিকশন ডিসপ্লে বক্স (স্ক্রিনশটের গ্রিড + কার্ভড রেড অ্যারো স্টাইল) */
         .prediction-box-panel {
             position: relative;
             background-color: #160912;
@@ -431,7 +427,6 @@
             margin-bottom: 8px;
         }
 
-        /* কার্ভড অ্যারো SVG ব্যাকগ্রাউন্ড */
         .graph-arrow-svg {
             position: absolute;
             bottom: 8px;
@@ -480,7 +475,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* গেট সিগন্যাল বাটন (স্ক্রিনশটের পিংক-অরেঞ্জ গ্র্যাডিয়েন্ট) */
         .btn-signal-action {
             width: 100%;
             padding: 10px;
@@ -515,7 +509,7 @@
 </head>
 <body>
 
-    <!-- ১. স্ক্রিনশটের মতো টপ সাইট সুইচার বার -->
+    <!-- ১. টপ সাইট সুইচার বার -->
     <div class="top-site-bar">
         <div class="top-left-badge" onclick="togglePopupModal()">✨</div>
         <div class="site-pills-group">
@@ -529,7 +523,7 @@
         </div>
     </div>
 
-    <!-- ২. ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম -->
+    <!-- ২. ব্যাকগ্রাউন্ড গেম ফ্রেম -->
     <iframe class="game-frame" id="gameIframe" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
 
     <!-- ৩. ফ্লোটিং ড্র্যাগেবল আইকন -->
@@ -549,7 +543,7 @@
         </div>
     </div>
 
-    <!-- ৫. ড্র্যাগেবল পপআপ উইন্ডো (স্ক্রিনশট লেআউট) -->
+    <!-- ৫. ড্র্যাগেবল পপআপ উইন্ডো -->
     <div class="draggable-popup-modal" id="draggablePopup">
         
         <div class="popup-drag-header" id="popupHeader">
@@ -601,7 +595,7 @@
 
         <!-- WINGO DISPLAY -->
         <div class="prediction-box-panel" id="viewWingo" style="display: none;">
-            <div class="lock-status-pill" id="wingoPeriodNum">PERIOD #202611120475</div>
+            <div class="lock-status-pill" id="wingoPeriodNum">PERIOD #20261112100050258</div>
             <div class="main-number-output" id="wingoBigSmall" style="color: #facc15;">BIG</div>
             <div class="sub-desc-output" id="wingoColorNum">WINNER: GREEN (7)</div>
         </div>
@@ -616,7 +610,7 @@
         <button class="btn-signal-action" id="fetchSignalBtn" onclick="fetchNewSignal()">⚡ GET SIGNAL</button>
     </div>
 
-    <!-- ৬. স্ক্রিনশটের মতো বটম নেভিগেশন ডক বার -->
+    <!-- ৬. বটম নেভিগেশন ডক বার -->
     <div class="bottom-game-dock">
         <div class="dock-tab-item" id="dockWingo" onclick="changeGameTab('wingo')">
             <div class="dock-icon-box">🔥</div>
@@ -647,7 +641,6 @@
         let selectedGame = 'aviator';
         let currentWingoMin = 1;
 
-        // সাইট লিংক পরিবর্তন ফাংশন
         function switchBetSite(siteKey) {
             ['siteHgnice', 'siteDkwin', 'siteBdwin'].forEach(id => {
                 document.getElementById(id).classList.remove('active');
@@ -756,20 +749,31 @@
             updateWingoAccuratePeriod();
         }
 
+        // নিখুঁত WinGo পিরিয়ড নাম্বার জেনারেটর (YYYYMMDD1000XXXX ফরম্যাট)[span_2](start_span)[span_2](end_span)
         function updateWingoAccuratePeriod() {
             const now = new Date();
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
+            
             let totalMins = now.getHours() * 60 + now.getMinutes();
-            let periodSeq = Math.floor(totalMins / currentWingoMin) + 500;
-            document.getElementById('wingoPeriodNum').innerText = `PERIOD #${year}${month}${day}0${periodSeq}`;
+            let periodSeq = 50000 + Math.floor(totalMins / currentWingoMin);
+            
+            let periodNumber = `${year}${month}${day}1000${periodSeq}`;
+            document.getElementById('wingoPeriodNum').innerText = `PERIOD #${periodNumber}`;
         }
+
+        // প্রতি ১০ সেকেন্ড পর পর পিরিয়ড নাম্বার সিংক করার জন্য অটো আপডেট
+        setInterval(() => {
+            if (selectedGame === 'wingo') {
+                updateWingoAccuratePeriod();
+            }
+        }, 10000);
 
         function fetchNewSignal() {
             const btn = document.getElementById('fetchSignalBtn');
             btn.disabled = true;
-            btn.innerText = '⏳ ANALYZING SERVER...';
+            btn.innerText = '⏳ ANALYZING MARKET...';
 
             setTimeout(() => {
                 if (selectedGame === 'aviator') {
@@ -791,7 +795,7 @@
                 }
                 btn.disabled = false;
                 btn.innerText = '⚡ GET SIGNAL';
-            }, 1100);
+            }, 1000);
         }
 
         // ফ্লোটিং আইকন ড্র্যাগ
