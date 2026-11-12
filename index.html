@@ -100,9 +100,10 @@
             cursor: pointer;
         }
 
+        /* Adjusted Game Frame to fit perfectly between top bar and bottom dock without cutting */
         .game-frame {
             width: 100%;
-            height: calc(100% - 46px);
+            height: calc(100% - 106px);
             border: none;
             position: absolute;
             top: 46px;
@@ -538,7 +539,7 @@
         </div>
     </div>
 
-    <!-- গেম ফ্রেম বা সাইট ওপেনিং উইন্ডোজ -->
+    <!-- গেম ফ্রেম যা এখন উপরে ও নিচের বারের মাঝখানে নিখুঁতভাবে ফিট থাকবে -->
     <iframe class="game-frame" id="gameIframe" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
 
     <div class="floating-launcher" id="floatingLauncher">
@@ -559,7 +560,6 @@
     <div class="draggable-popup-modal" id="draggablePopup">
         <div class="popup-drag-header" id="popupHeader">
             <div class="header-left-wrap">
-                <!-- প্রোফাইল পিকচার সহ RGB গ্লো লাইট -->
                 <img src="https://cdn.imageurlgenerator.com/uploads/3420d277-7bc7-4882-aa5e-11d91ee5e9e8.jpg" alt="Profile" class="profile-glow-avatar">
                 <div>
                     <div class="brand-row">
@@ -572,7 +572,6 @@
             <div class="header-ctrl-btns">
                 <button class="mini-ctrl-btn" onclick="resetPopupPosition()" title="Reset Position">↻</button>
                 <button class="mini-ctrl-btn" onclick="togglePopupModal()" title="Minimize">↙</button>
-                <!-- পপআপ ক্লোজ বাটন (✕) -->
                 <button class="mini-ctrl-btn" onclick="togglePopupModal()" title="Close" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #f87171;">✕</button>
             </div>
         </div>
@@ -612,7 +611,6 @@
             <div class="sub-desc-output" id="wingoTimerDisplay" style="color: #38bdf8; font-weight: 900; letter-spacing: 0.5px;">⏰ TIME REMAINING: 00:00</div>
         </div>
 
-        <!-- মাইনস গেম প্যানেল -->
         <div class="prediction-box-panel" id="viewMines" style="display: none;">
             <div class="lock-status-pill">💎 SAFE SPOTS RADAR</div>
             <div class="main-number-output" id="minesSpots" style="color: #38bdf8; font-size: 26px;">3 / 5 SAFE</div>
@@ -757,7 +755,6 @@
                 subMktBar.style.display = 'none';
                 signalBtn.style.display = 'block';
                 wingoAutoBox.style.display = 'none';
-                document.getElementById('headerGameIcon').innerText = '✈️';
                 document.getElementById('headerTagText').innerText = 'HEACK PRO';
                 document.getElementById('headerSubHint').innerText = '::: AI SIGNAL RADAR';
                 serverTxt.innerText = 'SPRIBE AVIATOR AI #2';
@@ -769,7 +766,6 @@
                 subMktBar.style.display = 'grid';
                 signalBtn.style.display = 'none';
                 wingoAutoBox.style.display = 'flex';
-                document.getElementById('headerGameIcon').innerText = '🔥';
                 document.getElementById('headerTagText').innerText = 'HEACK ALGO';
                 document.getElementById('headerSubHint').innerText = '::: EXACT WINGO PERIOD SYNC';
                 let mktLabel = currentWingoMarket === '30s' ? '30SEC' : currentWingoMarket + 'MIN';
@@ -782,7 +778,6 @@
                 subMktBar.style.display = 'none';
                 signalBtn.style.display = 'block';
                 wingoAutoBox.style.display = 'none';
-                document.getElementById('headerGameIcon').innerText = '💣';
                 document.getElementById('headerTagText').innerText = 'HEACK RADAR';
                 document.getElementById('headerSubHint').innerText = '::: SAFE BOX MATRIX AI';
                 serverTxt.innerText = 'MINES SAFE BOX AI #1';
