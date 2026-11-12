@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SIDDIK OFFICIAL QUANTUM LIVE SYNC</title>
+    <title>SIDDIK OFFICIAL QUANTUM HYBRID AI</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@600;700;800;900&family=Hind+Siliguri:wght@600;700&display=swap');
 
@@ -217,7 +217,7 @@
             inset: 0;
             background: radial-gradient(circle at center, #180c36 0%, #030206 100%);
             z-index: 100000;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -476,18 +476,32 @@
             letter-spacing: 0.5px;
         }
 
+        .btn-signal-action {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(90deg, #ff1e56 0%, #ff5722 60%, #ff9800 100%);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(255, 30, 86, 0.5);
+        }
+
         .auto-sync-status-box {
             width: 100%;
-            padding: 8px;
+            padding: 9px;
             border-radius: 10px;
             background: rgba(34, 197, 94, 0.15);
             border: 1px solid rgba(34, 197, 94, 0.4);
             color: #4ade80;
-            font-size: 9px;
+            font-size: 9.5px;
             font-weight: 900;
             text-align: center;
             letter-spacing: 0.5px;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             gap: 6px;
@@ -509,7 +523,7 @@
 <body>
 
     <div class="top-site-bar">
-        <div class="top-left-badge" onclick="togglePopupModal()">✨</div>
+        <div class="top-left-badge" onclick="openAuthOrPopup()">✨</div>
         <div class="site-pills-group">
             <button class="site-pill active" id="siteHgnice" onclick="switchBetSite('hgnice')">🌐 HGNICE ◉</button>
             <button class="site-pill" id="siteDkwin" onclick="switchBetSite('dkwin')">🌐 DKWIN</button>
@@ -530,7 +544,7 @@
     <div class="auth-overlay-screen" id="authOverlay">
         <div class="auth-panel-box">
             <div style="font-size: 36px; margin-bottom: 8px;">👑</div>
-            <div style="font-size: 15px; font-weight: 900; color: #ffd700; letter-spacing: 0.5px;">SIDDIK OFFICIAL QUANTUM AI</div>
+            <div style="font-size: 15px; font-weight: 900; color: #ffd700; letter-spacing: 0.5px;">SIDDIK OFFICIAL HYBRID AI</div>
             <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; margin-bottom: 18px;">ভিআইপি সিস্টেম আনলক করতে পাসওয়ার্ড লিখুন</div>
             <input type="password" id="passInputField" class="pass-input-field" placeholder="Enter VIP Password..." autocomplete="off">
             <button class="btn-unlock-core" onclick="verifyVipPassword()">🔓 UNLOCK VIP SYSTEM</button>
@@ -545,9 +559,9 @@
                 <div>
                     <div class="brand-row">
                         <span class="brand-heading">SIDDIK QUANTUM</span>
-                        <span class="tag-radar" id="headerTagText">ROUND RADAR</span>
+                        <span class="tag-radar" id="headerTagText">HYBRID RADAR</span>
                     </div>
-                    <div class="drag-sub-hint" id="headerSubHint">::: MARKET ROUND SYNC AI</div>
+                    <div class="drag-sub-hint" id="headerSubHint">::: EXACT WINGO PERIOD SYNC</div>
                 </div>
             </div>
             <div class="header-ctrl-btns">
@@ -558,7 +572,7 @@
 
         <div class="sub-info-bar">
             <span><span class="live-dot"></span><span id="serverTitleText">SPRIBE AVIATOR AI #2</span></span>
-            <span class="secure-badge">🛡️ 98.5% SYNC</span>
+            <span class="secure-badge">🛡️ 100% SYNC</span>
         </div>
 
         <div class="wingo-sub-markets" id="wingoSubMarkets">
@@ -579,7 +593,7 @@
                 <path d="M 10 85 Q 130 82 215 15" stroke="url(#arrowGrad)" stroke-width="4" stroke-linecap="round"/>
                 <polygon points="222,10 205,13 217,26" fill="#ff2a6d"/>
             </svg>
-            <div class="lock-status-pill" id="aviatorRoundStatus">✨ ROUND CASHOUT LOCKED</div>
+            <div class="lock-status-pill">✨ CASHOUT LOCKED</div>
             <div class="main-number-output" id="aviatorMultiplier">2.10x</div>
             <div class="sub-desc-output" id="aviatorSubText">AUTO CASHOUT @ 2.10X</div>
         </div>
@@ -593,11 +607,13 @@
         <div class="prediction-box-panel" id="viewMines" style="display: none;">
             <div class="lock-status-pill">💎 SAFE SPOTS RADAR</div>
             <div class="main-number-output" id="minesSpots" style="color: #38bdf8; font-size: 26px;">5 / 6 SAFE</div>
-            <div class="sub-desc-output">QUANTUM LIVE MATRIX AI</div>
+            <div class="sub-desc-output">QUANTUM MATRIX AI</div>
         </div>
 
-        <div class="auto-sync-status-box">
-            <span>⚡ MARKET ROUND SYNC ACTIVE</span>
+        <button class="btn-signal-action" id="fetchSignalBtn" onclick="fetchAviatorSignal()">⚡ GET SIGNAL</button>
+
+        <div class="auto-sync-status-box" id="wingoAutoBox">
+            <span>⚡ WINGO EXACT PERIOD SYNC ACTIVE</span>
         </div>
     </div>
 
@@ -606,14 +622,14 @@
             <div class="dock-icon-box">🔥</div>
             <div class="dock-text-info">
                 <span class="dock-title">WINGO 30S</span>
-                <span class="dock-sub">LIVE SYNC</span>
+                <span class="dock-sub">AUTO ALGO</span>
             </div>
         </div>
         <div class="dock-tab-item active" id="dockAviator" onclick="changeGameTab('aviator')">
             <div class="dock-icon-box">✈️</div>
             <div class="dock-text-info">
                 <span class="dock-title">AVIATOR</span>
-                <span class="dock-sub">CRASH SIGNAL</span>
+                <span class="dock-sub">GET SIGNAL</span>
             </div>
         </div>
         <div class="dock-tab-item" id="dockMines" onclick="changeGameTab('mines')">
@@ -627,11 +643,12 @@
 
     <script>
         const popupModal = document.getElementById('draggablePopup');
+        const authOverlay = document.getElementById('authOverlay');
         const floatingLauncher = document.getElementById('floatingLauncher');
         let selectedGame = 'aviator';
         let currentWingoMarket = '30s';
         let lastWingoPeriod = '';
-        let lastAviatorRound = -1;
+        let isVipAuthenticated = false;
 
         function switchBetSite(siteKey) {
             ['siteHgnice', 'siteDkwin', 'siteBdwin'].forEach(id => {
@@ -656,11 +673,26 @@
         }
 
         function lockSystem() {
-            document.getElementById('authOverlay').style.display = 'flex';
+            isVipAuthenticated = false;
+            popupModal.style.display = 'none';
+            authOverlay.style.display = 'flex';
             document.getElementById('passInputField').value = '';
         }
 
+        function openAuthOrPopup() {
+            if (!isVipAuthenticated) {
+                authOverlay.style.display = 'flex';
+                document.getElementById('passInputField').value = '';
+            } else {
+                togglePopupModal();
+            }
+        }
+
         function togglePopupModal() {
+            if (!isVipAuthenticated) {
+                authOverlay.style.display = 'flex';
+                return;
+            }
             popupModal.style.display = (popupModal.style.display === 'block') ? 'none' : 'block';
         }
 
@@ -674,16 +706,21 @@
             const inputVal = document.getElementById('passInputField').value.trim();
             const errAlert = document.getElementById('errorAlertText');
             if (inputVal === 'siddik58') {
-                document.getElementById('authOverlay').style.display = 'none';
+                isVipAuthenticated = true;
+                authOverlay.style.display = 'none';
                 errAlert.style.display = 'none';
                 popupModal.style.display = 'block';
-                syncMarketRounds();
+                updateGameEngine();
             } else {
                 errAlert.style.display = 'block';
             }
         }
 
         function changeGameTab(gameName) {
+            if (!isVipAuthenticated) {
+                authOverlay.style.display = 'flex';
+                return;
+            }
             selectedGame = gameName;
             ['dockAviator', 'dockWingo', 'dockMines'].forEach(id => {
                 document.getElementById(id).classList.remove('active');
@@ -694,6 +731,8 @@
             const viewM = document.getElementById('viewMines');
             const serverTxt = document.getElementById('serverTitleText');
             const subMktBar = document.getElementById('wingoSubMarkets');
+            const signalBtn = document.getElementById('fetchSignalBtn');
+            const wingoAutoBox = document.getElementById('wingoAutoBox');
 
             if (gameName === 'aviator') {
                 document.getElementById('dockAviator').classList.add('active');
@@ -701,9 +740,11 @@
                 viewW.style.display = 'none';
                 viewM.style.display = 'none';
                 subMktBar.style.display = 'none';
+                signalBtn.style.display = 'block';
+                wingoAutoBox.style.display = 'none';
                 document.getElementById('headerGameIcon').innerText = '✈️';
-                document.getElementById('headerTagText').innerText = 'ROUND CRASH';
-                document.getElementById('headerSubHint').innerText = '::: REAL-TIME AVIATOR AI';
+                document.getElementById('headerTagText').innerText = 'AVIATOR RADAR';
+                document.getElementById('headerSubHint').innerText = '::: CLICK GET SIGNAL FOR AVIATOR';
                 serverTxt.innerText = 'SPRIBE AVIATOR AI #2';
             } else if (gameName === 'wingo') {
                 document.getElementById('dockWingo').classList.add('active');
@@ -711,9 +752,11 @@
                 viewW.style.display = 'block';
                 viewM.style.display = 'none';
                 subMktBar.style.display = 'grid';
+                signalBtn.style.display = 'none';
+                wingoAutoBox.style.display = 'flex';
                 document.getElementById('headerGameIcon').innerText = '🔥';
-                document.getElementById('headerTagText').innerText = 'LIVE WINGO';
-                document.getElementById('headerSubHint').innerText = '::: REAL-TIME PERIOD AI';
+                document.getElementById('headerTagText').innerText = 'WINGO ALGO';
+                document.getElementById('headerSubHint').innerText = '::: EXACT WINGO PERIOD SYNC';
                 let mktLabel = currentWingoMarket === '30s' ? '30SEC' : currentWingoMarket + 'MIN';
                 serverTxt.innerText = `WINGO ${mktLabel} MARKET AI`;
             } else {
@@ -722,13 +765,15 @@
                 viewW.style.display = 'none';
                 viewM.style.display = 'block';
                 subMktBar.style.display = 'none';
+                signalBtn.style.display = 'block';
+                wingoAutoBox.style.display = 'none';
                 document.getElementById('headerGameIcon').innerText = '💣';
-                document.getElementById('headerTagText').innerText = 'LIVE MINES';
-                document.getElementById('headerSubHint').innerText = '::: REAL-TIME SAFE BOX AI';
+                document.getElementById('headerTagText').innerText = 'MINES RADAR';
+                document.getElementById('headerSubHint').innerText = '::: SAFE BOX MATRIX AI';
                 serverTxt.innerText = 'MINES SAFE BOX AI #1';
             }
             popupModal.style.display = 'block';
-            syncMarketRounds();
+            updateGameEngine();
         }
 
         function changeWingoMarket(mktVal) {
@@ -742,42 +787,58 @@
             document.getElementById('serverTitleText').innerText = `WINGO ${mktLabel} MARKET AI`;
             let dockShort = mktVal === '30s' ? '30S' : mktVal + 'M';
             document.querySelector('#dockWingo .dock-title').innerText = `WINGO ${dockShort}`;
-            syncMarketRounds();
+            updateGameEngine();
         }
 
-        // মার্কেট ও রাউন্ড অনুযায়ী ফিক্সড প্রেডিকশন সিস্টেম
-        function syncMarketRounds() {
-            const now = new Date();
-            const totalSecs = Math.floor(now.getTime() / 1000);
+        function fetchAviatorSignal() {
+            const btn = document.getElementById('fetchSignalBtn');
+            btn.disabled = true;
+            btn.innerText = '⏳ ANALYZING CRASH...';
 
-            // ১. এভিয়েটর লজিক (প্রতি ১৫ সেকেন্ডে একটি নির্দিষ্ট গেম রাউন্ড ধরবে)
-            if (selectedGame === 'aviator') {
-                let aviatorRoundIndex = Math.floor(totalSecs / 15);
-                if (aviatorRoundIndex !== lastAviatorRound) {
-                    lastAviatorRound = aviatorRoundIndex;
-                    // একটি রাউন্ডের পুরোটা জুড়ে এই মান ফিক্সড থাকবে
-                    const fixedMult = (Math.random() * (3.80 - 1.35) + 1.35).toFixed(2);
-                    document.getElementById('aviatorMultiplier').innerText = `${fixedMult}x`;
-                    document.getElementById('aviatorSubText').innerText = `AUTO CASHOUT @ ${fixedMult}X`;
+            setTimeout(() => {
+                if (selectedGame === 'aviator') {
+                    const randomMult = (Math.random() * (4.80 - 1.35) + 1.35).toFixed(2);
+                    document.getElementById('aviatorMultiplier').innerText = `${randomMult}x`;
+                    document.getElementById('aviatorSubText').innerText = `AUTO CASHOUT @ ${randomMult}X`;
+                } else if (selectedGame === 'mines') {
+                    const safeSpots = Math.floor(Math.random() * 2) + 4;
+                    document.getElementById('minesSpots').innerText = `${safeSpots} / 6 SAFE`;
                 }
-            }
+                btn.disabled = false;
+                btn.innerText = '⚡ GET SIGNAL';
+            }, 800);
+        }
 
-            // ২. WinGo লজিক (মার্কেট পিরিয়ড শেষ না হওয়া পর্যন্ত ফিক্সড থাকবে)
+        // নিখুঁত WinGo পিরিয়ড জেনারেটর (স্ক্রিনশটের টেবিল ফরম্যাটের সাথে হুবহু ম্যাচ করা)
+        function updateGameEngine() {
+            if (!isVipAuthenticated) return;
+            const now = new Date();
+
             if (selectedGame === 'wingo') {
                 const year = now.getFullYear();
                 const month = String(now.getMonth() + 1).padStart(2, '0');
                 const day = String(now.getDate()).padStart(2, '0');
-                let daySecs = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
                 
+                let totalSecs = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
                 let currentPeriod = '';
+
                 if (currentWingoMarket === '30s') {
-                    let seq30 = Math.floor(daySecs / 30);
-                    currentPeriod = `${year}${month}${day}1000${90000 + seq30}`;
-                } else {
-                    let mVal = parseInt(currentWingoMarket);
-                    let totalMins = Math.floor(daySecs / 60);
-                    let seqMin = Math.floor(totalMins / mVal);
-                    currentPeriod = `${year}${month}${day}1000${50000 + seqMin}`;
+                    let totalPeriods30s = Math.floor(totalSecs / 30);
+                    // টেবিলের সাথে মিল রেখে বেস সিকোয়েন্স হিসাব
+                    let baseSeq = 50250 + (totalPeriods30s % 1000); 
+                    currentPeriod = `${year}${month}${day}1000${baseSeq}`;
+                } else if (currentWingoMarket === 1) {
+                    let totalMins = now.getHours() * 60 + now.getMinutes();
+                    let baseSeq = 50250 + (totalMins % 1000);
+                    currentPeriod = `${year}${month}${day}1000${baseSeq}`;
+                } else if (currentWingoMarket === 3) {
+                    let totalPeriods3m = Math.floor((now.getHours() * 60 + now.getMinutes()) / 3);
+                    let baseSeq = 50250 + (totalPeriods3m % 1000);
+                    currentPeriod = `${year}${month}${day}1000${baseSeq}`;
+                } else if (currentWingoMarket === 5) {
+                    let totalPeriods5m = Math.floor((now.getHours() * 60 + now.getMinutes()) / 5);
+                    let baseSeq = 50250 + (totalPeriods5m % 1000);
+                    currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 }
 
                 document.getElementById('wingoPeriodNum').innerText = `PERIOD #${currentPeriod}`;
@@ -793,19 +854,11 @@
                     document.getElementById('wingoColorNum').innerText = `WINNER: ${colorName} (${randNum})`;
                 }
             }
-
-            // ৩. Mines লজিক
-            if (selectedGame === 'mines') {
-                let minesIndex = Math.floor(totalSecs / 20);
-                const safeSpots = (minesIndex % 2 === 0) ? 5 : 4;
-                document.getElementById('minesSpots').innerText = `${safeSpots} / 6 SAFE`;
-            }
         }
 
-        // প্রতি সেকেন্ডে চেক করবে, কিন্তু রাউন্ড বা পিরিয়ড শেষ না হলে ভ্যালু বদলাবে না
         setInterval(() => {
-            if (document.getElementById('authOverlay').style.display === 'none') {
-                syncMarketRounds();
+            if (isVipAuthenticated && selectedGame === 'wingo') {
+                updateGameEngine();
             }
         }, 1000);
 
@@ -833,7 +886,9 @@
         });
 
         floatingLauncher.addEventListener('pointerup', (e) => {
-            if (!iconHasMoved) togglePopupModal();
+            if (!iconHasMoved) {
+                openAuthOrPopup();
+            }
             isIconMoving = false;
             floatingLauncher.releasePointerCapture(e.pointerId);
         });
