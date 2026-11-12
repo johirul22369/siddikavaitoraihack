@@ -35,7 +35,7 @@
             z-index: 1;
         }
 
-        /* ২. ফ্লোটিং ড্র্যাগেবল আইকন (স্ক্রিন খোলার জন্য) */
+        /* ২. ফ্লোটিং ড্র্যাগেবল আইকন (লঞ্চার) */
         .floating-launcher {
             position: fixed;
             top: 110px;
@@ -62,7 +62,7 @@
             pointer-events: none;
         }
 
-        /* ৩. ভিআইপি পাসওয়ার্ড ওভারলে (একদম পরিষ্কার খালি বক্স) */
+        /* ৩. ভিআইপি পাসওয়ার্ড ওভারলে (খালি বক্স) */
         .auth-overlay-screen {
             position: fixed;
             inset: 0;
@@ -137,7 +137,7 @@
             transform: scale(0.97);
         }
 
-        /* ৪. মূল ড্র্যাগেবল হ্যাক পপআপ উইন্ডো (স্ক্রিনশটের হুবহু স্টাইল) */
+        /* ৪. মূল ড্র্যাগেবল স্প্রাইভেটর হ্যাক পপআপ উইন্ডো */
         .draggable-popup-modal {
             display: none;
             position: fixed;
@@ -146,20 +146,20 @@
             transform: translate(-50%, -50%);
             width: 92%;
             max-width: 385px;
-            background: linear-gradient(160deg, #100b1d 0%, #06040a 100%);
-            border: 2px solid #ff4b2b;
+            background: linear-gradient(160deg, #120918 0%, #050208 100%);
+            border: 2px solid #ff2a6d;
             border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 75, 43, 0.3);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 42, 109, 0.35);
             z-index: 99998;
             padding: 12px;
             color: #fff;
             touch-action: none;
         }
 
-        /* পপআপ ড্র্যাগ হেডার বার */
+        /* ড্র্যাগ হেডার বার */
         .popup-drag-header {
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 215, 0, 0.25);
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(255, 42, 109, 0.3);
             border-radius: 12px;
             padding: 9px 12px;
             display: flex;
@@ -178,7 +178,7 @@
         .brand-heading {
             font-size: 11px;
             font-weight: 900;
-            color: #ffd700;
+            color: #ff2a6d;
             letter-spacing: 0.5px;
         }
 
@@ -207,14 +207,13 @@
             border-radius: 50%;
         }
 
-        /* পপআপের ভেতরের কন্টেন্ট ও মডিউল */
         .popup-inner-body {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
 
-        /* গেম মোড ট্যাব (Aviator, WinGo, Mines) */
+        /* মোড ট্যাব সুইচ */
         .mod-tabs-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -239,9 +238,9 @@
         }
 
         .mod-tab-btn.active {
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            background: linear-gradient(135deg, #ff2a6d, #ff7b00);
             color: #fff;
-            box-shadow: 0 0 12px rgba(255, 75, 43, 0.5);
+            box-shadow: 0 0 12px rgba(255, 42, 109, 0.6);
         }
 
         .sub-info-bar {
@@ -263,16 +262,16 @@
             font-size: 9px;
         }
 
-        /* গ্রাফ বা প্রেডিকশন ডিসপ্লে বক্স */
+        /* স্প্রাইভেটর স্টাইলিশ গ্রাফ ও প্রেডিকশন বক্স */
         .prediction-box-panel {
             position: relative;
-            background: radial-gradient(circle, rgba(40, 10, 50, 0.92) 0%, rgba(5, 2, 15, 0.98) 100%);
-            border: 1px solid rgba(255, 215, 0, 0.35);
+            background: radial-gradient(circle, rgba(45, 10, 30, 0.95) 0%, rgba(6, 2, 12, 0.98) 100%);
+            border: 1.5px solid rgba(255, 42, 109, 0.45);
             border-radius: 16px;
             padding: 20px 10px;
             text-align: center;
             overflow: hidden;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.85);
         }
 
         .graph-wave-line {
@@ -280,8 +279,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 65%;
-            background: linear-gradient(to top, rgba(255, 75, 43, 0.3), transparent);
+            height: 70%;
+            background: linear-gradient(to top, rgba(255, 42, 109, 0.35), transparent);
             clip-path: polygon(0 100%, 15% 75%, 35% 65%, 60% 45%, 80% 25%, 100% 5%, 100% 100%);
         }
 
@@ -290,7 +289,7 @@
             background: rgba(255, 215, 0, 0.15);
             color: #ffd700;
             border: 1px solid rgba(255, 215, 0, 0.4);
-            padding: 3px 10px;
+            padding: 3px 12px;
             border-radius: 6px;
             font-size: 10px;
             font-weight: 800;
@@ -304,7 +303,7 @@
             font-size: 42px;
             font-weight: 900;
             color: #fff;
-            text-shadow: 0 0 22px rgba(255, 215, 0, 0.85);
+            text-shadow: 0 0 25px rgba(255, 42, 109, 0.9);
             margin: 4px 0;
             position: relative;
             z-index: 2;
@@ -324,39 +323,36 @@
     <!-- ১. ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম -->
     <iframe class="game-frame" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
 
-    <!-- ২. ফ্লোটিং ড্র্যাগেবল আইকন (লঞ্চার) -->
+    <!-- ২. ফ্লোটিং ড্র্যাগেবল আইকন -->
     <div class="floating-launcher" id="floatingLauncher">
         <img src="https://cdn.imageurlgenerator.com/uploads/3420d277-7bc7-4882-aa5e-11d91ee5e9e8.jpg" alt="AI">
     </div>
 
-    <!-- ৩. ভিআইপি পাসওয়ার্ড প্রটেকশন স্ক্রিন (খালি বক্স) -->
+    <!-- ৩. ভিআইপি পাসওয়ার্ড স্ক্রিন (খালি বক্স) -->
     <div class="auth-overlay-screen" id="authOverlay">
         <div class="auth-panel-box">
             <div style="font-size: 36px; margin-bottom: 8px;">👑</div>
             <div class="auth-title-main">SIDDIK OFFICIAL ORIGINAL AI HACK</div>
             <div class="auth-sub-desc">ভিআইপি সিস্টেম আনলক করতে পাসওয়ার্ড লিখুন</div>
             <input type="password" id="passInputField" class="pass-input-field" placeholder="Enter VIP Password..." autocomplete="off">
-            <button class="btn-core" onclick="verifyVipPassword()">🔓 UNLOCK VIP SYSTEM</button>
+            <button class="btn-core" onclick="verifyVipPassword()">🔓 UNLOCK SPRIBETOR</button>
             <p id="errorAlertText" style="color: #f87171; font-size: 11px; font-weight: 700; margin-top: 12px; display: none;">❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।</p>
         </div>
     </div>
 
-    <!-- ৪. ড্র্যাগেবল হ্যাক পপআপ উইন্ডো -->
+    <!-- ৪. স্প্রাইভেটর ড্র্যাগেবল হ্যাক পপআপ উইন্ডো -->
     <div class="draggable-popup-modal" id="draggablePopup">
         
-        <!-- ড্র্যাগ হেডার বার (এটি ধরে স্ক্রিনের যেকোনো জায়গায় সরাতে পারবেন) -->
         <div class="popup-drag-header" id="popupHeader">
             <div class="header-title-flex">
-                <span class="brand-heading">SIDDIK QUANTUM</span>
+                <span class="brand-heading">SPRIBETOR AI</span>
                 <span class="tag-radar">CRASH RADAR</span>
             </div>
             <button class="close-pop-btn" onclick="togglePopupModal()">&times;</button>
         </div>
 
-        <!-- পপআপ বডি -->
         <div class="popup-inner-body">
             
-            <!-- গেম মোড ট্যাব সুইচ -->
             <div class="mod-tabs-grid">
                 <button class="mod-tab-btn active" id="tabAviator" onclick="changeGameTab('aviator')">✈️ AVIATOR</button>
                 <button class="mod-tab-btn" id="tabWingo" onclick="changeGameTab('wingo')">🎯 WINGO</button>
@@ -365,7 +361,7 @@
 
             <div class="sub-info-bar">
                 <span id="serverTitleText">SPRIBE AVIATOR AI #2</span>
-                <span class="secure-badge">🛡️ 96.5% SAFE</span>
+                <span class="secure-badge">🛡️ 96.8% SAFE</span>
             </div>
 
             <!-- AVIATOR DISPLAY -->
@@ -387,10 +383,9 @@
             <div class="prediction-box-panel" id="viewMines" style="display: none;">
                 <div class="lock-status-pill">💎 SAFE SPOTS RADAR</div>
                 <div class="main-number-output" id="minesSpots" style="color: #38bdf8; font-size: 30px;">5 / 6 SAFE</div>
-                <div class="sub-desc-output">AI MATRIX PREDICTION</div>
+                <div class="sub-desc-output">SPRIBETOR MATRIX AI</div>
             </div>
 
-            <!-- গেট সিগন্যাল বাটন -->
             <button class="btn-core" id="fetchSignalBtn" onclick="fetchNewSignal()">⚡ GET SIGNAL ⚡</button>
         </div>
     </div>
@@ -401,7 +396,6 @@
         const popupHeader = document.getElementById('popupHeader');
         let selectedGame = 'aviator';
 
-        // পপআপ ওপেন ও ক্লোজ টগল ফাংশন
         function togglePopupModal() {
             if (popupModal.style.display === 'block') {
                 popupModal.style.display = 'none';
@@ -410,7 +404,6 @@
             }
         }
 
-        // পাসওয়ার্ড ভেরিফিকেশন (siddik58)
         function verifyVipPassword() {
             const inputVal = document.getElementById('passInputField').value.trim();
             const errAlert = document.getElementById('errorAlertText');
@@ -423,7 +416,6 @@
             }
         }
 
-        // গেম ট্যাব পরিবর্তন
         function changeGameTab(gameName) {
             selectedGame = gameName;
             document.getElementById('tabAviator').classList.remove('active');
@@ -463,11 +455,10 @@
             document.getElementById('wingoPeriodNum').innerText = `PERIOD #20261112${String(mins).padStart(4, '0')}`;
         }
 
-        // সিগন্যাল জেনারেটর
         function fetchNewSignal() {
             const btn = document.getElementById('fetchSignalBtn');
             btn.disabled = true;
-            btn.innerText = '⏳ ANALYZING MARKET...';
+            btn.innerText = '⏳ SPRIBETOR ANALYZING...';
 
             setTimeout(() => {
                 if (selectedGame === 'aviator') {
@@ -489,10 +480,9 @@
                 }
                 btn.disabled = false;
                 btn.innerText = '⚡ GET SIGNAL ⚡';
-            }, 1000);
+            }, 1200);
         }
 
-        // ১. ফ্লোটিং আইকন ড্র্যাগ + ক্লিক হ্যান্ডলার
         let isIconMoving = false, iconStartX, iconStartY, iconInitX, iconInitY, iconHasMoved = false;
 
         floatingLauncher.addEventListener('pointerdown', (e) => {
@@ -525,7 +515,6 @@
             floatingLauncher.releasePointerCapture(e.pointerId);
         });
 
-        // ২. পপআপ উইন্ডো ড্র্যাগ হ্যান্ডলার (হেডার ধরে যেখানে খুশি সরাতে পারবেন)
         let isPopupMoving = false, popStartX, popStartY;
 
         popupHeader.addEventListener('pointerdown', (e) => {
