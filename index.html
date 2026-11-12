@@ -21,7 +21,7 @@
             background: #000;
         }
 
-        /* ব্যাকগ্রাউন্ড গেম ফ্রেম */
+        /* ব্যাকগ্রাউন্ড গেম ফ্রেম (একদম ক্লিয়ার থাকবে, কোনো ফুল স্ক্রিন শ্যাডো নেই) */
         .game-frame {
             width: 100%;
             height: 100%;
@@ -30,19 +30,6 @@
             top: 0;
             left: 0;
             z-index: 1;
-        }
-
-        /* ডার্ক ও ব্লার ব্যাকগ্রাউন্ড শ্যাডো */
-        .bg-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(3px);
-            z-index: 9998;
         }
 
         /* ফ্লোটিং ড্র্যাগেবল আইকন */
@@ -73,7 +60,7 @@
             pointer-events: none;
         }
 
-        /* তোর দেওয়া অরিজিনাল ঈগল ফ্রেমের পপআপ */
+        /* তোর দেওয়া ঈগল ফ্রেম পপআপ (শুধু পপআপের নিচেই ডিপ শ্যাডো থাকবে) */
         .overlay-modal {
             display: none;
             position: fixed;
@@ -85,7 +72,7 @@
             height: 450px;
             background: url('https://imagepaste.org/i/61337.png') no-repeat center center;
             background-size: 100% 100%;
-            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
+            filter: drop-shadow(0 25px 30px rgba(0, 0, 0, 0.98)) drop-shadow(0 10px 15px rgba(0, 0, 0, 0.9));
             z-index: 10000;
             touch-action: none;
             user-select: none;
@@ -103,7 +90,7 @@
         }
 
         .close-btn {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             border: 1.5px solid #ff4d4d;
             color: #ff4d4d;
             width: 28px;
@@ -126,22 +113,22 @@
             justify-content: center;
             gap: 12px;
             height: calc(100% - 75px);
-            padding: 0 40px;
+            padding: 0 42px;
         }
 
         .auth-desc {
             font-size: 13px;
             color: #ffd700;
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 6px #000;
         }
 
         .input-box {
             width: 100%;
-            padding: 12px;
+            padding: 11px;
             border-radius: 12px;
             border: 2px solid #ffd700;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.92);
             color: #ffd700;
             text-align: center;
             font-size: 15px;
@@ -151,7 +138,7 @@
 
         .btn-action {
             width: 100%;
-            padding: 12px;
+            padding: 11px;
             border-radius: 12px;
             border: none;
             background: linear-gradient(135deg, #ffd700, #d97706);
@@ -160,7 +147,7 @@
             font-size: 14px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.6);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
 
         /* এআই লাইভ প্রেডিকশন স্ক্রিন */
@@ -171,30 +158,45 @@
             justify-content: center;
             height: calc(100% - 75px);
             position: relative;
-            padding: 0 35px;
+            padding: 0 38px;
         }
 
-        .plane-anim {
-            font-size: 26px;
-            display: inline-block;
+        /* গর্জিয়াস 3D প্লেন কন্টেইনার (সবসময় উড়তে থাকবে) */
+        .plane-3d-wrapper {
+            width: 75px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 600px;
             margin-bottom: 2px;
+            animation: float3DPlane 2.2s infinite ease-in-out;
         }
 
-        @keyframes fly {
-            0% { transform: translate(-15px, 8px) rotate(-10deg); }
-            50% { transform: translate(0px, -8px) rotate(5deg); }
-            100% { transform: translate(15px, 8px) rotate(-10deg); }
+        .plane-3d-svg {
+            width: 68px;
+            height: 42px;
+            filter: drop-shadow(0 8px 12px rgba(255, 69, 0, 0.75)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+            transform: rotateX(18deg) rotateY(-12deg) rotateZ(-8deg);
         }
 
-        .flying {
-            animation: fly 0.5s infinite ease-in-out;
+        @keyframes float3DPlane {
+            0% {
+                transform: translate(-12px, 5px) scale(0.96) rotate(-4deg);
+            }
+            50% {
+                transform: translate(12px, -7px) scale(1.06) rotate(4deg);
+            }
+            100% {
+                transform: translate(-12px, 5px) scale(0.96) rotate(-4deg);
+            }
         }
 
         .prediction-display {
-            font-size: 38px;
+            font-size: 36px;
             font-weight: 900;
             color: #ffffff;
-            text-shadow: 0 0 20px #ffd700, 0 0 30px #ff4500;
+            text-shadow: 0 0 18px #ffd700, 0 0 28px #ff4500, 0 3px 6px #000;
             letter-spacing: 1px;
             margin-bottom: 2px;
         }
@@ -203,13 +205,13 @@
             font-size: 11px;
             color: #38bdf8;
             font-weight: 800;
-            margin-bottom: 12px;
-            text-shadow: 0 0 5px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px #000;
         }
 
         .get-signal-btn {
             width: 100%;
-            padding: 12px;
+            padding: 11px;
             border-radius: 12px;
             border: none;
             background: linear-gradient(135deg, #22c55e, #15803d);
@@ -218,24 +220,21 @@
             font-size: 13px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
     </style>
 </head>
 <body>
 
-    <!-- ১. ব্যাকগ্রাউন্ড গেম ফ্রেম -->
+    <!-- ১. ব্যাকগ্রাউন্ড গেম ফ্রেম (কোনো ফুল স্ক্রিন শ্যাডো বা ব্লার ছাড়া একদম ক্লিয়ার) -->
     <iframe class="game-frame" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
 
-    <!-- ২. ব্লার ও শ্যাডো ব্যাকগ্রাউন্ড -->
-    <div class="bg-overlay" id="bgOverlay"></div>
-
-    <!-- ৩. ফ্লোটিং ড্র্যাগেবল আইকন -->
+    <!-- ২. ফ্লোটিং ড্র্যাগেবল আইকন -->
     <div class="floating-icon" id="dragIcon">
         <img src="https://cdn.imageurlgenerator.com/uploads/3420d277-7bc7-4882-aa5e-11d91ee5e9e8.jpg" alt="Icon">
     </div>
 
-    <!-- ৪. ড্র্যাগেবল ঈগল ফ্রেম পপআপ[span_0](start_span)[span_0](end_span) -->
+    <!-- ৩. ড্র্যাগেবল ঈগল ফ্রেম পপআপ (নিচে ডার্ক শ্যাডো সহ) -->
     <div class="overlay-modal" id="overlayModal">
         <div class="popup-header" id="popupHeader">
             <button class="close-btn" id="closeBtn">&times;</button>
@@ -246,12 +245,44 @@
             <div class="auth-desc">🔑 VIP ACCESS PASSWORD</div>
             <input type="password" id="passInput" class="input-box" placeholder="পাসওয়ার্ড লিখুন">
             <button class="btn-action" onclick="verifyPassword()">UNLOCK HACK</button>
-            <p id="errorMsg" style="color: #ff4d4d; font-size: 11px; font-weight: 700; display: none;">❌ ভুল পাসওয়ার্ড!</p>
+            <p id="errorMsg" style="color: #ff4d4d; font-size: 11px; font-weight: 700; display: none; text-shadow: 0 1px 3px #000;">❌ ভুল পাসওয়ার্ড!</p>
         </div>
 
-        <!-- প্রেডিকশন ইন্টারফেস -->
+        <!-- ফ্রেমের ভেতরের প্রেডিকশন ইন্টারফেস (গর্জিয়াস 3D প্লেন সহ) -->
         <div class="dashboard-screen" id="dashScreen">
-            <div class="plane-anim" id="planeIcon">✈️</div>
+            <div class="plane-3d-wrapper">
+                <!-- কাস্টম গর্জিয়াস 3D জেট প্লেন SVG -->
+                <svg class="plane-3d-svg" viewBox="0 0 120 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="jetBody" x1="10" y1="35" x2="115" y2="35" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#b91c1c"/>
+                            <stop offset="50%" stop-color="#ef4444"/>
+                            <stop offset="100%" stop-color="#ffd700"/>
+                        </linearGradient>
+                        <linearGradient id="jetWing" x1="30" y1="10" x2="80" y2="60" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#ffd700"/>
+                            <stop offset="100%" stop-color="#d97706"/>
+                        </linearGradient>
+                        <linearGradient id="exhaustGlow" x1="0" y1="35" x2="25" y2="35" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="rgba(56,189,248,0)"/>
+                            <stop offset="100%" stop-color="#38bdf8"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- ইঞ্জিন ফায়ার/গ্লো ট্রেইল -->
+                    <polygon points="0,35 24,27 24,43" fill="url(#exhaustGlow)"/>
+                    <!-- পেছনের ডানা (Back Wing) -->
+                    <polygon points="48,30 34,8 56,28" fill="#991b1b"/>
+                    <!-- লেজ (Tail Fin) -->
+                    <polygon points="22,32 14,15 34,30" fill="url(#jetWing)"/>
+                    <!-- মূল বডি (3D Fuselage) -->
+                    <path d="M20 35 C20 28, 75 24, 112 35 C75 46, 20 42, 20 35 Z" fill="url(#jetBody)" stroke="#ffd700" stroke-width="1.5"/>
+                    <!-- ককপিট গ্লাস -->
+                    <ellipse cx="80" cy="31" rx="12" ry="3.5" fill="#38bdf8" opacity="0.9"/>
+                    <!-- সামনের প্রধান ডানা (Front 3D Wing) -->
+                    <polygon points="52,37 32,62 66,39" fill="url(#jetWing)" stroke="#fff" stroke-width="0.8"/>
+                </svg>
+            </div>
+
             <div class="prediction-display" id="predResult">2.10x</div>
             <div class="status-text" id="statusText">AUTO CASHOUT @ 2.10X</div>
             <button class="get-signal-btn" id="signalBtn" onclick="toggleAutoPrediction()">⚡ START AUTO HACK ⚡</button>
@@ -260,7 +291,6 @@
 
     <script>
         const modal = document.getElementById('overlayModal');
-        const overlay = document.getElementById('bgOverlay');
         const closeBtn = document.getElementById('closeBtn');
         let isRunning = false;
         let autoInterval = null;
@@ -269,10 +299,8 @@
         function toggleModal() {
             if (modal.style.display === 'block') {
                 modal.style.display = 'none';
-                overlay.style.display = 'none';
             } else {
                 modal.style.display = 'block';
-                overlay.style.display = 'block';
                 document.getElementById('authScreen').style.display = 'flex';
                 document.getElementById('dashScreen').style.display = 'none';
                 document.getElementById('passInput').value = '';
@@ -326,22 +354,18 @@
             btn.innerText = "⚡ START AUTO HACK ⚡";
             btn.style.background = "linear-gradient(135deg, #22c55e, #15803d)";
             document.getElementById('statusText').innerText = "AI SYSTEM PAUSED";
-            document.getElementById('planeIcon').classList.remove('flying');
         }
 
         function runSingleRound() {
             let predResult = document.getElementById('predResult');
             let statusText = document.getElementById('statusText');
-            let planeIcon = document.getElementById('planeIcon');
 
             statusText.innerText = "🔄 ANALYZING GAME MARKET...";
             predResult.innerText = "---";
-            planeIcon.classList.remove('flying');
 
             setTimeout(() => {
                 if (!isRunning) return;
                 statusText.innerText = "✈️ FLIGHT IN PROGRESS...";
-                planeIcon.classList.add('flying');
 
                 let targetVal = (Math.random() * (4.80 - 1.30) + 1.30).toFixed(2);
                 let currentVal = 1.00;
@@ -355,7 +379,6 @@
                     if (currentVal >= targetVal) {
                         currentVal = parseFloat(targetVal);
                         clearInterval(countInterval);
-                        planeIcon.classList.remove('flying');
                         predResult.innerText = currentVal.toFixed(2) + "x";
                         statusText.innerText = "🎯 CRASH POINT PREDICTED";
                     } else {
@@ -365,7 +388,7 @@
             }, 2000);
         }
 
-        // আইকন ক্লিক এবং স্মুথ ড্র্যাগ হ্যান্ডলার (ফসল ও ক্লিকেল ঝামেলমুক্ত)
+        // আইকন ক্লিক এবং স্মুথ ড্র্যাগ হ্যান্ডলার
         const dragIcon = document.getElementById('dragIcon');
         let isDragging = false;
         let startX, startY, initialX, initialY;
@@ -402,7 +425,7 @@
 
         dragIcon.addEventListener('pointerup', (e) => {
             if (!hasMoved) {
-                toggleModal(); // ক্লিক বা ট্যাপ করার সাথে সাথে পপআপ ওপেন হবে
+                toggleModal();
             }
             isDragging = false;
             dragIcon.releasePointerCapture(e.pointerId);
