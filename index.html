@@ -572,6 +572,8 @@
             <div class="header-ctrl-btns">
                 <button class="mini-ctrl-btn" onclick="resetPopupPosition()" title="Reset Position">↻</button>
                 <button class="mini-ctrl-btn" onclick="togglePopupModal()" title="Minimize">↙</button>
+                <!-- পপআপ ক্লোজ বাটন (✕) -->
+                <button class="mini-ctrl-btn" onclick="togglePopupModal()" title="Close" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #f87171;">✕</button>
             </div>
         </div>
 
@@ -610,7 +612,7 @@
             <div class="sub-desc-output" id="wingoTimerDisplay" style="color: #38bdf8; font-weight: 900; letter-spacing: 0.5px;">⏰ TIME REMAINING: 00:00</div>
         </div>
 
-        <!-- মাইনস গেমের সম্পূর্ণ ফিক্সড এবং র্যান্ডম ডায়নামিক প্যানেল -->
+        <!-- মাইনস গেম প্যানেল -->
         <div class="prediction-box-panel" id="viewMines" style="display: none;">
             <div class="lock-status-pill">💎 SAFE SPOTS RADAR</div>
             <div class="main-number-output" id="minesSpots" style="color: #38bdf8; font-size: 26px;">3 / 5 SAFE</div>
@@ -826,10 +828,9 @@
                     document.getElementById('aviatorSubText').innerText = `AUTO CASHOUT @ ${randomMult}X`;
                 } else if (selectedGame === 'mines') {
                     document.getElementById('minesSpots').style.fontSize = '26px';
-                    // একদম সম্পূর্ণ স্বাধীন এবং ভিন্ন ভিন্ন সংখ্যা দেখানোর জন্য র্যান্ডম লজিক
                     const possibleTotals = [5, 6];
                     const chosenTotal = possibleTotals[Math.floor(Math.random() * possibleTotals.length)];
-                    const chosenSafe = Math.floor(Math.random() * chosenTotal) + 1; // ১ থেকে chosenTotal এর মধ্যে যেকোনো সংখ্যা
+                    const chosenSafe = Math.floor(Math.random() * chosenTotal) + 1;
                     document.getElementById('minesSpots').innerText = `${chosenSafe} / ${chosenTotal} SAFE`;
                 }
                 btn.disabled = false;
