@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SIDDIK OFFICIAL ORIGINAL AI HACK</title>
+    <title>SIDDIK OFFICIAL ORIGINAL AI HACK PRO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@600;700;800;900&family=Hind+Siliguri:wght@600;700&display=swap');
 
@@ -19,21 +19,12 @@
         body, html {
             width: 100%;
             height: 100%;
-            background: #030408;
-            color: #fff;
             overflow: hidden;
+            background: #020307;
+            color: #fff;
         }
 
-        /* ফুল-স্ক্রিন অ্যাপ শেল */
-        .app-shell {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        /* ব্যাকগ্রাউন্ড গেম ফ্রেম */
+        /* ১. ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম ফ্রেম */
         .game-frame {
             width: 100%;
             height: 100%;
@@ -44,49 +35,75 @@
             z-index: 1;
         }
 
-        /* ভিআইপি লগইন ওভারলে (পাসওয়ার্ড বক্স সম্পূর্ণ খালি থাকবে) */
-        .login-view {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, #150c30 0%, #030307 100%);
-            z-index: 9999;
+        /* ২. ফ্লোটিং ড্র্যাগেবল আইকন (স্ক্রিন খোলার জন্য) */
+        .floating-launcher {
+            position: fixed;
+            top: 110px;
+            right: 18px;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            border: 2.5px solid #ffd700;
+            background: radial-gradient(circle, #1a103c 0%, #000000 100%);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.85);
+            z-index: 99999;
+            cursor: pointer;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 24px;
-            text-align: center;
+            touch-action: none;
         }
 
-        .login-card {
+        .floating-launcher img {
             width: 100%;
-            max-width: 370px;
-            background: rgba(14, 11, 25, 0.95);
-            border: 2px solid #ffd700;
-            border-radius: 22px;
-            padding: 30px 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 215, 0, 0.2);
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
         }
 
-        .login-title {
-            font-size: 14px;
+        /* ৩. ভিআইপি পাসওয়ার্ড ওভারলে (একদম পরিষ্কার খালি বক্স) */
+        .auth-overlay-screen {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #180c36 0%, #030206 100%);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-panel-box {
+            width: 100%;
+            max-width: 380px;
+            background: rgba(12, 10, 22, 0.96);
+            border: 2px solid #ffd700;
+            border-radius: 24px;
+            padding: 32px 22px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.98), 0 0 40px rgba(255, 215, 0, 0.25);
+        }
+
+        .auth-title-main {
+            font-size: 15px;
             font-weight: 900;
             color: #ffd700;
-            letter-spacing: 0.5px;
             margin-bottom: 6px;
+            letter-spacing: 0.5px;
         }
 
-        .login-sub {
+        .auth-sub-desc {
             font-size: 11px;
             color: #94a3b8;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
-        .pass-input {
+        .pass-input-field {
             width: 100%;
             padding: 14px;
             border-radius: 14px;
-            border: 2px solid #ffd700;
+            border: 2px solid rgba(255, 215, 0, 0.6);
             background: #000;
             color: #ffd700;
             font-size: 16px;
@@ -96,288 +113,446 @@
             margin-bottom: 14px;
         }
 
-        .pass-input::placeholder {
+        .pass-input-field::placeholder {
             color: rgba(255, 215, 0, 0.35);
             font-size: 13px;
         }
 
-        .primary-btn {
+        .btn-core {
             width: 100%;
             padding: 14px;
             border-radius: 14px;
             border: none;
-            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
             color: #fff;
             font-size: 14px;
             font-weight: 900;
             letter-spacing: 1px;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(255, 75, 43, 0.45);
+            box-shadow: 0 6px 20px rgba(255, 75, 43, 0.5);
             transition: transform 0.1s;
         }
 
-        .primary-btn:active {
+        .btn-core:active {
             transform: scale(0.97);
         }
 
-        /* ফুল-স্ক্রিন হ্যাক ওভারলে ইউআই */
-        .hack-ui-container {
-            position: absolute;
-            inset: 0;
-            z-index: 10;
-            pointer-events: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        /* ৪. মূল ড্র্যাগেবল হ্যাক পপআপ উইন্ডো (স্ক্রিনশটের হুবহু স্টাইল) */
+        .draggable-popup-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 92%;
+            max-width: 385px;
+            background: linear-gradient(160deg, #100b1d 0%, #06040a 100%);
+            border: 2px solid #ff4b2b;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 75, 43, 0.3);
+            z-index: 99998;
             padding: 12px;
+            color: #fff;
+            touch-action: none;
         }
 
-        /* টপ কাস্টম বার */
-        .top-custom-bar {
-            pointer-events: auto;
-            background: rgba(10, 8, 18, 0.9);
-            border: 1px solid rgba(255, 215, 0, 0.35);
-            border-radius: 14px;
-            padding: 10px 14px;
+        /* পপআপ ড্র্যাগ হেডার বার */
+        .popup-drag-header {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 12px;
+            padding: 9px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            backdrop-filter: blur(12px);
+            margin-bottom: 10px;
+            cursor: move;
         }
 
-        .brand-name {
+        .header-title-flex {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-heading {
             font-size: 11px;
             font-weight: 900;
             color: #ffd700;
             letter-spacing: 0.5px;
         }
 
-        .server-status {
+        .tag-radar {
             background: rgba(56, 189, 248, 0.2);
             color: #38bdf8;
-            font-size: 9px;
-            font-weight: 800;
-            padding: 3px 8px;
-            border-radius: 6px;
+            font-size: 8px;
+            padding: 2px 6px;
+            border-radius: 5px;
             border: 1px solid rgba(56, 189, 248, 0.4);
+            font-weight: 800;
         }
 
-        /* মাঝখানের সিগন্যাল বক্স */
-        .middle-box {
-            pointer-events: auto;
-            width: 100%;
-            max-width: 380px;
-            margin: 0 auto;
-            background: linear-gradient(145deg, rgba(16, 10, 28, 0.94), rgba(5, 3, 10, 0.96));
-            border: 2px solid #ff4b2b;
-            border-radius: 20px;
-            padding: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85);
-        }
-
-        .display-screen {
-            position: relative;
-            background: radial-gradient(circle, rgba(40, 10, 50, 0.9) 0%, rgba(5, 2, 15, 0.98) 100%);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 14px;
-            padding: 18px 10px;
-            text-align: center;
-            margin-bottom: 12px;
-        }
-
-        .main-val {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 40px;
+        .close-pop-btn {
+            background: none;
+            border: none;
+            color: #f87171;
+            font-size: 20px;
             font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 22px rgba(255, 215, 0, 0.8);
-            margin: 4px 0;
+            cursor: pointer;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
-        /* একদম নিচের কাস্টম নেভিগেশন বার (স্ক্রিনশটের স্টাইলে সাজানো) */
-        .bottom-nav-bar {
-            pointer-events: auto;
-            width: 100%;
-            background: rgba(10, 8, 18, 0.96);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 8px 10px;
+        /* পপআপের ভেতরের কন্টেন্ট ও মডিউল */
+        .popup-inner-body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* গেম মোড ট্যাব (Aviator, WinGo, Mines) */
+        .mod-tabs-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            backdrop-filter: blur(14px);
+            gap: 5px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .nav-tab {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 8px;
-            text-align: center;
+        .mod-tab-btn {
+            padding: 7px 4px;
+            border-radius: 9px;
+            border: none;
+            background: transparent;
+            color: #94a3b8;
+            font-size: 10px;
+            font-weight: 900;
             cursor: pointer;
+            text-align: center;
             transition: all 0.2s;
         }
 
-        .nav-tab.active {
+        .mod-tab-btn.active {
             background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            border-color: #ffd700;
-            box-shadow: 0 0 15px rgba(255, 75, 43, 0.5);
+            color: #fff;
+            box-shadow: 0 0 12px rgba(255, 75, 43, 0.5);
         }
 
-        .nav-title {
+        .sub-info-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 800;
+            color: #cbd5e1;
+            padding: 0 4px;
+        }
+
+        .secure-badge {
+            color: #4ade80;
+            background: rgba(74, 222, 128, 0.15);
+            padding: 2px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            font-size: 9px;
+        }
+
+        /* গ্রাফ বা প্রেডিকশন ডিসপ্লে বক্স */
+        .prediction-box-panel {
+            position: relative;
+            background: radial-gradient(circle, rgba(40, 10, 50, 0.92) 0%, rgba(5, 2, 15, 0.98) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            border-radius: 16px;
+            padding: 20px 10px;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        .graph-wave-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 65%;
+            background: linear-gradient(to top, rgba(255, 75, 43, 0.3), transparent);
+            clip-path: polygon(0 100%, 15% 75%, 35% 65%, 60% 45%, 80% 25%, 100% 5%, 100% 100%);
+        }
+
+        .lock-status-pill {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            padding: 3px 10px;
+            border-radius: 6px;
             font-size: 10px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-number-output {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 42px;
             font-weight: 900;
             color: #fff;
+            text-shadow: 0 0 22px rgba(255, 215, 0, 0.85);
+            margin: 4px 0;
+            position: relative;
+            z-index: 2;
         }
 
-        .nav-sub {
-            font-size: 8px;
-            color: #cbd5e1;
-            margin-top: 2px;
+        .sub-desc-output {
+            font-size: 11px;
+            color: #38bdf8;
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
 <body>
 
-    <div class="app-shell">
+    <!-- ১. ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম -->
+    <iframe class="game-frame" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
+
+    <!-- ২. ফ্লোটিং ড্র্যাগেবল আইকন (লঞ্চার) -->
+    <div class="floating-launcher" id="floatingLauncher">
+        <img src="https://cdn.imageurlgenerator.com/uploads/3420d277-7bc7-4882-aa5e-11d91ee5e9e8.jpg" alt="AI">
+    </div>
+
+    <!-- ৩. ভিআইপি পাসওয়ার্ড প্রটেকশন স্ক্রিন (খালি বক্স) -->
+    <div class="auth-overlay-screen" id="authOverlay">
+        <div class="auth-panel-box">
+            <div style="font-size: 36px; margin-bottom: 8px;">👑</div>
+            <div class="auth-title-main">SIDDIK OFFICIAL ORIGINAL AI HACK</div>
+            <div class="auth-sub-desc">ভিআইপি সিস্টেম আনলক করতে পাসওয়ার্ড লিখুন</div>
+            <input type="password" id="passInputField" class="pass-input-field" placeholder="Enter VIP Password..." autocomplete="off">
+            <button class="btn-core" onclick="verifyVipPassword()">🔓 UNLOCK VIP SYSTEM</button>
+            <p id="errorAlertText" style="color: #f87171; font-size: 11px; font-weight: 700; margin-top: 12px; display: none;">❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।</p>
+        </div>
+    </div>
+
+    <!-- ৪. ড্র্যাগেবল হ্যাক পপআপ উইন্ডো -->
+    <div class="draggable-popup-modal" id="draggablePopup">
         
-        <!-- ব্যাকগ্রাউন্ড গেম ফ্রেম -->
-        <iframe class="game-frame" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
-
-        <!-- ভিআইপি লগইন স্ক্রিন (খালি পাসওয়ার্ড বক্স) -->
-        <div class="login-view" id="loginView">
-            <div class="login-card">
-                <div style="font-size: 34px; margin-bottom: 8px;">👑</div>
-                <div class="login-title">SIDDIK OFFICIAL ORIGINAL AI HACK</div>
-                <div class="login-sub">পাসওয়ার্ড দিয়ে ভিআইপি সিস্টেম আনলক করুন</div>
-                <input type="password" id="passInput" class="pass-input" placeholder="Enter VIP Password..." autocomplete="off">
-                <button class="primary-btn" onclick="verifyLogin()">🔓 UNLOCK SYSTEM</button>
-                <p id="errText" style="color: #ff4d4d; font-size: 11px; font-weight: 700; margin-top: 10px; display: none;">❌ ভুল পাসওয়ার্ড!</p>
+        <!-- ড্র্যাগ হেডার বার (এটি ধরে স্ক্রিনের যেকোনো জায়গায় সরাতে পারবেন) -->
+        <div class="popup-drag-header" id="popupHeader">
+            <div class="header-title-flex">
+                <span class="brand-heading">SIDDIK QUANTUM</span>
+                <span class="tag-radar">CRASH RADAR</span>
             </div>
+            <button class="close-pop-btn" onclick="togglePopupModal()">&times;</button>
         </div>
 
-        <!-- ফুল-স্ক্রিন কাস্টমাইজড অ্যাপ ইউআই -->
-        <div class="hack-ui-container" id="hackUI" style="display: none;">
+        <!-- পপআপ বডি -->
+        <div class="popup-inner-body">
             
-            <!-- টপ বার -->
-            <div class="top-custom-bar">
-                <div class="brand-name">👑 SIDDIK AI HACK</div>
-                <div class="server-status" id="serverBadge">AVIATOR RADAR ACTIVE</div>
+            <!-- গেম মোড ট্যাব সুইচ -->
+            <div class="mod-tabs-grid">
+                <button class="mod-tab-btn active" id="tabAviator" onclick="changeGameTab('aviator')">✈️ AVIATOR</button>
+                <button class="mod-tab-btn" id="tabWingo" onclick="changeGameTab('wingo')">🎯 WINGO</button>
+                <button class="mod-tab-btn" id="tabMines" onclick="changeGameTab('mines')">💣 MINES</button>
             </div>
 
-            <!-- মাঝখানের ডিসপ্লে -->
-            <div class="middle-box">
-                <div id="viewAviator">
-                    <div class="display-screen">
-                        <div style="font-size: 9px; color: #ffd700; font-weight: 800; margin-bottom: 4px;">✨ CASHOUT LOCKED</div>
-                        <div class="main-val" id="aviatorVal">2.10x</div>
-                        <div style="font-size: 10px; color: #38bdf8; font-weight: 700;">AUTO CASHOUT @ 2.10X</div>
-                    </div>
-                </div>
-
-                <div id="viewWingo" style="display: none;">
-                    <div class="display-screen">
-                        <div style="font-size: 9px; color: #38bdf8; font-weight: 800; margin-bottom: 4px;" id="wingoPeriod">PERIOD #2026111201</div>
-                        <div class="main-val" id="wingoSize" style="color: #facc15;">BIG</div>
-                        <div style="font-size: 10px; color: #4ade80; font-weight: 700;" id="wingoColor">WINNER: GREEN (7)</div>
-                    </div>
-                </div>
-
-                <button class="primary-btn" id="signalBtn" onclick="generateSignal()">⚡ GET SIGNAL ⚡</button>
+            <div class="sub-info-bar">
+                <span id="serverTitleText">SPRIBE AVIATOR AI #2</span>
+                <span class="secure-badge">🛡️ 96.5% SAFE</span>
             </div>
 
-            <!-- নিচের নেভিগেশন বার -->
-            <div class="bottom-nav-bar">
-                <div class="nav-tab" id="tabWingo" onclick="switchMode('wingo')">
-                    <div class="nav-title">📊 WINGO 3...</div>
-                    <div class="nav-sub">SIZE + 2 NOS</div>
-                </div>
-                <div class="nav-tab active" id="tabAviator" onclick="switchMode('aviator')">
-                    <div class="nav-title">✈️ AVIATOR</div>
-                    <div class="nav-sub">CRASH SIGNAL</div>
-                </div>
-                <div class="nav-tab" id="tabMines" onclick="switchMode('mines')">
-                    <div class="nav-title">💣 MINES</div>
-                    <div class="nav-sub">5/6 SAFE BOX</div>
-                </div>
+            <!-- AVIATOR DISPLAY -->
+            <div class="prediction-box-panel" id="viewAviator">
+                <div class="graph-wave-line"></div>
+                <div class="lock-status-pill">✨ CASHOUT LOCKED</div>
+                <div class="main-number-output" id="aviatorMultiplier">2.10x</div>
+                <div class="sub-desc-output" id="aviatorSubText">AUTO CASHOUT @ 2.10X</div>
             </div>
 
+            <!-- WINGO DISPLAY -->
+            <div class="prediction-box-panel" id="viewWingo" style="display: none;">
+                <div class="lock-status-pill" id="wingoPeriodNum">PERIOD #2026111201</div>
+                <div class="main-number-output" id="wingoBigSmall" style="color: #facc15;">BIG</div>
+                <div class="sub-desc-output" id="wingoColorNum">WINNER: GREEN (7)</div>
+            </div>
+
+            <!-- MINES DISPLAY -->
+            <div class="prediction-box-panel" id="viewMines" style="display: none;">
+                <div class="lock-status-pill">💎 SAFE SPOTS RADAR</div>
+                <div class="main-number-output" id="minesSpots" style="color: #38bdf8; font-size: 30px;">5 / 6 SAFE</div>
+                <div class="sub-desc-output">AI MATRIX PREDICTION</div>
+            </div>
+
+            <!-- গেট সিগন্যাল বাটন -->
+            <button class="btn-core" id="fetchSignalBtn" onclick="fetchNewSignal()">⚡ GET SIGNAL ⚡</button>
         </div>
-
     </div>
 
     <script>
-        let currentMode = 'aviator';
+        const popupModal = document.getElementById('draggablePopup');
+        const floatingLauncher = document.getElementById('floatingLauncher');
+        const popupHeader = document.getElementById('popupHeader');
+        let selectedGame = 'aviator';
 
-        function verifyLogin() {
-            const pass = document.getElementById('passInput').value.trim();
-            const err = document.getElementById('errText');
-            if (pass === 'siddik58') {
-                document.getElementById('loginView').style.display = 'none';
-                document.getElementById('hackUI').style.display = 'flex';
-                updatePeriod();
+        // পপআপ ওপেন ও ক্লোজ টগল ফাংশন
+        function togglePopupModal() {
+            if (popupModal.style.display === 'block') {
+                popupModal.style.display = 'none';
             } else {
-                err.style.display = 'block';
+                popupModal.style.display = 'block';
             }
         }
 
-        function switchMode(mode) {
-            currentMode = mode;
-            document.getElementById('tabWingo').classList.remove('active');
+        // পাসওয়ার্ড ভেরিফিকেশন (siddik58)
+        function verifyVipPassword() {
+            const inputVal = document.getElementById('passInputField').value.trim();
+            const errAlert = document.getElementById('errorAlertText');
+            if (inputVal === 'siddik58') {
+                document.getElementById('authOverlay').style.display = 'none';
+                popupModal.style.display = 'block';
+                updateWingoPeriodCode();
+            } else {
+                errAlert.style.display = 'block';
+            }
+        }
+
+        // গেম ট্যাব পরিবর্তন
+        function changeGameTab(gameName) {
+            selectedGame = gameName;
             document.getElementById('tabAviator').classList.remove('active');
+            document.getElementById('tabWingo').classList.remove('active');
             document.getElementById('tabMines').classList.remove('active');
 
-            const vA = document.getElementById('viewAviator');
-            const vW = document.getElementById('viewWingo');
-            const badge = document.getElementById('serverBadge');
+            const viewA = document.getElementById('viewAviator');
+            const viewW = document.getElementById('viewWingo');
+            const viewM = document.getElementById('viewMines');
+            const serverTxt = document.getElementById('serverTitleText');
 
-            if (mode === 'aviator') {
+            if (gameName === 'aviator') {
                 document.getElementById('tabAviator').classList.add('active');
-                vA.style.display = 'block';
-                vW.style.display = 'none';
-                badge.innerText = 'AVIATOR RADAR ACTIVE';
-            } else if (mode === 'wingo') {
+                viewA.style.display = 'block';
+                viewW.style.display = 'none';
+                viewM.style.display = 'none';
+                serverTxt.innerText = 'SPRIBE AVIATOR AI #2';
+            } else if (gameName === 'wingo') {
                 document.getElementById('tabWingo').classList.add('active');
-                vA.style.display = 'none';
-                vW.style.display = 'block';
-                badge.innerText = 'WINGO MARKET ACTIVE';
-                updatePeriod();
+                viewA.style.display = 'none';
+                viewW.style.display = 'block';
+                viewM.style.display = 'none';
+                serverTxt.innerText = 'WINGO 1MIN MARKET AI';
+                updateWingoPeriodCode();
             } else {
                 document.getElementById('tabMines').classList.add('active');
-                vA.style.display = 'none';
-                vW.style.display = 'block';
-                badge.innerText = 'MINES AI ACTIVE';
+                viewA.style.display = 'none';
+                viewW.style.display = 'none';
+                viewM.style.display = 'block';
+                serverTxt.innerText = 'MINES SAFE BOX AI';
             }
         }
 
-        function updatePeriod() {
+        function updateWingoPeriodCode() {
             const now = new Date();
             const mins = now.getHours() * 60 + now.getMinutes() + 1;
-            document.getElementById('wingoPeriod').innerText = `PERIOD #20261112${String(mins).padStart(4, '0')}`;
+            document.getElementById('wingoPeriodNum').innerText = `PERIOD #20261112${String(mins).padStart(4, '0')}`;
         }
 
-        function generateSignal() {
-            const btn = document.getElementById('signalBtn');
+        // সিগন্যাল জেনারেটর
+        function fetchNewSignal() {
+            const btn = document.getElementById('fetchSignalBtn');
             btn.disabled = true;
             btn.innerText = '⏳ ANALYZING MARKET...';
 
             setTimeout(() => {
-                if (currentMode === 'aviator') {
-                    const mult = (Math.random() * (4.50 - 1.35) + 1.35).toFixed(2);
-                    document.getElementById('aviatorVal').innerText = `${mult}x`;
-                } else {
-                    updatePeriod();
+                if (selectedGame === 'aviator') {
+                    const randomMult = (Math.random() * (4.80 - 1.35) + 1.35).toFixed(2);
+                    document.getElementById('aviatorMultiplier').innerText = `${randomMult}x`;
+                    document.getElementById('aviatorSubText').innerText = `AUTO CASHOUT @ ${randomMult}X`;
+                } else if (selectedGame === 'wingo') {
+                    updateWingoPeriodCode();
                     const num = Math.floor(Math.random() * 10);
                     const isBig = num >= 5;
-                    const color = [1, 3, 5, 7, 9].includes(num) ? 'GREEN' : 'RED';
-                    document.getElementById('wingoSize').innerText = isBig ? 'BIG' : 'SMALL';
-                    document.getElementById('wingoSize').style.color = isBig ? '#facc15' : '#38bdf8';
-                    document.getElementById('wingoColor').innerText = `WINNER: ${color} (${num})`;
+                    const colorName = [1, 3, 5, 7, 9].includes(num) ? 'GREEN' : 'RED';
+                    const sizeEl = document.getElementById('wingoBigSmall');
+                    sizeEl.innerText = isBig ? 'BIG' : 'SMALL';
+                    sizeEl.style.color = isBig ? '#facc15' : '#38bdf8';
+                    document.getElementById('wingoColorNum').innerText = `WINNER: ${colorName} (${num})`;
+                } else {
+                    const safeSpots = Math.floor(Math.random() * 2) + 4;
+                    document.getElementById('minesSpots').innerText = `${safeSpots} / 6 SAFE`;
                 }
                 btn.disabled = false;
                 btn.innerText = '⚡ GET SIGNAL ⚡';
             }, 1000);
         }
+
+        // ১. ফ্লোটিং আইকন ড্র্যাগ + ক্লিক হ্যান্ডলার
+        let isIconMoving = false, iconStartX, iconStartY, iconInitX, iconInitY, iconHasMoved = false;
+
+        floatingLauncher.addEventListener('pointerdown', (e) => {
+            isIconMoving = true;
+            iconHasMoved = false;
+            iconStartX = e.clientX;
+            iconStartY = e.clientY;
+            iconInitX = e.clientX - floatingLauncher.offsetLeft;
+            iconInitY = e.clientY - floatingLauncher.offsetTop;
+            floatingLauncher.setPointerCapture(e.pointerId);
+        });
+
+        floatingLauncher.addEventListener('pointermove', (e) => {
+            if (!isIconMoving) return;
+            if (Math.abs(e.clientX - iconStartX) > 4 || Math.abs(e.clientY - iconStartY) > 4) {
+                iconHasMoved = true;
+            }
+            let posX = Math.max(0, Math.min(e.clientX - iconInitX, window.innerWidth - floatingLauncher.offsetWidth));
+            let posY = Math.max(0, Math.min(e.clientY - iconInitY, window.innerHeight - floatingLauncher.offsetHeight));
+            floatingLauncher.style.left = posX + 'px';
+            floatingLauncher.style.top = posY + 'px';
+            floatingLauncher.style.position = 'fixed';
+        });
+
+        floatingLauncher.addEventListener('pointerup', (e) => {
+            if (!iconHasMoved) {
+                togglePopupModal();
+            }
+            isIconMoving = false;
+            floatingLauncher.releasePointerCapture(e.pointerId);
+        });
+
+        // ২. পপআপ উইন্ডো ড্র্যাগ হ্যান্ডলার (হেডার ধরে যেখানে খুশি সরাতে পারবেন)
+        let isPopupMoving = false, popStartX, popStartY;
+
+        popupHeader.addEventListener('pointerdown', (e) => {
+            if (e.target.closest('button')) return;
+            isPopupMoving = true;
+            const rectBox = popupModal.getBoundingClientRect();
+            popupModal.style.transform = 'none';
+            popupModal.style.left = rectBox.left + 'px';
+            popupModal.style.top = rectBox.top + 'px';
+            popStartX = e.clientX - rectBox.left;
+            popStartY = e.clientY - rectBox.top;
+            popupHeader.setPointerCapture(e.pointerId);
+        });
+
+        popupHeader.addEventListener('pointermove', (e) => {
+            if (!isPopupMoving) return;
+            let newX = Math.max(0, Math.min(e.clientX - popStartX, window.innerWidth - popupModal.offsetWidth));
+            let newY = Math.max(0, Math.min(e.clientY - popStartY, window.innerHeight - popupModal.offsetHeight));
+            popupModal.style.left = newX + 'px';
+            popupModal.style.top = newY + 'px';
+            popupModal.style.position = 'fixed';
+        });
+
+        popupHeader.addEventListener('pointerup', (e) => {
+            isPopupMoving = false;
+            popupHeader.releasePointerCapture(e.pointerId);
+        });
     </script>
 </body>
 </html>
