@@ -20,8 +20,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #020307;
-            color: #fff;
+            background: #000;
         }
 
         /* ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম ফ্রেম */
@@ -35,17 +34,17 @@
             z-index: 1;
         }
 
-        /* ফ্লোটিং ড্র্যাগেবল আইকন (লঞ্চার) */
+        /* ফ্লোটিং ড্র্যাগেবল লঞ্চার আইকন (স্ক্রিনশটের স্টাইল) */
         .floating-launcher {
             position: fixed;
-            top: 110px;
-            right: 18px;
-            width: 62px;
-            height: 62px;
+            top: 140px;
+            right: 15px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
-            border: 2.5px solid #ffd700;
-            background: radial-gradient(circle, #1a103c 0%, #000000 100%);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.85);
+            border: 2px solid #ffd700;
+            background: radial-gradient(circle, #2b1d0c 0%, #000 100%);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
             z-index: 99999;
             cursor: pointer;
             overflow: hidden;
@@ -62,7 +61,7 @@
             pointer-events: none;
         }
 
-        /* ভিআইপি পাসওয়ার্ড স্ক্রিন (খালি বক্স) */
+        /* ভিআইপি পাসওয়ার্ড ওভারলে (একদম পরিষ্কার খালি বক্স) */
         .auth-overlay-screen {
             position: fixed;
             inset: 0;
@@ -76,33 +75,19 @@
 
         .auth-panel-box {
             width: 100%;
-            max-width: 380px;
-            background: rgba(12, 10, 22, 0.96);
+            max-width: 370px;
+            background: rgba(14, 11, 25, 0.96);
             border: 2px solid #ffd700;
-            border-radius: 24px;
-            padding: 32px 22px;
+            border-radius: 22px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.98), 0 0 40px rgba(255, 215, 0, 0.25);
-        }
-
-        .auth-title-main {
-            font-size: 15px;
-            font-weight: 900;
-            color: #ffd700;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-
-        .auth-sub-desc {
-            font-size: 11px;
-            color: #94a3b8;
-            margin-bottom: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 215, 0, 0.2);
         }
 
         .pass-input-field {
             width: 100%;
             padding: 14px;
-            border-radius: 14px;
+            border-radius: 12px;
             border: 2px solid rgba(255, 215, 0, 0.6);
             background: #000;
             color: #ffd700;
@@ -110,69 +95,64 @@
             font-weight: 800;
             text-align: center;
             outline: none;
-            margin-bottom: 14px;
+            margin: 15px 0 12px 0;
         }
 
         .pass-input-field::placeholder {
-            color: rgba(255, 215, 0, 0.35);
+            color: rgba(255, 215, 0, 0.3);
             font-size: 13px;
         }
 
         .btn-core {
             width: 100%;
-            padding: 14px;
-            border-radius: 14px;
+            padding: 13px;
+            border-radius: 12px;
             border: none;
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            background: linear-gradient(135deg, #ff1e56, #ff7b00);
             color: #fff;
             font-size: 14px;
             font-weight: 900;
             letter-spacing: 1px;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(255, 75, 43, 0.5);
-            transition: transform 0.1s;
+            box-shadow: 0 6px 20px rgba(255, 30, 86, 0.45);
         }
 
-        .btn-core:active {
-            transform: scale(0.97);
-        }
-
-        /* ড্র্যাগেবল স্প্রাইভেটর হ্যাক পপআপ উইন্ডো (সম্পূর্ণ নড়াচড়া করা যায়) */
+        /* মূল প্রিমিয়াম ড্র্যাগেবল পপআপ উইন্ডো (স্ক্রিনশটের হুবহু লেআউট)[span_2](start_span)[span_2](end_span) */
         .draggable-popup-modal {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 92%;
-            max-width: 385px;
-            background: linear-gradient(160deg, #120918 0%, #050208 100%);
+            width: 94%;
+            max-width: 380px;
+            background: linear-gradient(160deg, #120914 0%, #060208 100%);
             border: 2px solid #ff2a6d;
             border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 42, 109, 0.35);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 42, 109, 0.3);
             z-index: 99998;
             padding: 12px;
             color: #fff;
             touch-action: none;
         }
 
-        /* ড্র্যাগ হেডার বার (পুরো পপআপ এখান থেকে বা যেকোনো জায়গা থেকে সরাতে পারবেন) */
+        /* টপ ড্র্যাগ হেডার (স্ক্রিনশট স্টাইল)[span_3](start_span)[span_3](end_span) */
         .popup-drag-header {
-            background: rgba(0, 0, 0, 0.75);
-            border: 1px solid rgba(255, 42, 109, 0.3);
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 42, 109, 0.35);
             border-radius: 12px;
-            padding: 9px 12px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             cursor: move;
         }
 
         .header-title-flex {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             pointer-events: none;
         }
 
@@ -196,7 +176,7 @@
         .close-pop-btn {
             background: none;
             border: none;
-            color: #f87171;
+            color: #ff4d4d;
             font-size: 20px;
             font-weight: 900;
             cursor: pointer;
@@ -205,21 +185,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
         }
 
         .popup-inner-body {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
-        /* গেম মোড ট্যাব */
+        /* গেম মোড ট্যাব (স্ক্রিনশটের হুবহু তিন বাটন: Aviator, Wingo, Mines)[span_4](start_span)[span_4](end_span) */
         .mod-tabs-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 5px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             padding: 4px;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -244,7 +223,7 @@
             box-shadow: 0 0 12px rgba(255, 42, 109, 0.6);
         }
 
-        /* WinGo সাব-মার্কেট সিলেক্টর বার (1Min, 3Min, 5Min, 10Min) */
+        /* WinGo সাব-মার্কেট বার (1Min, 3Min, 5Min, 10Min) */
         .wingo-sub-markets {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -293,13 +272,13 @@
             font-size: 9px;
         }
 
-        /* প্রেডিকশন ডিসপ্লে বক্স */
+        /* প্রেডিকশন ডিসপ্লে বক্স (স্ক্রিনশটের স্টাইল অনুযায়ী নিখুঁত ফন্ট ও মার্জিন)[span_5](start_span)[span_5](end_span) */
         .prediction-box-panel {
             position: relative;
             background: radial-gradient(circle, rgba(45, 10, 30, 0.95) 0%, rgba(6, 2, 12, 0.98) 100%);
             border: 1.5px solid rgba(255, 42, 109, 0.45);
             border-radius: 16px;
-            padding: 18px 10px;
+            padding: 16px 10px;
             text-align: center;
             overflow: hidden;
             box-shadow: inset 0 0 25px rgba(0,0,0,0.85);
@@ -320,18 +299,19 @@
             background: rgba(255, 215, 0, 0.15);
             color: #ffd700;
             border: 1px solid rgba(255, 215, 0, 0.4);
-            padding: 3px 12px;
-            border-radius: 6px;
+            padding: 4px 14px;
+            border-radius: 20px;
             font-size: 10px;
-            font-weight: 800;
-            margin-bottom: 6px;
+            font-weight: 900;
+            margin-bottom: 8px;
             position: relative;
             z-index: 2;
+            letter-spacing: 0.5px;
         }
 
         .main-number-output {
             font-family: 'Orbitron', sans-serif;
-            font-size: 40px;
+            font-size: 42px;
             font-weight: 900;
             color: #fff;
             text-shadow: 0 0 25px rgba(255, 42, 109, 0.9);
@@ -346,6 +326,7 @@
             font-weight: 800;
             position: relative;
             z-index: 2;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -363,15 +344,15 @@
     <div class="auth-overlay-screen" id="authOverlay">
         <div class="auth-panel-box">
             <div style="font-size: 36px; margin-bottom: 8px;">👑</div>
-            <div class="auth-title-main">SIDDIK OFFICIAL ORIGINAL AI HACK</div>
-            <div class="auth-sub-desc">ভিআইপি সিস্টেম আনলক করতে পাসওয়ার্ড লিখুন</div>
+            <div style="font-size: 15px; font-weight: 900; color: #ffd700; letter-spacing: 0.5px;">SIDDIK OFFICIAL ORIGINAL AI HACK</div>
+            <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; margin-bottom: 18px;">ভিআইপি সিস্টেম আনলক করতে পাসওয়ার্ড লিখুন</div>
             <input type="password" id="passInputField" class="pass-input-field" placeholder="Enter VIP Password..." autocomplete="off">
-            <button class="btn-core" onclick="verifyVipPassword()">🔓 UNLOCK SPRIBETOR</button>
+            <button class="btn-core" onclick="verifyVipPassword()">🔓 UNLOCK VIP SYSTEM</button>
             <p id="errorAlertText" style="color: #f87171; font-size: 11px; font-weight: 700; margin-top: 12px; display: none;">❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।</p>
         </div>
     </div>
 
-    <!-- ৪. ড্র্যাগেবল হ্যাক পপআপ উইন্ডো -->
+    <!-- ৪. ড্র্যাগেবল হ্যাক পপআপ উইন্ডো (স্ক্রিনশট স্টাইল)[span_6](start_span)[span_6](end_span) -->
     <div class="draggable-popup-modal" id="draggablePopup">
         
         <div class="popup-drag-header" id="popupHeader">
@@ -390,7 +371,6 @@
                 <button class="mod-tab-btn" id="tabMines" onclick="changeGameTab('mines')">💣 MINES</button>
             </div>
 
-            <!-- WinGo সাব-মার্কেট বার (ডিফল্টভাবে লুকানো থাকবে, উইনগো সিলেক্ট করলে শো করবে) -->
             <div class="wingo-sub-markets" id="wingoSubMarkets" style="display: none;">
                 <button class="sub-mkt-btn active" id="mkt1" onclick="changeWingoMarket(1)">1 MIN</button>
                 <button class="sub-mkt-btn" id="mkt3" onclick="changeWingoMarket(3)">3 MIN</button>
@@ -413,7 +393,7 @@
 
             <!-- WINGO DISPLAY -->
             <div class="prediction-box-panel" id="viewWingo" style="display: none;">
-                <div class="lock-status-pill" id="wingoPeriodNum">PERIOD #2026111201</div>
+                <div class="lock-status-pill" id="wingoPeriodNum">PERIOD #202611120475</div>
                 <div class="main-number-output" id="wingoBigSmall" style="color: #facc15;">BIG</div>
                 <div class="sub-desc-output" id="wingoColorNum">WINNER: GREEN (7)</div>
             </div>
@@ -432,7 +412,6 @@
     <script>
         const popupModal = document.getElementById('draggablePopup');
         const floatingLauncher = document.getElementById('floatingLauncher');
-        const popupHeader = document.getElementById('popupHeader');
         let selectedGame = 'aviator';
         let currentWingoMin = 1;
 
@@ -503,7 +482,7 @@
             updateWingoAccuratePeriod();
         }
 
-        // সঠিক রিয়েল-টাইম পিরিয়ড নাম্বার জেনারেটর (মিনিট ও সময় ভিত্তিক হিসাব)
+        // WinGo রিয়েল-টাইম নিখুঁত পিরিয়ড নাম্বার জেনারেটর (স্ক্রিনশট স্টাইল মিল রেখে)
         function updateWingoAccuratePeriod() {
             const now = new Date();
             const year = now.getFullYear();
@@ -511,12 +490,9 @@
             const day = String(now.getDate()).padStart(2, '0');
             
             let totalMins = now.getHours() * 60 + now.getMinutes();
-            let periodSeq = Math.floor(totalMins / currentWingoMin) + 1;
+            let periodSeq = Math.floor(totalMins / currentWingoMin) + 500;
             
-            // উইনগো গেমের স্ট্যান্ডার্ড পিরিয়ড ফরম্যাট (যেমন: YYYYMMDD + MinCode + 4 digit sequence)
-            let seqStr = String(periodSeq).padStart(4, '0');
-            let periodNumber = `${year}${month}${day}${currentWingoMin}0${seqStr}`;
-            
+            let periodNumber = `${year}${month}${day}0${periodSeq}`;
             document.getElementById('wingoPeriodNum').innerText = `PERIOD #${periodNumber}`;
         }
 
@@ -581,33 +557,33 @@
             floatingLauncher.releasePointerCapture(e.pointerId);
         });
 
-        // পপআপ উইন্ডো স্মুথ ড্র্যাগ হ্যান্ডলার (হেডার বা পপআপের যেকোনো জায়গা থেকে সরাতে পারবেন)
+        // পপআপ উইন্ডো স্মুথ ড্র্যাগ হ্যান্ডলার (পপআপের যেকোনো জায়গা থেকে এখন স্মুথলি নড়াচড়া করা যাবে)
         let isPopupMoving = false, popStartX, popStartY;
 
-        popupModal.addEventListener('pointerdown', (e) => {
+        draggablePopup.addEventListener('pointerdown', (e) => {
             if (e.target.closest('button') || e.target.closest('.mod-tabs-grid') || e.target.closest('.wingo-sub-markets')) return;
             isPopupMoving = true;
-            const rectBox = popupModal.getBoundingClientRect();
-            popupModal.style.transform = 'none';
-            popupModal.style.left = rectBox.left + 'px';
-            popupModal.style.top = rectBox.top + 'px';
+            const rectBox = draggablePopup.getBoundingClientRect();
+            draggablePopup.style.transform = 'none';
+            draggablePopup.style.left = rectBox.left + 'px';
+            draggablePopup.style.top = rectBox.top + 'px';
             popStartX = e.clientX - rectBox.left;
             popStartY = e.clientY - rectBox.top;
-            popupModal.setPointerCapture(e.pointerId);
+            draggablePopup.setPointerCapture(e.pointerId);
         });
 
-        popupModal.addEventListener('pointermove', (e) => {
+        draggablePopup.addEventListener('pointermove', (e) => {
             if (!isPopupMoving) return;
-            let newX = Math.max(0, Math.min(e.clientX - popStartX, window.innerWidth - popupModal.offsetWidth));
-            let newY = Math.max(0, Math.min(e.clientY - popStartY, window.innerHeight - popupModal.offsetHeight));
-            popupModal.style.left = newX + 'px';
-            popupModal.style.top = newY + 'px';
-            popupModal.style.position = 'fixed';
+            let newX = Math.max(0, Math.min(e.clientX - popStartX, window.innerWidth - draggablePopup.offsetWidth));
+            let newY = Math.max(0, Math.min(e.clientY - popStartY, window.innerHeight - draggablePopup.offsetHeight));
+            draggablePopup.style.left = newX + 'px';
+            draggablePopup.style.top = newY + 'px';
+            draggablePopup.style.position = 'fixed';
         });
 
-        popupModal.addEventListener('pointerup', (e) => {
+        draggablePopup.addEventListener('pointerup', (e) => {
             isPopupMoving = false;
-            popupModal.releasePointerCapture(e.pointerId);
+            draggablePopup.releasePointerCapture(e.pointerId);
         });
     </script>
 </body>
