@@ -814,28 +814,28 @@
             const now = new Date();
 
             if (selectedGame === 'wingo') {
-                const year = now.getFullYear();
-                const month = String(now.getMonth() + 1).padStart(2, '0');
-                const day = String(now.getDate()).padStart(2, '0');
+                const year = now.getUTCFullYear();
+                const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+                const day = String(now.getUTCDate()).padStart(2, '0');
                 
-                let totalSecs = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+                let totalSecs = now.getUTCHours() * 3600 + now.getUTCMinutes() * 60 + now.getUTCSeconds();
                 let currentPeriod = '';
 
                 if (currentWingoMarket === '30s') {
                     let totalPeriods30s = Math.floor(totalSecs / 30);
-                    let baseSeq = 50000 + (totalPeriods30s % 10000); 
+                    let baseSeq = 50000 + totalPeriods30s; 
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 } else if (currentWingoMarket === 1) {
-                    let totalMins = now.getHours() * 60 + now.getMinutes();
-                    let baseSeq = 50000 + (totalMins % 10000);
+                    let totalMins = Math.floor(totalSecs / 60);
+                    let baseSeq = 50000 + totalMins;
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 } else if (currentWingoMarket === 3) {
-                    let totalPeriods3m = Math.floor((now.getHours() * 60 + now.getMinutes()) / 3);
-                    let baseSeq = 50000 + (totalPeriods3m % 10000);
+                    let totalPeriods3m = Math.floor(totalSecs / 180);
+                    let baseSeq = 50000 + totalPeriods3m;
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 } else if (currentWingoMarket === 5) {
-                    let totalPeriods5m = Math.floor((now.getHours() * 60 + now.getMinutes()) / 5);
-                    let baseSeq = 50000 + (totalPeriods5m % 10000);
+                    let totalPeriods5m = Math.floor(totalSecs / 300);
+                    let baseSeq = 50000 + totalPeriods5m;
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 }
 
