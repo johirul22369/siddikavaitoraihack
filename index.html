@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SIDDIK OFFICIAL ORIGINAL AI HACK</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Hind+Siliguri:wght@600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Hind+Siliguri:wght@700&display=swap');
 
         * {
             box-sizing: border-box;
@@ -32,6 +32,19 @@
             z-index: 1;
         }
 
+        /* ডার্ক ও ব্লার ব্যাকগ্রাউন্ড শ্যাডো */
+        .bg-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(3px);
+            z-index: 9998;
+        }
+
         /* ফ্লোটিং ড্র্যাগেবল আইকন */
         .floating-icon {
             position: fixed;
@@ -43,7 +56,7 @@
             border: 3px solid #ffd700;
             background: #000;
             box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
-            z-index: 9999;
+            z-index: 10001;
             cursor: pointer;
             overflow: hidden;
             display: flex;
@@ -60,7 +73,7 @@
             pointer-events: none;
         }
 
-        /* পপআপ মডাল বক্স (স্ক্রিনশটের হুবহু স্টাইল)[span_3](start_span)[span_3](end_span) */
+        /* তোর দেওয়া অরিজিনাল ঈগল ফ্রেমের ড্র্যাগেবল পপআপ */
         .overlay-modal {
             display: none;
             position: fixed;
@@ -68,228 +81,209 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 92%;
-            max-width: 390px;
-            background: linear-gradient(145deg, rgba(15, 10, 30, 0.98), rgba(5, 2, 15, 0.99));
-            border: 2px solid #38bdf8;
-            border-radius: 18px;
-            box-shadow: 0 0 45px rgba(56, 189, 248, 0.4), inset 0 0 15px rgba(255, 215, 0, 0.1);
-            backdrop-filter: blur(15px);
+            max-width: 380px;
+            height: 450px;
+            background: url('https://imagepaste.org/i/61337.png') no-repeat center center;
+            background-size: 100% 100%;
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
             z-index: 10000;
-            padding: 16px;
-            color: #fff;
-            text-align: center;
+            touch-action: none;
+            user-select: none;
         }
 
-        /* পপআপের ভেতরের টপ র‍্যাডার বার[span_4](start_span)[span_4](end_span) */
-        .radar-top-bar {
+        /* পপআপ ড্র্যাগ হেডার ও ক্লোজ বাটন */
+        .popup-header {
+            width: 100%;
+            height: 55px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 10px;
-            padding: 6px 10px;
-            margin-bottom: 12px;
-            font-size: 10px;
-            font-weight: 900;
-        }
-
-        .radar-title {
-            color: #ffd700;
-            letter-spacing: 0.5px;
-        }
-
-        .radar-badge {
-            background: rgba(56, 189, 248, 0.2);
-            color: #38bdf8;
-            padding: 2px 6px;
-            border-radius: 5px;
-            font-size: 9px;
-            border: 1px solid rgba(56, 189, 248, 0.4);
+            justify-content: flex-end;
+            padding: 0 20px;
+            cursor: move;
         }
 
         .close-btn {
-            background: none;
-            border: none;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1.5px solid #ff4d4d;
             color: #ff4d4d;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-        }
-
-        /* সাব হেডার[span_5](start_span)[span_5](end_span) */
-        .sub-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            color: #cbd5e1;
-            padding: 0 4px;
+            justify-content: center;
+            z-index: 10;
         }
 
-        .safe-tag {
-            color: #4ade80;
-            background: rgba(74, 222, 128, 0.15);
-            padding: 2px 8px;
-            border-radius: 6px;
-            border: 1px solid rgba(74, 222, 128, 0.3);
-        }
-
-        /* পাসওয়ার্ড স্ক্রিন */
+        /* পাসওয়ার্ড স্ক্রিন (ফ্রেমের একদম ঠিক মাঝখানে সেট করা) */
         .auth-screen {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
             gap: 12px;
-            padding: 15px 5px;
+            height: calc(100% - 75px);
+            padding: 0 40px;
         }
 
         .auth-desc {
             font-size: 13px;
             color: #ffd700;
             font-weight: 700;
+            text-shadow: 0 0 10px rgba(0,0,0,0.9);
         }
 
         .input-box {
             width: 100%;
             padding: 12px;
             border-radius: 12px;
-            border: 2px solid rgba(255, 215, 0, 0.4);
-            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ffd700;
+            background: rgba(0, 0, 0, 0.9);
             color: #ffd700;
             text-align: center;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             outline: none;
         }
 
         .btn-action {
             width: 100%;
-            padding: 14px;
-            border-radius: 14px;
+            padding: 12px;
+            border-radius: 12px;
             border: none;
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            color: #fff;
+            background: linear-gradient(135deg, #ffd700, #d97706);
+            color: #000;
             font-weight: 900;
-            font-size: 15px;
+            font-size: 14px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 5px 20px rgba(255, 75, 43, 0.5);
-            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.6);
         }
 
-        /* প্রেডিকশন ড্যাশবোর্ড ও এনালাইজিং গ্রাফ[span_6](start_span)[span_6](end_span) */
+        /* এআই লাইভ প্রেডিকশন স্ক্রিন (ফ্রেমের ভেতরে) */
         .dashboard-screen {
             display: none;
             flex-direction: column;
-            gap: 12px;
-        }
-
-        .graph-box {
+            align-items: center;
+            justify-content: center;
+            height: calc(100% - 75px);
             position: relative;
-            background: radial-gradient(circle, rgba(30, 10, 60, 0.9) 0%, rgba(5, 2, 15, 0.98) 100%);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 14px;
-            padding: 20px 10px;
-            overflow: hidden;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
-            text-align: center;
+            padding: 0 35px;
         }
 
-        .graph-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60%;
-            background: linear-gradient(to top, rgba(255, 75, 43, 0.2), transparent);
-            clip-path: polygon(0 100%, 10% 80%, 30% 70%, 50% 50%, 75% 30%, 100% 5%, 100% 100%);
-        }
-
-        .cashout-locked {
+        .plane-anim {
+            font-size: 26px;
             display: inline-block;
-            background: rgba(255, 215, 0, 0.15);
-            color: #ffd700;
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 10px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        @keyframes fly {
+            0% { transform: translate(-15px, 8px) rotate(-10deg); }
+            50% { transform: translate(0px, -8px) rotate(5deg); }
+            100% { transform: translate(15px, 8px) rotate(-10deg); }
+        }
+
+        .flying {
+            animation: fly 0.5s infinite ease-in-out;
         }
 
         .prediction-display {
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-            margin-bottom: 4px;
-            position: relative;
-            z-index: 2;
+            color: #ffffff;
+            text-shadow: 0 0 20px #ffd700, 0 0 30px #ff4500;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
         }
 
-        .auto-cashout-text {
+        .status-text {
             font-size: 11px;
             color: #38bdf8;
-            font-weight: 700;
-            position: relative;
-            z-index: 2;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-shadow: 0 0 5px rgba(0,0,0,0.8);
+        }
+
+        .get-signal-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #22c55e, #15803d);
+            color: #fff;
+            font-weight: 900;
+            font-size: 13px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
         }
     </style>
 </head>
 <body>
 
-    <!-- ১. ব্যাকগ্রাউন্ড গেম ফ্রেম (রেফারেল লিংক) -->
+    <!-- ১. ব্যাকগ্রাউন্ড গেম ফ্রেম -->
     <iframe class="game-frame" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
 
-    <!-- ২. ফ্লোটিং আইকন -->
+    <!-- ২. ব্লার ও শ্যাডো ব্যাকগ্রাউন্ড -->
+    <div class="bg-overlay" id="bgOverlay"></div>
+
+    <!-- ৩. ফ্লোটিং ড্র্যাগেবল আইকন -->
     <div class="floating-icon" id="dragIcon">
         <img src="https://cdn.imageurlgenerator.com/uploads/3420d277-7bc7-4882-aa5e-11d91ee5e9e8.jpg" alt="Icon">
     </div>
 
-    <!-- ৩. পপআপ মডাল window[span_7](start_span)[span_7](end_span) -->
+    <!-- ৪. ড্র্যাগেবল ঈগল ফ্রেম পপআপ (অরিজিনাল ডিজাইন)[span_1](start_span)[span_1](end_span) -->
     <div class="overlay-modal" id="overlayModal">
-        
-        <div class="radar-top-bar">
-            <span class="radar-title">SIDDIK AI HACK</span>
-            <span class="radar-badge">CRASH RADAR</span>
-            <button class="close-btn" onclick="toggleModal()">&times;</button>
+        <div class="popup-header" id="popupHeader">
+            <button class="close-btn" id="closeBtn">&times;</button>
         </div>
 
-        <!-- সিকিউরিটি পাসওয়ার্ড স্ক্রিন (siddik58) -->
+        <!-- সিকিউরিটি পাসওয়ার্ড স্ক্রিন -->
         <div class="auth-screen" id="authScreen">
-            <div class="auth-desc">🔒 ভিআইপি পাসওয়ার্ড দিন</div>
+            <div class="auth-desc">🔑 VIP ACCESS PASSWORD</div>
             <input type="password" id="passInput" class="input-box" placeholder="পাসওয়ার্ড লিখুন">
             <button class="btn-action" onclick="verifyPassword()">UNLOCK HACK</button>
             <p id="errorMsg" style="color: #ff4d4d; font-size: 11px; font-weight: 700; display: none;">❌ ভুল পাসওয়ার্ড!</p>
         </div>
 
-        <!-- এআই এনালাইজিং ও প্রেডিকশন ড্যাশবোর্ড[span_8](start_span)[span_8](end_span) -->
+        <!-- ফ্রেমের ভেতরের প্রেডিকশন ইন্টারফেস -->
         <div class="dashboard-screen" id="dashScreen">
-            <div class="sub-header">
-                <span>SPRIBE AVIATOR AI #2</span>
-                <span class="safe-tag">🛡️ 96.2% SAFE</span>
-            </div>
-
-            <div class="graph-box">
-                <div class="graph-line"></div>
-                <div class="cashout-locked">🔒 CASHOUT LOCKED</div>
-                <div class="prediction-display" id="predResult">2.10x</div>
-                <div class="auto-cashout-text" id="autoText">AUTO CASHOUT @ 2.10X</div>
-            </div>
-
-            <button class="btn-action" id="signalBtn" onclick="getSignal()">⚡ GET SIGNAL ⚡</button>
+            <div class="plane-anim" id="planeIcon">✈️</div>
+            <div class="prediction-display" id="predResult">2.10x</div>
+            <div class="status-text" id="statusText">AUTO CASHOUT @ 2.10X</div>
+            <button class="get-signal-btn" id="signalBtn" onclick="toggleAutoPrediction()">⚡ START AUTO HACK ⚡</button>
         </div>
     </div>
 
     <script>
-        let modal = document.getElementById('overlayModal');
+        const modal = document.getElementById('overlayModal');
+        const overlay = document.getElementById('bgOverlay');
+        const closeBtn = document.getElementById('closeBtn');
+        let isRunning = false;
+        let autoInterval = null;
 
+        // পপআপ টগল (আইকনে ক্লিক করলে কাজ করবে)
         function toggleModal() {
-            modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+                overlay.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+                document.getElementById('authScreen').style.display = 'flex';
+                document.getElementById('dashScreen').style.display = 'none';
+                document.getElementById('passInput').value = '';
+                document.getElementById('errorMsg').style.display = 'none';
+            }
         }
+
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleModal();
+        });
 
         // পাসওয়ার্ড ভেরিফিকেশন (siddik58)
         function verifyPassword() {
@@ -305,81 +299,182 @@
             }
         }
 
-        // এআই এনালাইজিং এবং সিগন্যাল জেনারেটর
-        function getSignal() {
-            let predResult = document.getElementById('predResult');
-            let autoText = document.getElementById('autoText');
+        // অটো-লুপ ও রিয়েল-টাইম মার্কেট প্রেডিকশন
+        function toggleAutoPrediction() {
             let btn = document.getElementById('signalBtn');
-
-            btn.disabled = true;
-            btn.innerText = "ANALYZING...";
-            predResult.innerText = "---";
-            autoText.innerText = "AI SCANNING GAME DATA...";
-
-            setTimeout(() => {
-                let targetVal = (Math.random() * (5.00 - 1.35) + 1.35).toFixed(2);
-                predResult.innerText = targetVal + "x";
-                autoText.innerText = "AUTO CASHOUT @ " + targetVal + "X";
-                btn.innerText = "⚡ GET SIGNAL ⚡";
-                btn.disabled = false;
-            }, 1200);
+            if (!isRunning) {
+                isRunning = true;
+                btn.innerText = "🛑 STOP AUTO HACK";
+                btn.style.background = "linear-gradient(135deg, #ef4444, #991b1b)";
+                startLoop();
+            } else {
+                stopLoop();
+            }
         }
 
-        // স্মুথ ড্র্যাগ-এন্ড-ড্রপ
+        function startLoop() {
+            runSingleRound();
+            autoInterval = setInterval(() => {
+                if (isRunning) runSingleRound();
+            }, 8000);
+        }
+
+        function stopLoop() {
+            isRunning = false;
+            clearInterval(autoInterval);
+            let btn = document.getElementById('signalBtn');
+            btn.innerText = "⚡ START AUTO HACK ⚡";
+            btn.style.background = "linear-gradient(135deg, #22c55e, #15803d)";
+            document.getElementById('statusText').innerText = "AI SYSTEM PAUSED";
+            document.getElementById('planeIcon').classList.remove('flying');
+        }
+
+        function runSingleRound() {
+            let predResult = document.getElementById('predResult');
+            let statusText = document.getElementById('statusText');
+            let planeIcon = document.getElementById('planeIcon');
+
+            statusText.innerText = "🔄 ANALYZING GAME MARKET...";
+            predResult.innerText = "---";
+            planeIcon.classList.remove('flying');
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                statusText.innerText = "✈️ FLIGHT IN PROGRESS...";
+                planeIcon.classList.add('flying');
+
+                let targetVal = (Math.random() * (4.80 - 1.30) + 1.30).toFixed(2);
+                let currentVal = 1.00;
+
+                let countInterval = setInterval(() => {
+                    if (!isRunning) {
+                        clearInterval(countInterval);
+                        return;
+                    }
+                    currentVal += 0.15;
+                    if (currentVal >= targetVal) {
+                        currentVal = parseFloat(targetVal);
+                        clearInterval(countInterval);
+                        planeIcon.classList.remove('flying');
+                        predResult.innerText = currentVal.toFixed(2) + "x";
+                        statusText.innerText = "🎯 CRASH POINT PREDICTED";
+                    } else {
+                        predResult.innerText = currentVal.toFixed(2) + "x";
+                    }
+                }, 70);
+            }, 2000);
+        }
+
+        // ১. আইকন ড্র্যাগ ও ক্লিকে পপআপ ওপেন ফিক্সড লজিক
         const dragIcon = document.getElementById('dragIcon');
-        let isDragging = false, initialX, initialY;
+        let iconDragging = false;
+        let startX, startY;
 
-        dragIcon.addEventListener('touchstart', dragStart, {passive: false});
-        dragIcon.addEventListener('touchend', dragEnd, {passive: false});
-        dragIcon.addEventListener('touchmove', drag, {passive: false});
+        dragIcon.addEventListener('touchstart', (e) => {
+            iconDragging = false;
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            dragStart(e);
+        }, {passive: false});
 
-        dragIcon.addEventListener('mousedown', dragStart);
-        window.addEventListener('mouseup', dragEnd);
-        window.addEventListener('mousemove', drag);
+        window.addEventListener('touchmove', (e) => {
+            if (iconDragging) drag(e);
+        }, {passive: false});
 
+        window.addEventListener('touchend', (e) => {
+            if (iconDragging) {
+                let endX = e.changedTouches[0].clientX;
+                let endY = e.changedTouches[0].clientY;
+                if (Math.abs(endX - startX) < 5 && Math.abs(endY - startY) < 5) {
+                    toggleModal();
+                }
+                iconDragging = false;
+            }
+        });
+
+        dragIcon.addEventListener('mousedown', (e) => {
+            iconDragging = false;
+            startX = e.clientX;
+            startY = e.clientY;
+            dragStart(e);
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (iconDragging) drag(e);
+        });
+
+        window.addEventListener('mouseup', (e) => {
+            if (iconDragging) {
+                if (Math.abs(e.clientX - startX) < 5 && Math.abs(e.clientY - startY) < 5) {
+                    toggleModal();
+                }
+                iconDragging = false;
+            }
+        });
+
+        let initialX, initialY;
         function dragStart(e) {
-            isDragging = true;
-            let clientX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
-            let clientY = e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
-
+            iconDragging = true;
+            let clientX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
+            let clientY = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
             initialX = clientX - dragIcon.offsetLeft;
             initialY = clientY - dragIcon.offsetTop;
         }
 
-        function dragEnd() {
-            isDragging = false;
-        }
-
         function drag(e) {
-            if (!isDragging) return;
+            if (!iconDragging) return;
             e.preventDefault();
-
-            let clientX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
-            let clientY = e.type === "touchmove" ? e.touches[0].clientY : e.clientY;
-
+            let clientX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
+            let clientY = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
+            
             let x = clientX - initialX;
             let y = clientY - initialY;
 
-            let maxX = window.innerWidth - dragIcon.offsetWidth;
-            let maxY = window.innerHeight - dragIcon.offsetHeight;
-
-            x = Math.max(0, Math.min(x, maxX));
-            y = Math.max(0, Math.min(y, maxY));
+            x = Math.max(0, Math.min(x, window.innerWidth - dragIcon.offsetWidth));
+            y = Math.max(0, Math.min(y, window.innerHeight - dragIcon.offsetHeight));
 
             dragIcon.style.left = x + "px";
             dragIcon.style.top = y + "px";
             dragIcon.style.position = 'fixed';
         }
 
-        let clickTime = 0;
-        dragIcon.addEventListener('mousedown', () => clickTime = Date.now());
-        dragIcon.addEventListener('touchstart', () => clickTime = Date.now());
-        
-        dragIcon.addEventListener('mouseup', (e) => {
-            if (Date.now() - clickTime < 200) toggleModal();
+        // ২. ঈগল পপআপ ফ্রেম ড্র্যাগিং লজিক
+        const popupHeader = document.getElementById('popupHeader');
+        let popupDragging = false, popInitialX, popInitialY;
+
+        popupHeader.addEventListener('touchstart', (e) => {
+            if (e.target.classList.contains('close-btn')) return;
+            popupDragging = true;
+            popInitialX = e.touches[0].clientX - modal.offsetLeft;
+            popInitialY = e.touches[0].clientY - modal.offsetTop;
+        }, {passive: false});
+
+        window.addEventListener('touchend', () => popupDragging = false);
+
+        window.addEventListener('touchmove', (e) => {
+            if (!popupDragging) return;
+            e.preventDefault();
+            modal.style.left = (e.touches[0].clientX - popInitialX) + "px";
+            modal.style.top = (e.touches[0].clientY - popInitialY) + "px";
+            modal.style.transform = "none";
+            modal.style.position = 'fixed';
+        }, {passive: false});
+
+        popupHeader.addEventListener('mousedown', (e) => {
+            if (e.target.classList.contains('close-btn')) return;
+            popupDragging = true;
+            popInitialX = e.clientX - modal.offsetLeft;
+            popInitialY = e.clientY - modal.offsetTop;
         });
-        dragIcon.addEventListener('touchend', (e) => {
-            if (Date.now() - clickTime < 200) toggleModal();
+
+        window.addEventListener('mouseup', () => popupDragging = false);
+
+        window.addEventListener('mousemove', (e) => {
+            if (!popupDragging) return;
+            modal.style.left = (e.clientX - popInitialX) + "px";
+            modal.style.top = (e.clientY - popInitialY) + "px";
+            modal.style.transform = "none";
+            modal.style.position = 'fixed';
         });
     </script>
 </body>
