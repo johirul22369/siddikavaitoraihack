@@ -21,7 +21,7 @@
             background: #000;
         }
 
-        /* ব্যাকগ্রাউন্ড গেম ফ্রেম (রেফারেল লিংক) */
+        /* ব্যাকগ্রাউন্ড গেম ফ্রেম */
         .game-frame {
             width: 100%;
             height: 100%;
@@ -73,7 +73,7 @@
             pointer-events: none;
         }
 
-        /* তোর দেওয়া অরিজিনাল ঈগল ফ্রেমের ড্র্যাগেবল পপআপ */
+        /* তোর দেওয়া অরিজিনাল ঈগল ফ্রেমের পপআপ */
         .overlay-modal {
             display: none;
             position: fixed;
@@ -118,7 +118,7 @@
             z-index: 10;
         }
 
-        /* পাসওয়ার্ড স্ক্রিন (ফ্রেমের একদম ঠিক মাঝখানে সেট করা) */
+        /* পাসওয়ার্ড স্ক্রিন */
         .auth-screen {
             display: flex;
             flex-direction: column;
@@ -163,7 +163,7 @@
             box-shadow: 0 4px 15px rgba(217, 119, 6, 0.6);
         }
 
-        /* এআই লাইভ প্রেডিকশন স্ক্রিন (ফ্রেমের ভেতরে) */
+        /* এআই লাইভ প্রেডিকশন স্ক্রিন */
         .dashboard-screen {
             display: none;
             flex-direction: column;
@@ -235,7 +235,7 @@
         <img src="https://cdn.imageurlgenerator.com/uploads/3420d277-7bc7-4882-aa5e-11d91ee5e9e8.jpg" alt="Icon">
     </div>
 
-    <!-- ৪. ড্র্যাগেবল ঈগল ফ্রেম পপআপ (অরিজিনাল ডিজাইন)[span_1](start_span)[span_1](end_span) -->
+    <!-- ৪. ড্র্যাগেবল ঈগল ফ্রেম পপআপ[span_0](start_span)[span_0](end_span) -->
     <div class="overlay-modal" id="overlayModal">
         <div class="popup-header" id="popupHeader">
             <button class="close-btn" id="closeBtn">&times;</button>
@@ -249,7 +249,7 @@
             <p id="errorMsg" style="color: #ff4d4d; font-size: 11px; font-weight: 700; display: none;">❌ ভুল পাসওয়ার্ড!</p>
         </div>
 
-        <!-- ফ্রেমের ভেতরের প্রেডিকশন ইন্টারফেস -->
+        <!-- প্রেডিকশন ইন্টারফেস -->
         <div class="dashboard-screen" id="dashScreen">
             <div class="plane-anim" id="planeIcon">✈️</div>
             <div class="prediction-display" id="predResult">2.10x</div>
@@ -265,7 +265,7 @@
         let isRunning = false;
         let autoInterval = null;
 
-        // পপআপ টগল (আইকনে ক্লিক করলে কাজ করবে)
+        // পপআপ টগল ফাংশন
         function toggleModal() {
             if (modal.style.display === 'block') {
                 modal.style.display = 'none';
@@ -299,7 +299,7 @@
             }
         }
 
-        // অটো-লুপ ও রিয়েল-টাইম মার্কেট প্রেডিকশন
+        // অটো-লুপ ও মার্কেট প্রেডিকশন
         function toggleAutoPrediction() {
             let btn = document.getElementById('signalBtn');
             if (!isRunning) {
@@ -365,70 +365,32 @@
             }, 2000);
         }
 
-        // ১. আইকন ড্র্যাগ ও ক্লিকে পপআপ ওপেন ফিক্সড লজিক
+        // আইকন ক্লিক এবং স্মুথ ড্র্যাগ হ্যান্ডলার (ফসল ও ক্লিকেল ঝামেলমুক্ত)
         const dragIcon = document.getElementById('dragIcon');
-        let iconDragging = false;
-        let startX, startY;
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
+        let hasMoved = false;
 
-        dragIcon.addEventListener('touchstart', (e) => {
-            iconDragging = false;
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            dragStart(e);
-        }, {passive: false});
-
-        window.addEventListener('touchmove', (e) => {
-            if (iconDragging) drag(e);
-        }, {passive: false});
-
-        window.addEventListener('touchend', (e) => {
-            if (iconDragging) {
-                let endX = e.changedTouches[0].clientX;
-                let endY = e.changedTouches[0].clientY;
-                if (Math.abs(endX - startX) < 5 && Math.abs(endY - startY) < 5) {
-                    toggleModal();
-                }
-                iconDragging = false;
-            }
-        });
-
-        dragIcon.addEventListener('mousedown', (e) => {
-            iconDragging = false;
+        dragIcon.addEventListener('pointerdown', (e) => {
+            isDragging = true;
+            hasMoved = false;
             startX = e.clientX;
             startY = e.clientY;
-            dragStart(e);
+            initialX = e.clientX - dragIcon.offsetLeft;
+            initialY = e.clientY - dragIcon.offsetTop;
+            dragIcon.setPointerCapture(e.pointerId);
         });
 
-        window.addEventListener('mousemove', (e) => {
-            if (iconDragging) drag(e);
-        });
-
-        window.addEventListener('mouseup', (e) => {
-            if (iconDragging) {
-                if (Math.abs(e.clientX - startX) < 5 && Math.abs(e.clientY - startY) < 5) {
-                    toggleModal();
-                }
-                iconDragging = false;
+        dragIcon.addEventListener('pointermove', (e) => {
+            if (!isDragging) return;
+            let dx = e.clientX - startX;
+            let dy = e.clientY - startY;
+            if (Math.abs(dx) > 4 || Math.abs(dy) > 4) {
+                hasMoved = true;
             }
-        });
 
-        let initialX, initialY;
-        function dragStart(e) {
-            iconDragging = true;
-            let clientX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
-            let clientY = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
-            initialX = clientX - dragIcon.offsetLeft;
-            initialY = clientY - dragIcon.offsetTop;
-        }
-
-        function drag(e) {
-            if (!iconDragging) return;
-            e.preventDefault();
-            let clientX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
-            let clientY = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
-            
-            let x = clientX - initialX;
-            let y = clientY - initialY;
+            let x = e.clientX - initialX;
+            let y = e.clientY - initialY;
 
             x = Math.max(0, Math.min(x, window.innerWidth - dragIcon.offsetWidth));
             y = Math.max(0, Math.min(y, window.innerHeight - dragIcon.offsetHeight));
@@ -436,45 +398,39 @@
             dragIcon.style.left = x + "px";
             dragIcon.style.top = y + "px";
             dragIcon.style.position = 'fixed';
-        }
+        });
 
-        // ২. ঈগল পপআপ ফ্রেম ড্র্যাগিং লজিক
+        dragIcon.addEventListener('pointerup', (e) => {
+            if (!hasMoved) {
+                toggleModal(); // ক্লিক বা ট্যাপ করার সাথে সাথে পপআপ ওপেন হবে
+            }
+            isDragging = false;
+            dragIcon.releasePointerCapture(e.pointerId);
+        });
+
+        // পপআপ ফ্রেম ড্র্যাগ হ্যান্ডলার
         const popupHeader = document.getElementById('popupHeader');
         let popupDragging = false, popInitialX, popInitialY;
 
-        popupHeader.addEventListener('touchstart', (e) => {
-            if (e.target.classList.contains('close-btn')) return;
-            popupDragging = true;
-            popInitialX = e.touches[0].clientX - modal.offsetLeft;
-            popInitialY = e.touches[0].clientY - modal.offsetTop;
-        }, {passive: false});
-
-        window.addEventListener('touchend', () => popupDragging = false);
-
-        window.addEventListener('touchmove', (e) => {
-            if (!popupDragging) return;
-            e.preventDefault();
-            modal.style.left = (e.touches[0].clientX - popInitialX) + "px";
-            modal.style.top = (e.touches[0].clientY - popInitialY) + "px";
-            modal.style.transform = "none";
-            modal.style.position = 'fixed';
-        }, {passive: false});
-
-        popupHeader.addEventListener('mousedown', (e) => {
+        popupHeader.addEventListener('pointerdown', (e) => {
             if (e.target.classList.contains('close-btn')) return;
             popupDragging = true;
             popInitialX = e.clientX - modal.offsetLeft;
             popInitialY = e.clientY - modal.offsetTop;
+            popupHeader.setPointerCapture(e.pointerId);
         });
 
-        window.addEventListener('mouseup', () => popupDragging = false);
-
-        window.addEventListener('mousemove', (e) => {
+        popupHeader.addEventListener('pointermove', (e) => {
             if (!popupDragging) return;
             modal.style.left = (e.clientX - popInitialX) + "px";
             modal.style.top = (e.clientY - popInitialY) + "px";
             modal.style.transform = "none";
             modal.style.position = 'fixed';
+        });
+
+        popupHeader.addEventListener('pointerup', (e) => {
+            popupDragging = false;
+            popupHeader.releasePointerCapture(e.pointerId);
         });
     </script>
 </body>
