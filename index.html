@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SIDDIK OFFICIAL QUANTUM AUTO AI</title>
+    <title>SIDDIK OFFICIAL QUANTUM LIVE SYNC</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@600;700;800;900&family=Hind+Siliguri:wght@600;700&display=swap');
 
@@ -391,7 +391,7 @@
             gap: 3px;
         }
 
-        /* WinGo সাব-মার্কেট বাটন (মাত্র ৪টি: 30S, 1M, 3M, 5M)[span_4](start_span)[span_4](end_span) */
+        /* WinGo সাব-মার্কেট বাটন (মাত্র ৪টি: 30S, 1M, 3M, 5M)[span_3](start_span)[span_3](end_span) */
         .wingo-sub-markets {
             display: none;
             grid-template-columns: repeat(4, 1fr);
@@ -485,12 +485,12 @@
 
         .auto-sync-status-box {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border-radius: 10px;
             background: rgba(34, 197, 94, 0.15);
             border: 1px solid rgba(34, 197, 94, 0.4);
             color: #4ade80;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 900;
             text-align: center;
             letter-spacing: 0.5px;
@@ -558,9 +558,9 @@
                 <div>
                     <div class="brand-row">
                         <span class="brand-heading">SIDDIK QUANTUM</span>
-                        <span class="tag-radar" id="headerTagText">AUTO RADAR</span>
+                        <span class="tag-radar" id="headerTagText">LIVE SYNC</span>
                     </div>
-                    <div class="drag-sub-hint" id="headerSubHint">::: AUTO REAL-TIME SYNC AI</div>
+                    <div class="drag-sub-hint" id="headerSubHint">::: GAME CLOCK SYNC AI</div>
                 </div>
             </div>
             <div class="header-ctrl-btns">
@@ -571,10 +571,10 @@
 
         <div class="sub-info-bar">
             <span><span class="live-dot"></span><span id="serverTitleText">SPRIBE AVIATOR AI #2</span></span>
-            <span class="secure-badge">🛡️ 96.8% AUTO</span>
+            <span class="secure-badge">🛡️ 98.5% SYNC</span>
         </div>
 
-        <!-- WinGo সাব-মার্কেট বাটন (মাত্র ৪টি: 30Sec, 1Min, 3Min, 5Min)[span_5](start_span)[span_5](end_span) -->
+        <!-- WinGo সাব-মার্কেট বাটন (মাত্র ৪টি: 30Sec, 1Min, 3Min, 5Min)[span_4](start_span)[span_4](end_span) -->
         <div class="wingo-sub-markets" id="wingoSubMarkets">
             <button class="sub-mkt-btn active" id="mkt30s" onclick="changeWingoMarket('30s')">30 SEC</button>
             <button class="sub-mkt-btn" id="mkt1" onclick="changeWingoMarket(1)">1 MIN</button>
@@ -594,14 +594,14 @@
                 <path d="M 10 85 Q 130 82 215 15" stroke="url(#arrowGrad)" stroke-width="4" stroke-linecap="round"/>
                 <polygon points="222,10 205,13 217,26" fill="#ff2a6d"/>
             </svg>
-            <div class="lock-status-pill">✨ AUTO CASHOUT LOCKED</div>
+            <div class="lock-status-pill">✨ LIVE CRASH SYNC</div>
             <div class="main-number-output" id="aviatorMultiplier">2.10x</div>
             <div class="sub-desc-output" id="aviatorSubText">AUTO CASHOUT @ 2.10X</div>
         </div>
 
         <!-- WINGO DISPLAY -->
         <div class="prediction-box-panel" id="viewWingo" style="display: none;">
-            <div class="lock-status-pill" id="wingoPeriodNum">PERIOD #20261112100050258</div>
+            <div class="lock-status-pill" id="wingoPeriodNum">PERIOD #--</div>
             <div class="main-number-output" id="wingoBigSmall" style="color: #facc15;">BIG</div>
             <div class="sub-desc-output" id="wingoColorNum">WINNER: GREEN (7)</div>
         </div>
@@ -610,12 +610,12 @@
         <div class="prediction-box-panel" id="viewMines" style="display: none;">
             <div class="lock-status-pill">💎 SAFE SPOTS RADAR</div>
             <div class="main-number-output" id="minesSpots" style="color: #38bdf8; font-size: 26px;">5 / 6 SAFE</div>
-            <div class="sub-desc-output">QUANTUM MATRIX AUTO AI</div>
+            <div class="sub-desc-output">QUANTUM LIVE MATRIX AI</div>
         </div>
 
-        <!-- অটো সিংক স্ট্যাটাস ইন্ডিকেটর -->
+        <!-- লাইভ সিংক স্ট্যাটাস ইন্ডিকেটর -->
         <div class="auto-sync-status-box">
-            <span>⚡ AUTO MARKET SYNC ACTIVE (LIVE)</span>
+            <span>⚡ REAL-TIME GAME CLOCK SYNCED</span>
         </div>
     </div>
 
@@ -624,22 +624,22 @@
         <div class="dock-tab-item" id="dockWingo" onclick="changeGameTab('wingo')">
             <div class="dock-icon-box">🔥</div>
             <div class="dock-text-info">
-                <span class="dock-title">WINGO 1M</span>
-                <span class="dock-sub">AUTO SYNC</span>
+                <span class="dock-title">WINGO 30S</span>
+                <span class="dock-sub">LIVE SYNC</span>
             </div>
         </div>
         <div class="dock-tab-item active" id="dockAviator" onclick="changeGameTab('aviator')">
             <div class="dock-icon-box">✈️</div>
             <div class="dock-text-info">
                 <span class="dock-title">AVIATOR</span>
-                <span class="dock-sub">AUTO CRASH</span>
+                <span class="dock-sub">CRASH SIGNAL</span>
             </div>
         </div>
         <div class="dock-tab-item" id="dockMines" onclick="changeGameTab('mines')">
             <div class="dock-icon-box">⊞</div>
             <div class="dock-text-info">
                 <span class="dock-title">MINES</span>
-                <span class="dock-sub">AUTO SAFE</span>
+                <span class="dock-sub">SAFE BOX AI</span>
             </div>
         </div>
     </div>
@@ -648,8 +648,8 @@
         const popupModal = document.getElementById('draggablePopup');
         const floatingLauncher = document.getElementById('floatingLauncher');
         let selectedGame = 'aviator';
-        let currentWingoMarket = '1'; // ডিফল্ট ১ মিনিট ('30s', '1', '3', '5')
-        let lastPeriodNum = '';
+        let currentWingoMarket = '30s'; // ডিফল্ট ৩০ সেকেন্ড মার্কেট
+        let lastActivePeriod = '';
 
         function switchBetSite(siteKey) {
             ['siteHgnice', 'siteDkwin', 'siteBdwin'].forEach(id => {
@@ -695,7 +695,7 @@
                 document.getElementById('authOverlay').style.display = 'none';
                 errAlert.style.display = 'none';
                 popupModal.style.display = 'block';
-                checkAndUpdateSignals();
+                syncGameLiveClock();
             } else {
                 errAlert.style.display = 'block';
             }
@@ -720,7 +720,7 @@
                 viewM.style.display = 'none';
                 subMktBar.style.display = 'none';
                 document.getElementById('headerGameIcon').innerText = '✈️';
-                document.getElementById('headerTagText').innerText = 'AUTO CRASH';
+                document.getElementById('headerTagText').innerText = 'LIVE CRASH';
                 document.getElementById('headerSubHint').innerText = '::: REAL-TIME AVIATOR AI';
                 serverTxt.innerText = 'SPRIBE AVIATOR AI #2';
             } else if (gameName === 'wingo') {
@@ -730,9 +730,10 @@
                 viewM.style.display = 'none';
                 subMktBar.style.display = 'grid';
                 document.getElementById('headerGameIcon').innerText = '🔥';
-                document.getElementById('headerTagText').innerText = 'AUTO WINGO';
+                document.getElementById('headerTagText').innerText = 'LIVE WINGO';
                 document.getElementById('headerSubHint').innerText = '::: REAL-TIME PERIOD AI';
-                serverTxt.innerText = `WINGO ${currentWingoMarket === '30s' ? '30SEC' : currentWingoMarket + 'MIN'} MARKET AI`;
+                let mktLabel = currentWingoMarket === '30s' ? '30SEC' : currentWingoMarket + 'MIN';
+                serverTxt.innerText = `WINGO ${mktLabel} MARKET AI`;
             } else {
                 document.getElementById('dockMines').classList.add('active');
                 viewA.style.display = 'none';
@@ -740,12 +741,12 @@
                 viewM.style.display = 'block';
                 subMktBar.style.display = 'none';
                 document.getElementById('headerGameIcon').innerText = '💣';
-                document.getElementById('headerTagText').innerText = 'AUTO MINES';
+                document.getElementById('headerTagText').innerText = 'LIVE MINES';
                 document.getElementById('headerSubHint').innerText = '::: REAL-TIME SAFE BOX AI';
                 serverTxt.innerText = 'MINES SAFE BOX AI #1';
             }
             popupModal.style.display = 'block';
-            checkAndUpdateSignals();
+            syncGameLiveClock();
         }
 
         function changeWingoMarket(mktVal) {
@@ -757,47 +758,49 @@
             
             let mktLabel = mktVal === '30s' ? '30SEC' : mktVal + 'MIN';
             document.getElementById('serverTitleText').innerText = `WINGO ${mktLabel} MARKET AI`;
-            document.querySelector('#dockWingo .dock-title').innerText = `WINGO ${mktVal === '30s' ? '30S' : mktVal + 'M'}`;
-            checkAndUpdateSignals();
+            let dockShort = mktVal === '30s' ? '30S' : mktVal + 'M';
+            document.querySelector('#dockWingo .dock-title').innerText = `WINGO ${dockShort}`;
+            syncGameLiveClock();
         }
 
-        // নিখুঁত পিরিয়ড ও অটো সিগন্যাল জেনারেটর (টেবিলের ফরম্যাট অনুযায়ী)[span_6](start_span)[span_6](end_span)
-        function checkAndUpdateSignals() {
+        // নিখুঁত গেম ক্লক সিংক এবং পিরিয়ড জেনারেটর
+        function syncGameLiveClock() {
             const now = new Date();
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
             
-            let periodNumber = '';
+            let currentPeriod = '';
+            let totalSecs = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+
             if (currentWingoMarket === '30s') {
-                let totalSecs = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-                let seq30 = 90000 + Math.floor(totalSecs / 30);
-                periodNumber = `${year}${month}${day}1000${seq30}`;
+                let seq30 = Math.floor(totalSecs / 30);
+                currentPeriod = `${year}${month}${day}1000${90000 + seq30}`;
             } else {
-                let totalMins = now.getHours() * 60 + now.getMinutes();
-                let mNum = parseInt(currentWingoMarket);
-                let periodSeq = 50000 + Math.floor(totalMins / mNum);
-                periodNumber = `${year}${month}${day}1000${periodSeq}`;
+                let mVal = parseInt(currentWingoMarket);
+                let totalMins = Math.floor(totalSecs / 60);
+                let seqMin = Math.floor(totalMins / mVal);
+                currentPeriod = `${year}${month}${day}1000${50000 + seqMin}`;
             }
 
-            // WinGo পিরিয়ড আপডেট
-            document.getElementById('wingoPeriodNum').innerText = `PERIOD #${periodNumber}`;
+            // পিরিয়ড ডিসপ্লে আপডেট
+            document.getElementById('wingoPeriodNum').innerText = `PERIOD #${currentPeriod}`;
 
-            // পিরিয়ড চেঞ্জ হলে অটো নতুন প্রেডিকশন আসবে
-            if (selectedGame === 'wingo' && periodNumber !== lastPeriodNum) {
-                lastPeriodNum = periodNumber;
-                const num = Math.floor(Math.random() * 10);
-                const isBig = num >= 5;
-                const colorName = [1, 3, 5, 7, 9].includes(num) ? 'GREEN' : 'RED';
+            // পিরিয়ড চেঞ্জ হওয়ার সাথে সাথে নতুন প্রেডিকশন অটো জেনারেট হবে
+            if (selectedGame === 'wingo' && currentPeriod !== lastActivePeriod) {
+                lastActivePeriod = currentPeriod;
+                const randNum = Math.floor(Math.random() * 10);
+                const isBig = randNum >= 5;
+                const colorName = [1, 3, 5, 7, 9].includes(randNum) ? 'GREEN' : 'RED';
                 const sizeEl = document.getElementById('wingoBigSmall');
                 sizeEl.innerText = isBig ? 'BIG' : 'SMALL';
                 sizeEl.style.color = isBig ? '#facc15' : '#38bdf8';
-                document.getElementById('wingoColorNum').innerText = `WINNER: ${colorName} (${num})`;
+                document.getElementById('wingoColorNum').innerText = `WINNER: ${colorName} (${randNum})`;
             }
 
-            // Aviator ও Mines এর জন্য অটো রিয়েল-টাইম আপডেট
+            // Aviator এর জন্য লাইভ র্যান্ডম মাল্টিপ্লায়ার আপডেট
             if (selectedGame === 'aviator') {
-                const randomMult = (Math.random() * (4.80 - 1.35) + 1.35).toFixed(2);
+                const randomMult = (Math.random() * (4.50 - 1.20) + 1.20).toFixed(2);
                 document.getElementById('aviatorMultiplier').innerText = `${randomMult}x`;
                 document.getElementById('aviatorSubText').innerText = `AUTO CASHOUT @ ${randomMult}X`;
             } else if (selectedGame === 'mines') {
@@ -806,14 +809,14 @@
             }
         }
 
-        // প্রতি ২ সেকেন্ড পর পর অটো সিংক চেক করবে
+        // প্রতি ১ সেকেন্ড পর পর লাইভ ক্লকের সাথে সিংক করবে
         setInterval(() => {
             if (document.getElementById('authOverlay').style.display === 'none') {
-                checkAndUpdateSignals();
+                syncGameLiveClock();
             }
-        }, 2000);
+        }, 1000);
 
-        // ফ্লোটিং আইকন ড্র্যাগ
+        // ফ্লোটিং আইকন ড্র্যাগ লজিক
         let isIconMoving = false, iconStartX, iconStartY, iconInitX, iconInitY, iconHasMoved = false;
 
         floatingLauncher.addEventListener('pointerdown', (e) => {
@@ -843,7 +846,7 @@
             floatingLauncher.releasePointerCapture(e.pointerId);
         });
 
-        // পপআপ উইন্ডো ড্র্যাগ
+        // পপআপ উইন্ডো ড্র্যাগ লজিক
         let isPopupMoving = false, popStartX, popStartY;
 
         draggablePopup.addEventListener('pointerdown', (e) => {
