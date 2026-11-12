@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SIDDIK OFFICIAL ORIGINAL AI HACK PRO</title>
+    <title>SIDDIK OFFICIAL QUANTUM AI HACK PRO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@600;700;800;900&family=Hind+Siliguri:wght@600;700&display=swap');
 
@@ -20,31 +20,186 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #000;
+            background: #07080c;
         }
 
-        /* ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম ফ্রেম */
+        /* ১. টপ বার (স্ক্রিনশটের মতো HGNICE, DKWIN, BDWIN সুইচার) */
+        .top-site-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 46px;
+            background: rgba(11, 13, 20, 0.96);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            z-index: 99990;
+            backdrop-filter: blur(8px);
+        }
+
+        .top-left-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            border: 1px solid #ffd700;
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .site-pills-group {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .site-pill {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 800;
+            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+
+        .site-pill.active {
+            background: linear-gradient(135deg, #facc15, #eab308);
+            color: #000;
+            border-color: #fef08a;
+            box-shadow: 0 0 12px rgba(250, 204, 21, 0.5);
+        }
+
+        .top-right-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .top-icon-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #94a3b8;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* ২. ব্যাকগ্রাউন্ড গেম ফ্রেম (টপ ও বটম বারের মাঝখানে) */
         .game-frame {
             width: 100%;
-            height: 100%;
+            height: calc(100% - 106px);
             border: none;
             position: absolute;
-            top: 0;
+            top: 46px;
             left: 0;
             z-index: 1;
         }
 
-        /* ফ্লোটিং ড্র্যাগেবল লঞ্চার আইকন (স্ক্রিনশটের স্টাইল) */
+        /* ৩. বটম নেভিগেশন ডক (স্ক্রিনশটের নিচের ৩টি ট্যাব) */
+        .bottom-game-dock {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #0a0c12;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            padding: 6px 8px;
+            z-index: 99990;
+        }
+
+        .dock-tab-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .dock-tab-item.active {
+            background: linear-gradient(135deg, rgba(255, 42, 109, 0.22), rgba(255, 123, 0, 0.15));
+            border: 1.5px solid #ff2a6d;
+            box-shadow: 0 0 15px rgba(255, 42, 109, 0.35);
+        }
+
+        .dock-icon-box {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .dock-tab-item.active .dock-icon-box {
+            background: rgba(255, 42, 109, 0.25);
+            color: #ff2a6d;
+        }
+
+        .dock-text-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .dock-title {
+            font-size: 10px;
+            font-weight: 900;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .dock-tab-item.active .dock-title {
+            color: #ff7b00;
+        }
+
+        .dock-sub {
+            font-size: 7.5px;
+            font-weight: 700;
+            color: #64748b;
+            white-space: nowrap;
+        }
+
+        /* ৪. ফ্লোটিং ড্র্যাগেবল লঞ্চার আইকন */
         .floating-launcher {
             position: fixed;
-            top: 140px;
-            right: 15px;
-            width: 58px;
-            height: 58px;
+            top: 60px;
+            left: 12px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             border: 2px solid #ffd700;
             background: radial-gradient(circle, #2b1d0c 0%, #000 100%);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.75);
             z-index: 99999;
             cursor: pointer;
             overflow: hidden;
@@ -61,7 +216,7 @@
             pointer-events: none;
         }
 
-        /* ভিআইপি পাসওয়ার্ড ওভারলে (একদম পরিষ্কার খালি বক্স) */
+        /* ৫. ভিআইপি পাসওয়ার্ড ওভারলে */
         .auth-overlay-screen {
             position: fixed;
             inset: 0;
@@ -103,7 +258,249 @@
             font-size: 13px;
         }
 
-        .btn-core {
+        /* ৬. মূল ড্র্যাগেবল পপআপ উইন্ডো (স্ক্রিনশটের হুবহু Quantum প্যানেল) */
+        .draggable-popup-modal {
+            display: none;
+            position: fixed;
+            top: 62px;
+            right: 12px;
+            width: 295px;
+            background: linear-gradient(180deg, #130b18 0%, #0a060e 100%);
+            border: 1.5px solid #e11d48;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 180, 0, 0.25);
+            z-index: 99998;
+            padding: 10px;
+            color: #fff;
+            touch-action: none;
+        }
+
+        /* পপআপ হেডার */
+        .popup-drag-header {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 6px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            cursor: move;
+        }
+
+        .header-left-wrap {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            pointer-events: none;
+        }
+
+        .header-app-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 7px;
+            background: rgba(255, 42, 109, 0.18);
+            border: 1px solid rgba(255, 42, 109, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+        }
+
+        .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .brand-heading {
+            font-size: 10px;
+            font-weight: 900;
+            color: #f8fafc;
+            letter-spacing: 0.4px;
+        }
+
+        .tag-radar {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            font-size: 7px;
+            padding: 1.5px 5px;
+            border-radius: 4px;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            font-weight: 800;
+        }
+
+        .drag-sub-hint {
+            font-size: 7px;
+            color: #94a3b8;
+            font-weight: 700;
+            margin-top: 1px;
+        }
+
+        .header-ctrl-btns {
+            display: flex;
+            gap: 4px;
+        }
+
+        .mini-ctrl-btn {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #cbd5e1;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* সার্ভার ও সেফটি স্ট্যাটাস বার */
+        .sub-info-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 9px;
+            font-weight: 800;
+            color: #e2e8f0;
+            padding: 2px 4px 6px 4px;
+        }
+
+        .live-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ff2a6d;
+            box-shadow: 0 0 8px #ff2a6d;
+            margin-right: 4px;
+        }
+
+        .secure-badge {
+            color: #4ade80;
+            font-size: 8.5px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* WinGo সাব-মার্কেট বার (শুধুমাত্র WinGo সিলেক্ট করলে দেখাবে) */
+        .wingo-sub-markets {
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 6px;
+        }
+
+        .sub-mkt-btn {
+            padding: 4px 2px;
+            border-radius: 5px;
+            border: none;
+            background: transparent;
+            color: #94a3b8;
+            font-size: 8px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .sub-mkt-btn.active {
+            background: #ff2a6d;
+            color: #fff;
+        }
+
+        /* প্রেডিকশন ডিসপ্লে বক্স (স্ক্রিনশটের গ্রিড + কার্ভড রেড অ্যারো স্টাইল) */
+        .prediction-box-panel {
+            position: relative;
+            background-color: #160912;
+            background-image: 
+                linear-gradient(rgba(255, 42, 109, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 42, 109, 0.12) 1px, transparent 1px),
+                radial-gradient(circle at center, rgba(136, 19, 55, 0.55) 0%, rgba(10, 5, 12, 0.95) 100%);
+            background-size: 18px 18px, 18px 18px, 100% 100%;
+            border: 1px solid rgba(255, 42, 109, 0.45);
+            border-radius: 12px;
+            padding: 14px 8px 16px 8px;
+            text-align: center;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        /* কার্ভড অ্যারো SVG ব্যাকগ্রাউন্ড */
+        .graph-arrow-svg {
+            position: absolute;
+            bottom: 8px;
+            left: 5%;
+            width: 90%;
+            height: 75%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.85;
+        }
+
+        .lock-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fbcfe8;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 8px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .main-number-output {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 42, 109, 0.95);
+            margin: 2px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sub-desc-output {
+            font-size: 8.5px;
+            color: #fda4af;
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        /* গেট সিগন্যাল বাটন (স্ক্রিনশটের পিংক-অরেঞ্জ গ্র্যাডিয়েন্ট) */
+        .btn-signal-action {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(90deg, #ff1e56 0%, #ff5722 60%, #ff9800 100%);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(255, 30, 86, 0.5);
+            transition: transform 0.1s;
+        }
+
+        .btn-signal-action:active {
+            transform: scale(0.97);
+        }
+
+        .btn-unlock-core {
             width: 100%;
             padding: 13px;
             border-radius: 12px;
@@ -112,300 +509,135 @@
             color: #fff;
             font-size: 14px;
             font-weight: 900;
-            letter-spacing: 1px;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(255, 30, 86, 0.45);
-        }
-
-        /* মূল প্রিমিয়াম ড্র্যাগেবল পপআপ উইন্ডো (স্ক্রিনশটের হুবহু লেআউট)[span_2](start_span)[span_2](end_span) */
-        .draggable-popup-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 94%;
-            max-width: 380px;
-            background: linear-gradient(160deg, #120914 0%, #060208 100%);
-            border: 2px solid #ff2a6d;
-            border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 42, 109, 0.3);
-            z-index: 99998;
-            padding: 12px;
-            color: #fff;
-            touch-action: none;
-        }
-
-        /* টপ ড্র্যাগ হেডার (স্ক্রিনশট স্টাইল)[span_3](start_span)[span_3](end_span) */
-        .popup-drag-header {
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 42, 109, 0.35);
-            border-radius: 12px;
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            cursor: move;
-        }
-
-        .header-title-flex {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            pointer-events: none;
-        }
-
-        .brand-heading {
-            font-size: 11px;
-            font-weight: 900;
-            color: #ff2a6d;
-            letter-spacing: 0.5px;
-        }
-
-        .tag-radar {
-            background: rgba(56, 189, 248, 0.2);
-            color: #38bdf8;
-            font-size: 8px;
-            padding: 2px 6px;
-            border-radius: 5px;
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            font-weight: 800;
-        }
-
-        .close-pop-btn {
-            background: none;
-            border: none;
-            color: #ff4d4d;
-            font-size: 20px;
-            font-weight: 900;
-            cursor: pointer;
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .popup-inner-body {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        /* গেম মোড ট্যাব (স্ক্রিনশটের হুবহু তিন বাটন: Aviator, Wingo, Mines)[span_4](start_span)[span_4](end_span) */
-        .mod-tabs-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 4px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .mod-tab-btn {
-            padding: 7px 4px;
-            border-radius: 9px;
-            border: none;
-            background: transparent;
-            color: #94a3b8;
-            font-size: 10px;
-            font-weight: 900;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-        .mod-tab-btn.active {
-            background: linear-gradient(135deg, #ff2a6d, #ff7b00);
-            color: #fff;
-            box-shadow: 0 0 12px rgba(255, 42, 109, 0.6);
-        }
-
-        /* WinGo সাব-মার্কেট বার (1Min, 3Min, 5Min, 10Min) */
-        .wingo-sub-markets {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 4px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .sub-mkt-btn {
-            padding: 5px 2px;
-            border-radius: 7px;
-            border: none;
-            background: rgba(0,0,0,0.5);
-            color: #94a3b8;
-            font-size: 9px;
-            font-weight: 800;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .sub-mkt-btn.active {
-            background: #38bdf8;
-            color: #000;
-            font-weight: 900;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
-        }
-
-        .sub-info-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 11px;
-            font-weight: 800;
-            color: #cbd5e1;
-            padding: 0 4px;
-        }
-
-        .secure-badge {
-            color: #4ade80;
-            background: rgba(74, 222, 128, 0.15);
-            padding: 2px 8px;
-            border-radius: 6px;
-            border: 1px solid rgba(74, 222, 128, 0.3);
-            font-size: 9px;
-        }
-
-        /* প্রেডিকশন ডিসপ্লে বক্স (স্ক্রিনশটের স্টাইল অনুযায়ী নিখুঁত ফন্ট ও মার্জিন)[span_5](start_span)[span_5](end_span) */
-        .prediction-box-panel {
-            position: relative;
-            background: radial-gradient(circle, rgba(45, 10, 30, 0.95) 0%, rgba(6, 2, 12, 0.98) 100%);
-            border: 1.5px solid rgba(255, 42, 109, 0.45);
-            border-radius: 16px;
-            padding: 16px 10px;
-            text-align: center;
-            overflow: hidden;
-            box-shadow: inset 0 0 25px rgba(0,0,0,0.85);
-        }
-
-        .graph-wave-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 70%;
-            background: linear-gradient(to top, rgba(255, 42, 109, 0.35), transparent);
-            clip-path: polygon(0 100%, 15% 75%, 35% 65%, 60% 45%, 80% 25%, 100% 5%, 100% 100%);
-        }
-
-        .lock-status-pill {
-            display: inline-block;
-            background: rgba(255, 215, 0, 0.15);
-            color: #ffd700;
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 900;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 2;
-            letter-spacing: 0.5px;
-        }
-
-        .main-number-output {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 42px;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 25px rgba(255, 42, 109, 0.9);
-            margin: 4px 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .sub-desc-output {
-            font-size: 11px;
-            color: #38bdf8;
-            font-weight: 800;
-            position: relative;
-            z-index: 2;
-            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- ১. ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম -->
-    <iframe class="game-frame" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
+    <!-- ১. স্ক্রিনশটের মতো টপ সাইট সুইচার বার -->
+    <div class="top-site-bar">
+        <div class="top-left-badge" onclick="togglePopupModal()">✨</div>
+        <div class="site-pills-group">
+            <button class="site-pill active" id="siteHgnice" onclick="switchBetSite('hgnice')">🌐 HGNICE ◉</button>
+            <button class="site-pill" id="siteDkwin" onclick="switchBetSite('dkwin')">🌐 DKWIN</button>
+            <button class="site-pill" id="siteBdwin" onclick="switchBetSite('bdwin')">🌐 BDWIN</button>
+        </div>
+        <div class="top-right-actions">
+            <button class="top-icon-btn" onclick="reloadGameFrame()" title="Reload">↻</button>
+            <button class="top-icon-btn" onclick="lockSystem()" title="Lock">🔒</button>
+        </div>
+    </div>
 
-    <!-- ২. ফ্লোটিং ড্র্যাগেবল আইকন -->
+    <!-- ২. ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম -->
+    <iframe class="game-frame" id="gameIframe" src="https://hgnice.bet/#/register?invitationCode=68758106622"></iframe>
+
+    <!-- ৩. ফ্লোটিং ড্র্যাগেবল আইকন -->
     <div class="floating-launcher" id="floatingLauncher">
         <img src="https://cdn.imageurlgenerator.com/uploads/3420d277-7bc7-4882-aa5e-11d91ee5e9e8.jpg" alt="AI">
     </div>
 
-    <!-- ৩. ভিআইপি পাসওয়ার্ড স্ক্রিন (খালি বক্স) -->
+    <!-- ৪. ভিআইপি পাসওয়ার্ড স্ক্রিন -->
     <div class="auth-overlay-screen" id="authOverlay">
         <div class="auth-panel-box">
             <div style="font-size: 36px; margin-bottom: 8px;">👑</div>
-            <div style="font-size: 15px; font-weight: 900; color: #ffd700; letter-spacing: 0.5px;">SIDDIK OFFICIAL ORIGINAL AI HACK</div>
+            <div style="font-size: 15px; font-weight: 900; color: #ffd700; letter-spacing: 0.5px;">SIDDIK OFFICIAL QUANTUM AI</div>
             <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; margin-bottom: 18px;">ভিআইপি সিস্টেম আনলক করতে পাসওয়ার্ড লিখুন</div>
             <input type="password" id="passInputField" class="pass-input-field" placeholder="Enter VIP Password..." autocomplete="off">
-            <button class="btn-core" onclick="verifyVipPassword()">🔓 UNLOCK VIP SYSTEM</button>
+            <button class="btn-unlock-core" onclick="verifyVipPassword()">🔓 UNLOCK VIP SYSTEM</button>
             <p id="errorAlertText" style="color: #f87171; font-size: 11px; font-weight: 700; margin-top: 12px; display: none;">❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।</p>
         </div>
     </div>
 
-    <!-- ৪. ড্র্যাগেবল হ্যাক পপআপ উইন্ডো (স্ক্রিনশট স্টাইল)[span_6](start_span)[span_6](end_span) -->
+    <!-- ৫. ড্র্যাগেবল পপআপ উইন্ডো (স্ক্রিনশট লেআউট) -->
     <div class="draggable-popup-modal" id="draggablePopup">
         
         <div class="popup-drag-header" id="popupHeader">
-            <div class="header-title-flex">
-                <span class="brand-heading">SPRIBETOR AI</span>
-                <span class="tag-radar">CRASH RADAR</span>
+            <div class="header-left-wrap">
+                <div class="header-app-icon" id="headerGameIcon">✈️</div>
+                <div>
+                    <div class="brand-row">
+                        <span class="brand-heading">SIDDIK QUANTUM</span>
+                        <span class="tag-radar" id="headerTagText">CRASH RADAR</span>
+                    </div>
+                    <div class="drag-sub-hint" id="headerSubHint">::: DRAG PANEL • AVIATOR PRO AI</div>
+                </div>
             </div>
-            <button class="close-pop-btn" onclick="togglePopupModal()">&times;</button>
+            <div class="header-ctrl-btns">
+                <button class="mini-ctrl-btn" onclick="resetPopupPosition()" title="Reset Position">↻</button>
+                <button class="mini-ctrl-btn" onclick="togglePopupModal()" title="Minimize">↙</button>
+            </div>
         </div>
 
-        <div class="popup-inner-body">
-            
-            <div class="mod-tabs-grid">
-                <button class="mod-tab-btn active" id="tabAviator" onclick="changeGameTab('aviator')">✈️ AVIATOR</button>
-                <button class="mod-tab-btn" id="tabWingo" onclick="changeGameTab('wingo')">🎯 WINGO</button>
-                <button class="mod-tab-btn" id="tabMines" onclick="changeGameTab('mines')">💣 MINES</button>
-            </div>
+        <div class="sub-info-bar">
+            <span><span class="live-dot"></span><span id="serverTitleText">SPRIBE AVIATOR AI #2</span></span>
+            <span class="secure-badge">🛡️ 96.2% SAFE</span>
+        </div>
 
-            <div class="wingo-sub-markets" id="wingoSubMarkets" style="display: none;">
-                <button class="sub-mkt-btn active" id="mkt1" onclick="changeWingoMarket(1)">1 MIN</button>
-                <button class="sub-mkt-btn" id="mkt3" onclick="changeWingoMarket(3)">3 MIN</button>
-                <button class="sub-mkt-btn" id="mkt5" onclick="changeWingoMarket(5)">5 MIN</button>
-                <button class="sub-mkt-btn" id="mkt10" onclick="changeWingoMarket(10)">10 MIN</button>
-            </div>
+        <!-- WinGo সাব-মার্কেট বাটন -->
+        <div class="wingo-sub-markets" id="wingoSubMarkets">
+            <button class="sub-mkt-btn active" id="mkt1" onclick="changeWingoMarket(1)">1 MIN</button>
+            <button class="sub-mkt-btn" id="mkt3" onclick="changeWingoMarket(3)">3 MIN</button>
+            <button class="sub-mkt-btn" id="mkt5" onclick="changeWingoMarket(5)">5 MIN</button>
+            <button class="sub-mkt-btn" id="mkt10" onclick="changeWingoMarket(10)">10 MIN</button>
+        </div>
 
-            <div class="sub-info-bar">
-                <span id="serverTitleText">SPRIBE AVIATOR AI #2</span>
-                <span class="secure-badge">🛡️ 96.8% SAFE</span>
-            </div>
+        <!-- AVIATOR DISPLAY -->
+        <div class="prediction-box-panel" id="viewAviator">
+            <svg class="graph-arrow-svg" viewBox="0 0 240 100" fill="none">
+                <defs>
+                    <linearGradient id="arrowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ff2a6d" stop-opacity="0.2"/>
+                        <stop offset="100%" stop-color="#ff2a6d" stop-opacity="1"/>
+                    </linearGradient>
+                </defs>
+                <path d="M 10 85 Q 130 82 215 15" stroke="url(#arrowGrad)" stroke-width="4" stroke-linecap="round"/>
+                <polygon points="222,10 205,13 217,26" fill="#ff2a6d"/>
+            </svg>
+            <div class="lock-status-pill">✨ CASHOUT LOCKED</div>
+            <div class="main-number-output" id="aviatorMultiplier">2.10x</div>
+            <div class="sub-desc-output" id="aviatorSubText">AUTO CASHOUT @ 2.10X</div>
+        </div>
 
-            <!-- AVIATOR DISPLAY -->
-            <div class="prediction-box-panel" id="viewAviator">
-                <div class="graph-wave-line"></div>
-                <div class="lock-status-pill">✨ CASHOUT LOCKED</div>
-                <div class="main-number-output" id="aviatorMultiplier">2.10x</div>
-                <div class="sub-desc-output" id="aviatorSubText">AUTO CASHOUT @ 2.10X</div>
-            </div>
+        <!-- WINGO DISPLAY -->
+        <div class="prediction-box-panel" id="viewWingo" style="display: none;">
+            <div class="lock-status-pill" id="wingoPeriodNum">PERIOD #202611120475</div>
+            <div class="main-number-output" id="wingoBigSmall" style="color: #facc15;">BIG</div>
+            <div class="sub-desc-output" id="wingoColorNum">WINNER: GREEN (7)</div>
+        </div>
 
-            <!-- WINGO DISPLAY -->
-            <div class="prediction-box-panel" id="viewWingo" style="display: none;">
-                <div class="lock-status-pill" id="wingoPeriodNum">PERIOD #202611120475</div>
-                <div class="main-number-output" id="wingoBigSmall" style="color: #facc15;">BIG</div>
-                <div class="sub-desc-output" id="wingoColorNum">WINNER: GREEN (7)</div>
-            </div>
+        <!-- MINES DISPLAY -->
+        <div class="prediction-box-panel" id="viewMines" style="display: none;">
+            <div class="lock-status-pill">💎 SAFE SPOTS RADAR</div>
+            <div class="main-number-output" id="minesSpots" style="color: #38bdf8; font-size: 26px;">5 / 6 SAFE</div>
+            <div class="sub-desc-output">QUANTUM MATRIX AI</div>
+        </div>
 
-            <!-- MINES DISPLAY -->
-            <div class="prediction-box-panel" id="viewMines" style="display: none;">
-                <div class="lock-status-pill">💎 SAFE SPOTS RADAR</div>
-                <div class="main-number-output" id="minesSpots" style="color: #38bdf8; font-size: 30px;">5 / 6 SAFE</div>
-                <div class="sub-desc-output">SPRIBETOR MATRIX AI</div>
-            </div>
+        <button class="btn-signal-action" id="fetchSignalBtn" onclick="fetchNewSignal()">⚡ GET SIGNAL</button>
+    </div>
 
-            <button class="btn-core" id="fetchSignalBtn" onclick="fetchNewSignal()">⚡ GET SIGNAL ⚡</button>
+    <!-- ৬. স্ক্রিনশটের মতো বটম নেভিগেশন ডক বার -->
+    <div class="bottom-game-dock">
+        <div class="dock-tab-item" id="dockWingo" onclick="changeGameTab('wingo')">
+            <div class="dock-icon-box">🔥</div>
+            <div class="dock-text-info">
+                <span class="dock-title">WINGO 1M</span>
+                <span class="dock-sub">SIZE + 2 NOS</span>
+            </div>
+        </div>
+        <div class="dock-tab-item active" id="dockAviator" onclick="changeGameTab('aviator')">
+            <div class="dock-icon-box">✈️</div>
+            <div class="dock-text-info">
+                <span class="dock-title">AVIATOR</span>
+                <span class="dock-sub">CRASH SIGNAL</span>
+            </div>
+        </div>
+        <div class="dock-tab-item" id="dockMines" onclick="changeGameTab('mines')">
+            <div class="dock-icon-box">⊞</div>
+            <div class="dock-text-info">
+                <span class="dock-title">MINES</span>
+                <span class="dock-sub">5/6 SAFE BOX</span>
+            </div>
         </div>
     </div>
 
@@ -415,12 +647,42 @@
         let selectedGame = 'aviator';
         let currentWingoMin = 1;
 
-        function togglePopupModal() {
-            if (popupModal.style.display === 'block') {
-                popupModal.style.display = 'none';
+        // সাইট লিংক পরিবর্তন ফাংশন
+        function switchBetSite(siteKey) {
+            ['siteHgnice', 'siteDkwin', 'siteBdwin'].forEach(id => {
+                document.getElementById(id).classList.remove('active');
+            });
+            const iframe = document.getElementById('gameIframe');
+            if (siteKey === 'hgnice') {
+                document.getElementById('siteHgnice').classList.add('active');
+                iframe.src = 'https://hgnice.bet/#/register?invitationCode=68758106622';
+            } else if (siteKey === 'dkwin') {
+                document.getElementById('siteDkwin').classList.add('active');
+                iframe.src = 'https://dkwin.bet';
             } else {
-                popupModal.style.display = 'block';
+                document.getElementById('siteBdwin').classList.add('active');
+                iframe.src = 'https://bdwin.bet';
             }
+        }
+
+        function reloadGameFrame() {
+            const iframe = document.getElementById('gameIframe');
+            iframe.src = iframe.src;
+        }
+
+        function lockSystem() {
+            document.getElementById('authOverlay').style.display = 'flex';
+            document.getElementById('passInputField').value = '';
+        }
+
+        function togglePopupModal() {
+            popupModal.style.display = (popupModal.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function resetPopupPosition() {
+            popupModal.style.left = 'auto';
+            popupModal.style.right = '12px';
+            popupModal.style.top = '62px';
         }
 
         function verifyVipPassword() {
@@ -428,6 +690,7 @@
             const errAlert = document.getElementById('errorAlertText');
             if (inputVal === 'siddik58') {
                 document.getElementById('authOverlay').style.display = 'none';
+                errAlert.style.display = 'none';
                 popupModal.style.display = 'block';
                 updateWingoAccuratePeriod();
             } else {
@@ -437,9 +700,9 @@
 
         function changeGameTab(gameName) {
             selectedGame = gameName;
-            document.getElementById('tabAviator').classList.remove('active');
-            document.getElementById('tabWingo').classList.remove('active');
-            document.getElementById('tabMines').classList.remove('active');
+            ['dockAviator', 'dockWingo', 'dockMines'].forEach(id => {
+                document.getElementById(id).classList.remove('active');
+            });
 
             const viewA = document.getElementById('viewAviator');
             const viewW = document.getElementById('viewWingo');
@@ -448,28 +711,38 @@
             const subMktBar = document.getElementById('wingoSubMarkets');
 
             if (gameName === 'aviator') {
-                document.getElementById('tabAviator').classList.add('active');
+                document.getElementById('dockAviator').classList.add('active');
                 viewA.style.display = 'block';
                 viewW.style.display = 'none';
                 viewM.style.display = 'none';
                 subMktBar.style.display = 'none';
+                document.getElementById('headerGameIcon').innerText = '✈️';
+                document.getElementById('headerTagText').innerText = 'CRASH RADAR';
+                document.getElementById('headerSubHint').innerText = '::: DRAG PANEL • AVIATOR PRO AI';
                 serverTxt.innerText = 'SPRIBE AVIATOR AI #2';
             } else if (gameName === 'wingo') {
-                document.getElementById('tabWingo').classList.add('active');
+                document.getElementById('dockWingo').classList.add('active');
                 viewA.style.display = 'none';
                 viewW.style.display = 'block';
                 viewM.style.display = 'none';
                 subMktBar.style.display = 'grid';
+                document.getElementById('headerGameIcon').innerText = '🔥';
+                document.getElementById('headerTagText').innerText = 'WINGO RADAR';
+                document.getElementById('headerSubHint').innerText = '::: DRAG PANEL • WINGO NUMBER AI';
                 serverTxt.innerText = `WINGO ${currentWingoMin}MIN MARKET AI`;
                 updateWingoAccuratePeriod();
             } else {
-                document.getElementById('tabMines').classList.add('active');
+                document.getElementById('dockMines').classList.add('active');
                 viewA.style.display = 'none';
                 viewW.style.display = 'none';
                 viewM.style.display = 'block';
                 subMktBar.style.display = 'none';
-                serverTxt.innerText = 'MINES SAFE BOX AI';
+                document.getElementById('headerGameIcon').innerText = '💣';
+                document.getElementById('headerTagText').innerText = 'MINES RADAR';
+                document.getElementById('headerSubHint').innerText = '::: DRAG PANEL • SAFE BOX AI';
+                serverTxt.innerText = 'MINES SAFE BOX AI #1';
             }
+            popupModal.style.display = 'block';
         }
 
         function changeWingoMarket(minVal) {
@@ -479,27 +752,24 @@
             });
             document.getElementById('mkt' + minVal).classList.add('active');
             document.getElementById('serverTitleText').innerText = `WINGO ${minVal}MIN MARKET AI`;
+            document.querySelector('#dockWingo .dock-title').innerText = `WINGO ${minVal}M`;
             updateWingoAccuratePeriod();
         }
 
-        // WinGo রিয়েল-টাইম নিখুঁত পিরিয়ড নাম্বার জেনারেটর (স্ক্রিনশট স্টাইল মিল রেখে)
         function updateWingoAccuratePeriod() {
             const now = new Date();
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
-            
             let totalMins = now.getHours() * 60 + now.getMinutes();
             let periodSeq = Math.floor(totalMins / currentWingoMin) + 500;
-            
-            let periodNumber = `${year}${month}${day}0${periodSeq}`;
-            document.getElementById('wingoPeriodNum').innerText = `PERIOD #${periodNumber}`;
+            document.getElementById('wingoPeriodNum').innerText = `PERIOD #${year}${month}${day}0${periodSeq}`;
         }
 
         function fetchNewSignal() {
             const btn = document.getElementById('fetchSignalBtn');
             btn.disabled = true;
-            btn.innerText = '⏳ SPRIBETOR ANALYZING...';
+            btn.innerText = '⏳ ANALYZING SERVER...';
 
             setTimeout(() => {
                 if (selectedGame === 'aviator') {
@@ -520,11 +790,11 @@
                     document.getElementById('minesSpots').innerText = `${safeSpots} / 6 SAFE`;
                 }
                 btn.disabled = false;
-                btn.innerText = '⚡ GET SIGNAL ⚡';
-            }, 1200);
+                btn.innerText = '⚡ GET SIGNAL';
+            }, 1100);
         }
 
-        // ফ্লোটিং আইকন ড্র্যাগ হ্যান্ডলার
+        // ফ্লোটিং আইকন ড্র্যাগ
         let isIconMoving = false, iconStartX, iconStartY, iconInitX, iconInitY, iconHasMoved = false;
 
         floatingLauncher.addEventListener('pointerdown', (e) => {
@@ -543,28 +813,25 @@
                 iconHasMoved = true;
             }
             let posX = Math.max(0, Math.min(e.clientX - iconInitX, window.innerWidth - floatingLauncher.offsetWidth));
-            let posY = Math.max(0, Math.min(e.clientY - iconInitY, window.innerHeight - floatingLauncher.offsetHeight));
+            let posY = Math.max(46, Math.min(e.clientY - iconInitY, window.innerHeight - floatingLauncher.offsetHeight - 60));
             floatingLauncher.style.left = posX + 'px';
             floatingLauncher.style.top = posY + 'px';
-            floatingLauncher.style.position = 'fixed';
         });
 
         floatingLauncher.addEventListener('pointerup', (e) => {
-            if (!iconHasMoved) {
-                togglePopupModal();
-            }
+            if (!iconHasMoved) togglePopupModal();
             isIconMoving = false;
             floatingLauncher.releasePointerCapture(e.pointerId);
         });
 
-        // পপআপ উইন্ডো স্মুথ ড্র্যাগ হ্যান্ডলার (পপআপের যেকোনো জায়গা থেকে এখন স্মুথলি নড়াচড়া করা যাবে)
+        // পপআপ উইন্ডো ড্র্যাগ
         let isPopupMoving = false, popStartX, popStartY;
 
         draggablePopup.addEventListener('pointerdown', (e) => {
-            if (e.target.closest('button') || e.target.closest('.mod-tabs-grid') || e.target.closest('.wingo-sub-markets')) return;
+            if (e.target.closest('button') || e.target.closest('.wingo-sub-markets')) return;
             isPopupMoving = true;
             const rectBox = draggablePopup.getBoundingClientRect();
-            draggablePopup.style.transform = 'none';
+            draggablePopup.style.right = 'auto';
             draggablePopup.style.left = rectBox.left + 'px';
             draggablePopup.style.top = rectBox.top + 'px';
             popStartX = e.clientX - rectBox.left;
@@ -575,10 +842,9 @@
         draggablePopup.addEventListener('pointermove', (e) => {
             if (!isPopupMoving) return;
             let newX = Math.max(0, Math.min(e.clientX - popStartX, window.innerWidth - draggablePopup.offsetWidth));
-            let newY = Math.max(0, Math.min(e.clientY - popStartY, window.innerHeight - draggablePopup.offsetHeight));
+            let newY = Math.max(46, Math.min(e.clientY - popStartY, window.innerHeight - draggablePopup.offsetHeight - 60));
             draggablePopup.style.left = newX + 'px';
             draggablePopup.style.top = newY + 'px';
-            draggablePopup.style.position = 'fixed';
         });
 
         draggablePopup.addEventListener('pointerup', (e) => {
