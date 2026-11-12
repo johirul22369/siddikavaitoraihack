@@ -545,7 +545,7 @@
         <div class="auth-panel-box">
             <div style="font-size: 36px; margin-bottom: 8px;">👑</div>
             <div style="font-size: 14px; font-weight: 900; color: #ffd700; letter-spacing: 0.5px;">SIDDIK ORIGINAL AI HEACK</div>
-            <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; margin-bottom: 18px;">ভিআইপি সিস্টেম আনলک করতে পাসওয়ার্ড লিখুন</div>
+            <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; margin-bottom: 18px;">ভিআইপি সিস্টেম আনলক করতে পাসওয়ার্ড লিখুন</div>
             <input type="password" id="passInputField" class="pass-input-field" placeholder="Enter VIP Password..." autocomplete="off">
             <button class="btn-unlock-core" onclick="verifyVipPassword()">🔓 UNLOCK VIP SYSTEM</button>
             <p id="errorAlertText" style="color: #f87171; font-size: 11px; font-weight: 700; margin-top: 12px; display: none;">❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।</p>
@@ -806,20 +806,32 @@
         function fetchAviatorSignal() {
             const btn = document.getElementById('fetchSignalBtn');
             btn.disabled = true;
-            btn.innerText = '⏳ ANALYZING CRASH...';
+            
+            // গেট সিগন্যালে ক্লিক করার সাথে সাথে ২ সেকেন্ডের জন্য এনালাইসিং শো করবে
+            if (selectedGame === 'aviator') {
+                document.getElementById('aviatorMultiplier').innerText = 'ANALYZING...';
+                document.getElementById('aviatorMultiplier').style.fontSize = '20px';
+                document.getElementById('aviatorSubText').innerText = 'SCANNING AVIATOR RADAR...';
+            } else if (selectedGame === 'mines') {
+                document.getElementById('minesSpots').innerText = 'ANALYZING...';
+                document.getElementById('minesSpots').style.fontSize = '20px';
+            }
+            btn.innerText = '⏳ SCANNING MARKET...';
 
             setTimeout(() => {
                 if (selectedGame === 'aviator') {
+                    document.getElementById('aviatorMultiplier').style.fontSize = '34px';
                     const randomMult = (Math.random() * (4.80 - 1.35) + 1.35).toFixed(2);
                     document.getElementById('aviatorMultiplier').innerText = `${randomMult}x`;
                     document.getElementById('aviatorSubText').innerText = `AUTO CASHOUT @ ${randomMult}X`;
                 } else if (selectedGame === 'mines') {
+                    document.getElementById('minesSpots').style.fontSize = '26px';
                     const safeSpots = Math.floor(Math.random() * 2) + 4;
                     document.getElementById('minesSpots').innerText = `${safeSpots} / 6 SAFE`;
                 }
                 btn.disabled = false;
                 btn.innerText = '⚡ GET SIGNAL';
-            }, 800);
+            }, 2000); // ঠিক ২ সেকেন্ড পর রেজাল্ট দেখাবে
         }
 
         function updateGameEngine() {
@@ -866,7 +878,6 @@
                 const sizeEl = document.getElementById('wingoBigSmall');
                 const colorEl = document.getElementById('wingoColorNum');
 
-                // রাউন্ড শেষ হওয়ার সময় বা নতুন পিরিয়ডের শুরুতে ২ সেকেন্ডের জন্য ANALYZING দেখাবে
                 if (remainingSecs <= 2) {
                     sizeEl.innerText = 'ANALYZING...';
                     sizeEl.style.fontSize = '22px';
