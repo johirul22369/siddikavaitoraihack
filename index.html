@@ -391,6 +391,7 @@
             gap: 3px;
         }
 
+        /* WinGo সাব-মার্কেট বাটন (মাত্র ৪টি: 30S, 1M, 3M, 5M)[span_4](start_span)[span_4](end_span) */
         .wingo-sub-markets {
             display: none;
             grid-template-columns: repeat(4, 1fr);
@@ -482,7 +483,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* অটো সিংক স্ট্যাটাস ইন্ডিকেটর বার (বাটনের বদলে) */
         .auto-sync-status-box {
             width: 100%;
             padding: 10px;
@@ -574,12 +574,12 @@
             <span class="secure-badge">🛡️ 96.8% AUTO</span>
         </div>
 
-        <!-- WinGo সাব-মার্কেট বাটন -->
+        <!-- WinGo সাব-মার্কেট বাটন (মাত্র ৪টি: 30Sec, 1Min, 3Min, 5Min)[span_5](start_span)[span_5](end_span) -->
         <div class="wingo-sub-markets" id="wingoSubMarkets">
-            <button class="sub-mkt-btn active" id="mkt1" onclick="changeWingoMarket(1)">1 MIN</button>
+            <button class="sub-mkt-btn active" id="mkt30s" onclick="changeWingoMarket('30s')">30 SEC</button>
+            <button class="sub-mkt-btn" id="mkt1" onclick="changeWingoMarket(1)">1 MIN</button>
             <button class="sub-mkt-btn" id="mkt3" onclick="changeWingoMarket(3)">3 MIN</button>
             <button class="sub-mkt-btn" id="mkt5" onclick="changeWingoMarket(5)">5 MIN</button>
-            <button class="sub-mkt-btn" id="mkt10" onclick="changeWingoMarket(10)">10 MIN</button>
         </div>
 
         <!-- AVIATOR DISPLAY -->
@@ -613,7 +613,7 @@
             <div class="sub-desc-output">QUANTUM MATRIX AUTO AI</div>
         </div>
 
-        <!-- অটো সিংক স্ট্যাটাস ইন্ডিকেটর (বাটনের পরিবর্তে) -->
+        <!-- অটো সিংক স্ট্যাটাস ইন্ডিকেটর -->
         <div class="auto-sync-status-box">
             <span>⚡ AUTO MARKET SYNC ACTIVE (LIVE)</span>
         </div>
@@ -648,7 +648,7 @@
         const popupModal = document.getElementById('draggablePopup');
         const floatingLauncher = document.getElementById('floatingLauncher');
         let selectedGame = 'aviator';
-        let currentWingoMin = 1;
+        let currentWingoMarket = '1'; // ডিফল্ট ১ মিনিট ('30s', '1', '3', '5')
         let lastPeriodNum = '';
 
         function switchBetSite(siteKey) {
@@ -732,7 +732,7 @@
                 document.getElementById('headerGameIcon').innerText = '🔥';
                 document.getElementById('headerTagText').innerText = 'AUTO WINGO';
                 document.getElementById('headerSubHint').innerText = '::: REAL-TIME PERIOD AI';
-                serverTxt.innerText = `WINGO ${currentWingoMin}MIN MARKET AI`;
+                serverTxt.innerText = `WINGO ${currentWingoMarket === '30s' ? '30SEC' : currentWingoMarket + 'MIN'} MARKET AI`;
             } else {
                 document.getElementById('dockMines').classList.add('active');
                 viewA.style.display = 'none';
@@ -748,32 +748,42 @@
             checkAndUpdateSignals();
         }
 
-        function changeWingoMarket(minVal) {
-            currentWingoMin = minVal;
-            [1, 3, 5, 10].forEach(m => {
+        function changeWingoMarket(mktVal) {
+            currentWingoMarket = mktVal;
+            ['30s', 1, 3, 5].forEach(m => {
                 document.getElementById('mkt' + m).classList.remove('active');
             });
-            document.getElementById('mkt' + minVal).classList.add('active');
-            document.getElementById('serverTitleText').innerText = `WINGO ${minVal}MIN MARKET AI`;
-            document.querySelector('#dockWingo .dock-title').innerText = `WINGO ${minVal}M`;
+            document.getElementById('mkt' + mktVal).classList.add('active');
+            
+            let mktLabel = mktVal === '30s' ? '30SEC' : mktVal + 'MIN';
+            document.getElementById('serverTitleText').innerText = `WINGO ${mktLabel} MARKET AI`;
+            document.querySelector('#dockWingo .dock-title').innerText = `WINGO ${mktVal === '30s' ? '30S' : mktVal + 'M'}`;
             checkAndUpdateSignals();
         }
 
-        // নিখুঁত পিরিয়ড ও অটো সিগন্যাল জেনারেটর
+        // নিখুঁত পিরিয়ড ও অটো সিগন্যাল জেনারেটর (টেবিলের ফরম্যাট অনুযায়ী)[span_6](start_span)[span_6](end_span)
         function checkAndUpdateSignals() {
             const now = new Date();
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
             
-            let totalMins = now.getHours() * 60 + now.getMinutes();
-            let periodSeq = 50000 + Math.floor(totalMins / currentWingoMin);
-            let periodNumber = `${year}${month}${day}1000${periodSeq}`;
+            let periodNumber = '';
+            if (currentWingoMarket === '30s') {
+                let totalSecs = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+                let seq30 = 90000 + Math.floor(totalSecs / 30);
+                periodNumber = `${year}${month}${day}1000${seq30}`;
+            } else {
+                let totalMins = now.getHours() * 60 + now.getMinutes();
+                let mNum = parseInt(currentWingoMarket);
+                let periodSeq = 50000 + Math.floor(totalMins / mNum);
+                periodNumber = `${year}${month}${day}1000${periodSeq}`;
+            }
 
             // WinGo পিরিয়ড আপডেট
             document.getElementById('wingoPeriodNum').innerText = `PERIOD #${periodNumber}`;
 
-            // যদি WinGo-র পিরিয়ড নাম্বার চেঞ্জ হয়, অটো নতুন প্রেডিকশন আসবে
+            // পিরিয়ড চেঞ্জ হলে অটো নতুন প্রেডিকশন আসবে
             if (selectedGame === 'wingo' && periodNumber !== lastPeriodNum) {
                 lastPeriodNum = periodNumber;
                 const num = Math.floor(Math.random() * 10);
@@ -785,7 +795,7 @@
                 document.getElementById('wingoColorNum').innerText = `WINNER: ${colorName} (${num})`;
             }
 
-            // Aviator ও Mines এর জন্য অটো রিয়েল-টাইম আপডেট লজিক
+            // Aviator ও Mines এর জন্য অটো রিয়েল-টাইম আপডেট
             if (selectedGame === 'aviator') {
                 const randomMult = (Math.random() * (4.80 - 1.35) + 1.35).toFixed(2);
                 document.getElementById('aviatorMultiplier').innerText = `${randomMult}x`;
@@ -796,12 +806,12 @@
             }
         }
 
-        // প্রতি ৩ সেকেন্ড পর পর অটো রিয়েল-টাইম সিংক চেক করবে
+        // প্রতি ২ সেকেন্ড পর পর অটো সিংক চেক করবে
         setInterval(() => {
             if (document.getElementById('authOverlay').style.display === 'none') {
                 checkAndUpdateSignals();
             }
-        }, 3000);
+        }, 2000);
 
         // ফ্লোটিং আইকন ড্র্যাগ
         let isIconMoving = false, iconStartX, iconStartY, iconInitX, iconInitY, iconHasMoved = false;
