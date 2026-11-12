@@ -545,7 +545,7 @@
         <div class="auth-panel-box">
             <div style="font-size: 36px; margin-bottom: 8px;">👑</div>
             <div style="font-size: 14px; font-weight: 900; color: #ffd700; letter-spacing: 0.5px;">SIDDIK ORIGINAL AI HEACK</div>
-            <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; margin-bottom: 18px;">ভিআইপি সিস্টেম আনলক করতে পাসওয়ার্ড লিখুন</div>
+            <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; margin-bottom: 18px;">ভিআইপি সিস্টেম আনলک করতে পাসওয়ার্ড লিখুন</div>
             <input type="password" id="passInputField" class="pass-input-field" placeholder="Enter VIP Password..." autocomplete="off">
             <button class="btn-unlock-core" onclick="verifyVipPassword()">🔓 UNLOCK VIP SYSTEM</button>
             <p id="errorAlertText" style="color: #f87171; font-size: 11px; font-weight: 700; margin-top: 12px; display: none;">❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।</p>
@@ -677,14 +677,14 @@
             isVipAuthenticated = false;
             popupModal.style.display = 'none';
             authOverlay.style.display = 'flex';
-            floatingLauncher.style.display = 'none'; // আইকন লুকিয়ে রাখা হলো
+            floatingLauncher.style.display = 'none';
             document.getElementById('passInputField').value = '';
         }
 
         function openAuthOrPopup() {
             if (!isVipAuthenticated) {
                 authOverlay.style.display = 'flex';
-                floatingLauncher.style.display = 'none'; // আইকনে ক্লিক করার পর ফ্লোটিং আইকন হাইড হবে
+                floatingLauncher.style.display = 'none';
                 document.getElementById('passInputField').value = '';
             } else {
                 togglePopupModal();
@@ -699,10 +699,10 @@
             }
             if (popupModal.style.display === 'block') {
                 popupModal.style.display = 'none';
-                floatingLauncher.style.display = 'flex'; // পপআপ ক্লোজ/মিনিমাইজ করলে আইকন আবার ফিরে আসবে
+                floatingLauncher.style.display = 'flex';
             } else {
                 popupModal.style.display = 'block';
-                floatingLauncher.style.display = 'none'; // পপআপ ওপেন থাকলে আইকন হাইড থাকবে
+                floatingLauncher.style.display = 'none';
             }
         }
 
@@ -720,7 +720,7 @@
                 authOverlay.style.display = 'none';
                 errAlert.style.display = 'none';
                 popupModal.style.display = 'block';
-                floatingLauncher.style.display = 'none'; // পাসওয়ার্ড দেওয়ার পরেও পপআপ খোলা থাকায় আইকন হাইড থাকবে
+                floatingLauncher.style.display = 'none';
                 updateGameEngine();
             } else {
                 errAlert.style.display = 'block';
@@ -863,15 +863,26 @@
                 let secsFormat = String(remainingSecs % 60).padStart(2, '0');
                 document.getElementById('wingoTimerDisplay').innerText = `⏰ TIME REMAINING: ${minsFormat}:${secsFormat}`;
 
-                if (currentPeriod !== lastWingoPeriod) {
-                    lastWingoPeriod = currentPeriod;
-                    const randNum = Math.floor(Math.random() * 10);
-                    const isBig = randNum >= 5;
-                    const colorName = [1, 3, 5, 7, 9].includes(randNum) ? 'GREEN' : 'RED';
-                    const sizeEl = document.getElementById('wingoBigSmall');
-                    sizeEl.innerText = isBig ? 'BIG' : 'SMALL';
-                    sizeEl.style.color = isBig ? '#facc15' : '#38bdf8';
-                    document.getElementById('wingoColorNum').innerText = `WINNER: ${colorName} (${randNum})`;
+                const sizeEl = document.getElementById('wingoBigSmall');
+                const colorEl = document.getElementById('wingoColorNum');
+
+                // রাউন্ড শেষ হওয়ার সময় বা নতুন পিরিয়ডের শুরুতে ২ সেকেন্ডের জন্য ANALYZING দেখাবে
+                if (remainingSecs <= 2) {
+                    sizeEl.innerText = 'ANALYZING...';
+                    sizeEl.style.fontSize = '22px';
+                    sizeEl.style.color = '#38bdf8';
+                    colorEl.innerText = 'AI SCANNING NEXT MARKET...';
+                } else {
+                    sizeEl.style.fontSize = '34px';
+                    if (currentPeriod !== lastWingoPeriod) {
+                        lastWingoPeriod = currentPeriod;
+                        const randNum = Math.floor(Math.random() * 10);
+                        const isBig = randNum >= 5;
+                        const colorName = [1, 3, 5, 7, 9].includes(randNum) ? 'GREEN' : 'RED';
+                        sizeEl.innerText = isBig ? 'BIG' : 'SMALL';
+                        sizeEl.style.color = isBig ? '#facc15' : '#38bdf8';
+                        colorEl.innerText = `WINNER: ${colorName} (${randNum})`;
+                    }
                 }
             }
         }
