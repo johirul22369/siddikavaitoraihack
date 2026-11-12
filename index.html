@@ -677,12 +677,14 @@
             isVipAuthenticated = false;
             popupModal.style.display = 'none';
             authOverlay.style.display = 'flex';
+            floatingLauncher.style.display = 'none'; // আইকন লুকিয়ে রাখা হলো
             document.getElementById('passInputField').value = '';
         }
 
         function openAuthOrPopup() {
             if (!isVipAuthenticated) {
                 authOverlay.style.display = 'flex';
+                floatingLauncher.style.display = 'none'; // আইকনে ক্লিক করার পর ফ্লোটিং আইকন হাইড হবে
                 document.getElementById('passInputField').value = '';
             } else {
                 togglePopupModal();
@@ -692,9 +694,16 @@
         function togglePopupModal() {
             if (!isVipAuthenticated) {
                 authOverlay.style.display = 'flex';
+                floatingLauncher.style.display = 'none';
                 return;
             }
-            popupModal.style.display = (popupModal.style.display === 'block') ? 'none' : 'block';
+            if (popupModal.style.display === 'block') {
+                popupModal.style.display = 'none';
+                floatingLauncher.style.display = 'flex'; // পপআপ ক্লোজ/মিনিমাইজ করলে আইকন আবার ফিরে আসবে
+            } else {
+                popupModal.style.display = 'block';
+                floatingLauncher.style.display = 'none'; // পপআপ ওপেন থাকলে আইকন হাইড থাকবে
+            }
         }
 
         function resetPopupPosition() {
@@ -711,6 +720,7 @@
                 authOverlay.style.display = 'none';
                 errAlert.style.display = 'none';
                 popupModal.style.display = 'block';
+                floatingLauncher.style.display = 'none'; // পাসওয়ার্ড দেওয়ার পরেও পপআপ খোলা থাকায় আইকন হাইড থাকবে
                 updateGameEngine();
             } else {
                 errAlert.style.display = 'block';
@@ -720,6 +730,7 @@
         function changeGameTab(gameName) {
             if (!isVipAuthenticated) {
                 authOverlay.style.display = 'flex';
+                floatingLauncher.style.display = 'none';
                 return;
             }
             selectedGame = gameName;
@@ -774,6 +785,7 @@
                 serverTxt.innerText = 'MINES SAFE BOX AI #1';
             }
             popupModal.style.display = 'block';
+            floatingLauncher.style.display = 'none';
             updateGameEngine();
         }
 
