@@ -823,19 +823,19 @@
 
                 if (currentWingoMarket === '30s') {
                     let totalPeriods30s = Math.floor(totalSecs / 30);
-                    let baseSeq = 50000 + totalPeriods30s; 
+                    let baseSeq = 50000 + totalPeriods30s + 1; 
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 } else if (currentWingoMarket === 1) {
                     let totalMins = Math.floor(totalSecs / 60);
-                    let baseSeq = 50000 + totalMins;
+                    let baseSeq = 50000 + totalMins + 1;
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 } else if (currentWingoMarket === 3) {
                     let totalPeriods3m = Math.floor(totalSecs / 180);
-                    let baseSeq = 50000 + totalPeriods3m;
+                    let baseSeq = 50000 + totalPeriods3m + 1;
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 } else if (currentWingoMarket === 5) {
                     let totalPeriods5m = Math.floor(totalSecs / 300);
-                    let baseSeq = 50000 + totalPeriods5m;
+                    let baseSeq = 50000 + totalPeriods5m + 1;
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 }
 
