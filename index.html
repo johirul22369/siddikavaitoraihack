@@ -24,7 +24,7 @@
             color: #fff;
         }
 
-        /* ১. ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম ফ্রেম */
+        /* ব্যাকগ্রাউন্ড ফুল-স্ক্রিন গেম ফ্রেম */
         .game-frame {
             width: 100%;
             height: 100%;
@@ -35,7 +35,7 @@
             z-index: 1;
         }
 
-        /* ২. ফ্লোটিং ড্র্যাগেবল আইকন (লঞ্চার) */
+        /* ফ্লোটিং ড্র্যাগেবল আইকন (লঞ্চার) */
         .floating-launcher {
             position: fixed;
             top: 110px;
@@ -62,7 +62,7 @@
             pointer-events: none;
         }
 
-        /* ৩. ভিআইপি পাসওয়ার্ড ওভারলে (খালি বক্স) */
+        /* ভিআইপি পাসওয়ার্ড স্ক্রিন (খালি বক্স) */
         .auth-overlay-screen {
             position: fixed;
             inset: 0;
@@ -137,7 +137,7 @@
             transform: scale(0.97);
         }
 
-        /* ৪. মূল ড্র্যাগেবল স্প্রাইভেটর হ্যাক পপআপ উইন্ডো */
+        /* ড্র্যাগেবল স্প্রাইভেটর হ্যাক পপআপ উইন্ডো (সম্পূর্ণ নড়াচড়া করা যায়) */
         .draggable-popup-modal {
             display: none;
             position: fixed;
@@ -156,7 +156,7 @@
             touch-action: none;
         }
 
-        /* ড্র্যাগ হেডার বার */
+        /* ড্র্যাগ হেডার বার (পুরো পপআপ এখান থেকে বা যেকোনো জায়গা থেকে সরাতে পারবেন) */
         .popup-drag-header {
             background: rgba(0, 0, 0, 0.75);
             border: 1px solid rgba(255, 42, 109, 0.3);
@@ -173,6 +173,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            pointer-events: none;
         }
 
         .brand-heading {
@@ -213,7 +214,7 @@
             gap: 10px;
         }
 
-        /* মোড ট্যাব সুইচ */
+        /* গেম মোড ট্যাব */
         .mod-tabs-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -243,6 +244,36 @@
             box-shadow: 0 0 12px rgba(255, 42, 109, 0.6);
         }
 
+        /* WinGo সাব-মার্কেট সিলেক্টর বার (1Min, 3Min, 5Min, 10Min) */
+        .wingo-sub-markets {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .sub-mkt-btn {
+            padding: 5px 2px;
+            border-radius: 7px;
+            border: none;
+            background: rgba(0,0,0,0.5);
+            color: #94a3b8;
+            font-size: 9px;
+            font-weight: 800;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .sub-mkt-btn.active {
+            background: #38bdf8;
+            color: #000;
+            font-weight: 900;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+        }
+
         .sub-info-bar {
             display: flex;
             align-items: center;
@@ -262,13 +293,13 @@
             font-size: 9px;
         }
 
-        /* স্প্রাইভেটর স্টাইলিশ গ্রাফ ও প্রেডিকশন বক্স */
+        /* প্রেডিকশন ডিসপ্লে বক্স */
         .prediction-box-panel {
             position: relative;
             background: radial-gradient(circle, rgba(45, 10, 30, 0.95) 0%, rgba(6, 2, 12, 0.98) 100%);
             border: 1.5px solid rgba(255, 42, 109, 0.45);
             border-radius: 16px;
-            padding: 20px 10px;
+            padding: 18px 10px;
             text-align: center;
             overflow: hidden;
             box-shadow: inset 0 0 25px rgba(0,0,0,0.85);
@@ -300,7 +331,7 @@
 
         .main-number-output {
             font-family: 'Orbitron', sans-serif;
-            font-size: 42px;
+            font-size: 40px;
             font-weight: 900;
             color: #fff;
             text-shadow: 0 0 25px rgba(255, 42, 109, 0.9);
@@ -340,7 +371,7 @@
         </div>
     </div>
 
-    <!-- ৪. স্প্রাইভেটর ড্র্যাগেবল হ্যাক পপআপ উইন্ডো -->
+    <!-- ৪. ড্র্যাগেবল হ্যাক পপআপ উইন্ডো -->
     <div class="draggable-popup-modal" id="draggablePopup">
         
         <div class="popup-drag-header" id="popupHeader">
@@ -357,6 +388,14 @@
                 <button class="mod-tab-btn active" id="tabAviator" onclick="changeGameTab('aviator')">✈️ AVIATOR</button>
                 <button class="mod-tab-btn" id="tabWingo" onclick="changeGameTab('wingo')">🎯 WINGO</button>
                 <button class="mod-tab-btn" id="tabMines" onclick="changeGameTab('mines')">💣 MINES</button>
+            </div>
+
+            <!-- WinGo সাব-মার্কেট বার (ডিফল্টভাবে লুকানো থাকবে, উইনগো সিলেক্ট করলে শো করবে) -->
+            <div class="wingo-sub-markets" id="wingoSubMarkets" style="display: none;">
+                <button class="sub-mkt-btn active" id="mkt1" onclick="changeWingoMarket(1)">1 MIN</button>
+                <button class="sub-mkt-btn" id="mkt3" onclick="changeWingoMarket(3)">3 MIN</button>
+                <button class="sub-mkt-btn" id="mkt5" onclick="changeWingoMarket(5)">5 MIN</button>
+                <button class="sub-mkt-btn" id="mkt10" onclick="changeWingoMarket(10)">10 MIN</button>
             </div>
 
             <div class="sub-info-bar">
@@ -395,6 +434,7 @@
         const floatingLauncher = document.getElementById('floatingLauncher');
         const popupHeader = document.getElementById('popupHeader');
         let selectedGame = 'aviator';
+        let currentWingoMin = 1;
 
         function togglePopupModal() {
             if (popupModal.style.display === 'block') {
@@ -410,7 +450,7 @@
             if (inputVal === 'siddik58') {
                 document.getElementById('authOverlay').style.display = 'none';
                 popupModal.style.display = 'block';
-                updateWingoPeriodCode();
+                updateWingoAccuratePeriod();
             } else {
                 errAlert.style.display = 'block';
             }
@@ -426,33 +466,58 @@
             const viewW = document.getElementById('viewWingo');
             const viewM = document.getElementById('viewMines');
             const serverTxt = document.getElementById('serverTitleText');
+            const subMktBar = document.getElementById('wingoSubMarkets');
 
             if (gameName === 'aviator') {
                 document.getElementById('tabAviator').classList.add('active');
                 viewA.style.display = 'block';
                 viewW.style.display = 'none';
                 viewM.style.display = 'none';
+                subMktBar.style.display = 'none';
                 serverTxt.innerText = 'SPRIBE AVIATOR AI #2';
             } else if (gameName === 'wingo') {
                 document.getElementById('tabWingo').classList.add('active');
                 viewA.style.display = 'none';
                 viewW.style.display = 'block';
                 viewM.style.display = 'none';
-                serverTxt.innerText = 'WINGO 1MIN MARKET AI';
-                updateWingoPeriodCode();
+                subMktBar.style.display = 'grid';
+                serverTxt.innerText = `WINGO ${currentWingoMin}MIN MARKET AI`;
+                updateWingoAccuratePeriod();
             } else {
                 document.getElementById('tabMines').classList.add('active');
                 viewA.style.display = 'none';
                 viewW.style.display = 'none';
                 viewM.style.display = 'block';
+                subMktBar.style.display = 'none';
                 serverTxt.innerText = 'MINES SAFE BOX AI';
             }
         }
 
-        function updateWingoPeriodCode() {
+        function changeWingoMarket(minVal) {
+            currentWingoMin = minVal;
+            [1, 3, 5, 10].forEach(m => {
+                document.getElementById('mkt' + m).classList.remove('active');
+            });
+            document.getElementById('mkt' + minVal).classList.add('active');
+            document.getElementById('serverTitleText').innerText = `WINGO ${minVal}MIN MARKET AI`;
+            updateWingoAccuratePeriod();
+        }
+
+        // সঠিক রিয়েল-টাইম পিরিয়ড নাম্বার জেনারেটর (মিনিট ও সময় ভিত্তিক হিসাব)
+        function updateWingoAccuratePeriod() {
             const now = new Date();
-            const mins = now.getHours() * 60 + now.getMinutes() + 1;
-            document.getElementById('wingoPeriodNum').innerText = `PERIOD #20261112${String(mins).padStart(4, '0')}`;
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            
+            let totalMins = now.getHours() * 60 + now.getMinutes();
+            let periodSeq = Math.floor(totalMins / currentWingoMin) + 1;
+            
+            // উইনগো গেমের স্ট্যান্ডার্ড পিরিয়ড ফরম্যাট (যেমন: YYYYMMDD + MinCode + 4 digit sequence)
+            let seqStr = String(periodSeq).padStart(4, '0');
+            let periodNumber = `${year}${month}${day}${currentWingoMin}0${seqStr}`;
+            
+            document.getElementById('wingoPeriodNum').innerText = `PERIOD #${periodNumber}`;
         }
 
         function fetchNewSignal() {
@@ -466,7 +531,7 @@
                     document.getElementById('aviatorMultiplier').innerText = `${randomMult}x`;
                     document.getElementById('aviatorSubText').innerText = `AUTO CASHOUT @ ${randomMult}X`;
                 } else if (selectedGame === 'wingo') {
-                    updateWingoPeriodCode();
+                    updateWingoAccuratePeriod();
                     const num = Math.floor(Math.random() * 10);
                     const isBig = num >= 5;
                     const colorName = [1, 3, 5, 7, 9].includes(num) ? 'GREEN' : 'RED';
@@ -483,6 +548,7 @@
             }, 1200);
         }
 
+        // ফ্লোটিং আইকন ড্র্যাগ হ্যান্ডলার
         let isIconMoving = false, iconStartX, iconStartY, iconInitX, iconInitY, iconHasMoved = false;
 
         floatingLauncher.addEventListener('pointerdown', (e) => {
@@ -515,10 +581,11 @@
             floatingLauncher.releasePointerCapture(e.pointerId);
         });
 
+        // পপআপ উইন্ডো স্মুথ ড্র্যাগ হ্যান্ডলার (হেডার বা পপআপের যেকোনো জায়গা থেকে সরাতে পারবেন)
         let isPopupMoving = false, popStartX, popStartY;
 
-        popupHeader.addEventListener('pointerdown', (e) => {
-            if (e.target.closest('button')) return;
+        popupModal.addEventListener('pointerdown', (e) => {
+            if (e.target.closest('button') || e.target.closest('.mod-tabs-grid') || e.target.closest('.wingo-sub-markets')) return;
             isPopupMoving = true;
             const rectBox = popupModal.getBoundingClientRect();
             popupModal.style.transform = 'none';
@@ -526,10 +593,10 @@
             popupModal.style.top = rectBox.top + 'px';
             popStartX = e.clientX - rectBox.left;
             popStartY = e.clientY - rectBox.top;
-            popupHeader.setPointerCapture(e.pointerId);
+            popupModal.setPointerCapture(e.pointerId);
         });
 
-        popupHeader.addEventListener('pointermove', (e) => {
+        popupModal.addEventListener('pointermove', (e) => {
             if (!isPopupMoving) return;
             let newX = Math.max(0, Math.min(e.clientX - popStartX, window.innerWidth - popupModal.offsetWidth));
             let newY = Math.max(0, Math.min(e.clientY - popStartY, window.innerHeight - popupModal.offsetHeight));
@@ -538,9 +605,9 @@
             popupModal.style.position = 'fixed';
         });
 
-        popupHeader.addEventListener('pointerup', (e) => {
+        popupModal.addEventListener('pointerup', (e) => {
             isPopupMoving = false;
-            popupHeader.releasePointerCapture(e.pointerId);
+            popupModal.releasePointerCapture(e.pointerId);
         });
     </script>
 </body>
