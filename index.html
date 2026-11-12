@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SIDDIK OFFICIAL QUANTUM HYBRID AI</title>
+    <title>SIDDIK ORIGINAL AI HEACK</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@600;700;800;900&family=Hind+Siliguri:wght@600;700&display=swap');
 
@@ -307,10 +307,10 @@
         }
 
         .brand-heading {
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 900;
             color: #f8fafc;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
         }
 
         .tag-radar {
@@ -324,7 +324,7 @@
         }
 
         .drag-sub-hint {
-            font-size: 7px;
+            font-size: 6.5px;
             color: #94a3b8;
             font-weight: 700;
             margin-top: 1px;
@@ -544,7 +544,7 @@
     <div class="auth-overlay-screen" id="authOverlay">
         <div class="auth-panel-box">
             <div style="font-size: 36px; margin-bottom: 8px;">👑</div>
-            <div style="font-size: 15px; font-weight: 900; color: #ffd700; letter-spacing: 0.5px;">SIDDIK OFFICIAL HYBRID AI</div>
+            <div style="font-size: 14px; font-weight: 900; color: #ffd700; letter-spacing: 0.5px;">SIDDIK ORIGINAL AI HEACK</div>
             <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; margin-bottom: 18px;">ভিআইপি সিস্টেম আনলক করতে পাসওয়ার্ড লিখুন</div>
             <input type="password" id="passInputField" class="pass-input-field" placeholder="Enter VIP Password..." autocomplete="off">
             <button class="btn-unlock-core" onclick="verifyVipPassword()">🔓 UNLOCK VIP SYSTEM</button>
@@ -558,8 +558,8 @@
                 <div class="header-app-icon" id="headerGameIcon">✈️</div>
                 <div>
                     <div class="brand-row">
-                        <span class="brand-heading">SIDDIK QUANTUM</span>
-                        <span class="tag-radar" id="headerTagText">HYBRID RADAR</span>
+                        <span class="brand-heading">SIDDIK ORIGINAL AI HEACK</span>
+                        <span class="tag-radar" id="headerTagText">HEACK PRO</span>
                     </div>
                     <div class="drag-sub-hint" id="headerSubHint">::: EXACT WINGO PERIOD SYNC</div>
                 </div>
@@ -607,7 +607,7 @@
         <div class="prediction-box-panel" id="viewMines" style="display: none;">
             <div class="lock-status-pill">💎 SAFE SPOTS RADAR</div>
             <div class="main-number-output" id="minesSpots" style="color: #38bdf8; font-size: 26px;">5 / 6 SAFE</div>
-            <div class="sub-desc-output">QUANTUM MATRIX AI</div>
+            <div class="sub-desc-output">HEACK MATRIX AI</div>
         </div>
 
         <button class="btn-signal-action" id="fetchSignalBtn" onclick="fetchAviatorSignal()">⚡ GET SIGNAL</button>
@@ -743,7 +743,7 @@
                 signalBtn.style.display = 'block';
                 wingoAutoBox.style.display = 'none';
                 document.getElementById('headerGameIcon').innerText = '✈️';
-                document.getElementById('headerTagText').innerText = 'AVIATOR RADAR';
+                document.getElementById('headerTagText').innerText = 'HEACK PRO';
                 document.getElementById('headerSubHint').innerText = '::: CLICK GET SIGNAL FOR AVIATOR';
                 serverTxt.innerText = 'SPRIBE AVIATOR AI #2';
             } else if (gameName === 'wingo') {
@@ -755,7 +755,7 @@
                 signalBtn.style.display = 'none';
                 wingoAutoBox.style.display = 'flex';
                 document.getElementById('headerGameIcon').innerText = '🔥';
-                document.getElementById('headerTagText').innerText = 'WINGO ALGO';
+                document.getElementById('headerTagText').innerText = 'HEACK ALGO';
                 document.getElementById('headerSubHint').innerText = '::: EXACT WINGO PERIOD SYNC';
                 let mktLabel = currentWingoMarket === '30s' ? '30SEC' : currentWingoMarket + 'MIN';
                 serverTxt.innerText = `WINGO ${mktLabel} MARKET AI`;
@@ -768,7 +768,7 @@
                 signalBtn.style.display = 'block';
                 wingoAutoBox.style.display = 'none';
                 document.getElementById('headerGameIcon').innerText = '💣';
-                document.getElementById('headerTagText').innerText = 'MINES RADAR';
+                document.getElementById('headerTagText').innerText = 'HEACK RADAR';
                 document.getElementById('headerSubHint').innerText = '::: SAFE BOX MATRIX AI';
                 serverTxt.innerText = 'MINES SAFE BOX AI #1';
             }
@@ -809,7 +809,6 @@
             }, 800);
         }
 
-        // নিখুঁত WinGo পিরিয়ড জেনারেটর (স্ক্রিনশটের টেবিল ফরম্যাটের সাথে হুবহু ম্যাচ করা)
         function updateGameEngine() {
             if (!isVipAuthenticated) return;
             const now = new Date();
@@ -824,20 +823,19 @@
 
                 if (currentWingoMarket === '30s') {
                     let totalPeriods30s = Math.floor(totalSecs / 30);
-                    // টেবিলের সাথে মিল রেখে বেস সিকোয়েন্স হিসাব
-                    let baseSeq = 50250 + (totalPeriods30s % 1000); 
+                    let baseSeq = 50000 + (totalPeriods30s % 10000); 
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 } else if (currentWingoMarket === 1) {
                     let totalMins = now.getHours() * 60 + now.getMinutes();
-                    let baseSeq = 50250 + (totalMins % 1000);
+                    let baseSeq = 50000 + (totalMins % 10000);
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 } else if (currentWingoMarket === 3) {
                     let totalPeriods3m = Math.floor((now.getHours() * 60 + now.getMinutes()) / 3);
-                    let baseSeq = 50250 + (totalPeriods3m % 1000);
+                    let baseSeq = 50000 + (totalPeriods3m % 10000);
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 } else if (currentWingoMarket === 5) {
                     let totalPeriods5m = Math.floor((now.getHours() * 60 + now.getMinutes()) / 5);
-                    let baseSeq = 50250 + (totalPeriods5m % 1000);
+                    let baseSeq = 50000 + (totalPeriods5m % 10000);
                     currentPeriod = `${year}${month}${day}1000${baseSeq}`;
                 }
 
